@@ -60,6 +60,28 @@ async function AttemptUpdateProfile(data){
         await insertIntoCollection(data, profiles);
     }
 }
+
+async function SendAllGroupNames(username, res){
+    const result = await groups.find({username:username}).toArray();
+    const names = [];
+    for(let i=0; i<result.length; i++){
+        names.push(result[i].name);
+    }
+    res.end(JSON.stringify(names));
+}
+
+async function SendGroup(username, name, res){
+    const result = await groups.findOne({username:username, name:name});
+    res.end(JSON.stringify(result));
+}
+
+async function AttemptUpdateGroup(data){
+    const result = await groups.replaceOne({username:data.username, name:data.name}, data);
+
+    if(result.modifiedCount === 0){
+        await insertIntoCollection(data, groups);
+    }
+}
 //#endregion
 
 app.post("/findgame", (req, res) => {
@@ -154,3 +176,57 @@ app.post("/submitprofile", (req, res) => {
     })
 })
 
+app.post("/getgroups", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        SendAllGroupNames(data, res);
+    })
+})
+
+app.post("/editgroup", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        SendGroup(data.username, data.name, res);
+    })
+})
+
+app.post("/submitgroup", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        if(data.name === null || data.name === ""){
+            res.end("Not submitted");
+            return;
+        }
+
+        AttemptUpdateGroup(data).then(()=>{
+            res.end("Submitted");
+        })
+    })
+})
