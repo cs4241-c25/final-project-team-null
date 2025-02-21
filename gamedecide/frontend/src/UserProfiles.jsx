@@ -9,14 +9,6 @@ function UserProfiles({user}) {
 
     const [profiles, setProfiles] = useState([]);
 
-    //For Testing
-    useEffect(() => {
-        console.log(user)
-        setProfiles(["Billy", "Barry", "Betty"])
-    }, [])
-
-
-    /*
     useEffect(async () => {
         const username = user.username;
         axios.post("/getprofiles/", (username))
@@ -24,7 +16,7 @@ function UserProfiles({user}) {
                 setProfiles(res.data);
             })
             .catch(err => console.log(err));
-    }, [])*/
+    }, [])
 
     return (
         <>
@@ -41,22 +33,3 @@ function UserProfiles({user}) {
 }
 
 export default UserProfiles
-
-
-
-/*
-    const username = user.username;
-        const response = await fetch("/submit", {
-            method: 'POST',
-            username,
-        })
-        setProfiles(await response)
-    * */
-
-/*
-    axios.post("/getprofiles/", (username))
-        .then(res => {
-            const data = res.data;
-            setProfiles(data);
-        })
-        .catch(err => console.log(err));*/

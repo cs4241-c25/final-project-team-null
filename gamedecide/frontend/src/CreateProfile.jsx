@@ -9,28 +9,11 @@ function CreateProfile() {
     const [newProfile, setNewProfile] = useState({
         username: "",
         profileName: "",
-        library: [{name: "Pokemon Rejuvenation", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-            {name: "Touhou 7: Perfect Cherry Blossom", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-            {name: "Touhou 7: Perfect Cherry Blossom", year: 1000, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-        ],
-        favorites: [{name: "Pokemon Rejuvenation", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-            {name: "Touhou 7: Perfect Cherry Blossom", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-            {name: "Touhou 7: Perfect Cherry Blossom", year: 1000, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-        ],
-        blacklist: [{name: "Pokemon Rejuvenation", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-            {name: "Touhou 7: Perfect Cherry Blossom", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-            {name: "Touhou 7: Perfect Cherry Blossom", year: 1000, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-        ],
-    });
-    /*
-    const [newProfile, setNewProfile] = useState({
-        username: "",
-        profileName: "",
         library: [],
         favorites: [],
         blacklist: [],
     });
-     */
+
     const [games, setGames] = useState([{
         name: "",
         year: 0,
@@ -40,19 +23,7 @@ function CreateProfile() {
         ownershipType: ""
     }]);
 
-    //Testing
-    useEffect(() => {
-        const data = [
-                {name: "Pokemon Rejuvenation", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-                {name: "Touhou 7: Perfect Cherry Blossom", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-                {name: "Honkai: Star Rail", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-                {name: "Miitopia", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-                {name: "Warframe", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
-                {name: "Rivals of Aether", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""}];
-        setGames(data);
-    }, [])
 
-    /*
     useEffect(() => {
         axios.get("/findgame")
             .then(res => {
@@ -60,18 +31,19 @@ function CreateProfile() {
                 setGames(data);
             })
             .catch(err => console.log(err));
-    }, [])*/
+    }, [])
 
     function handleSubmit(event) {
         event.preventDefault()
         console.log("New Profile:", newProfile);
 
-        /*
+
         axios.post("/submitprofile", (newProfile))
+            /*
             .then(res => {
 
-            })
-            .catch(err => console.log(err));*/
+            })*/
+            .catch(err => console.log(err));
     }
 
     const handleChange = (e) => {
@@ -129,12 +101,6 @@ function CreateProfile() {
                                   functions={{handleChange: handleChange, handleSubmit: handleSubmit,
                                   handleGameAdd: handleGameAdd, handleGameDelete: handleGameDelete}}/>
         </>
-        //Form Component - send states as prop
-        //Profile Name
-        //Games Library
-        //Fav Games
-        //Blacklisted Games
-        //Submit
     )
 }
 
