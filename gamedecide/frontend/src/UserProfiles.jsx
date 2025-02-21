@@ -1,42 +1,62 @@
 
 import './App.css'
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import ProfileComponent from "./components/ProfileComponent.jsx";
-import RedirectButtonComponent from "./components/RedirectButtonComponent.js";
+import RedirectButtonComponent from "./components/RedirectButtonComponent.jsx";
 
 function UserProfiles({user}) {
 
-    const [userAcc, setUserAcc] = useState({
-        username: "",
-    });
-    //props instead?
-
     const [profiles, setProfiles] = useState([]);
 
+    //For Testing
     useEffect(() => {
-        setUserAcc(user);
-        axios.get("/getprofiles/" + userAcc.username) //Username?
+        console.log(user)
+        setProfiles(["Billy", "Barry", "Betty"])
+    }, [])
+
+
+    /*
+    useEffect(async () => {
+        const username = user.username;
+        axios.post("/getprofiles/", (username))
             .then(res => {
-                const data = res.data;
-                setProfiles(data);
+                setProfiles(res.data);
             })
             .catch(err => console.log(err));
-    }, [])
+    }, [])*/
 
     return (
         <>
+            <h1>User Profiles</h1>
             <section>
                 {profiles.map(item => (
-                    <ProfileComponent key={item.username} profile={item}/>
+                    <ProfileComponent key={item} profile={item}/>
                 ))}
             </section>
-            <RedirectButtonComponent link={"/createprofile"}/>
+            <RedirectButtonComponent link={"/createprofile"} text={"Create New Profile"}/>
         </>
-        //Map all Profiles
-        //New User Button
     )
 
 }
 
 export default UserProfiles
+
+
+
+/*
+    const username = user.username;
+        const response = await fetch("/submit", {
+            method: 'POST',
+            username,
+        })
+        setProfiles(await response)
+    * */
+
+/*
+    axios.post("/getprofiles/", (username))
+        .then(res => {
+            const data = res.data;
+            setProfiles(data);
+        })
+        .catch(err => console.log(err));*/

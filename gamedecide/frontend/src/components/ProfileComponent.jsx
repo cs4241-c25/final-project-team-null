@@ -1,10 +1,12 @@
 
 
-function ProfileComponent() {
+function ProfileComponent({profile}) {
 
     return (
         <>
-
+            <div>
+                <p>{profile}</p>
+            </div>
         </>
     )
 
