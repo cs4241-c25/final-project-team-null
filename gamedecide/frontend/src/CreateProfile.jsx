@@ -22,30 +22,9 @@ function CreateProfile() {
         ownershipType: ""
     }]);
     const [filteredGames, setFilteredGames] = useState({
-        library: [{
-            name: "",
-            year: 0,
-            minPlayerCount: 0,
-            maxPlayerCount: 0,
-            platform: "",
-            ownershipType: ""
-        }],
-        favorites: [{
-            name: "",
-            year: 0,
-            minPlayerCount: 0,
-            maxPlayerCount: 0,
-            platform: "",
-            ownershipType: ""
-        }],
-        blacklist: [{
-            name: "",
-            year: 0,
-            minPlayerCount: 0,
-            maxPlayerCount: 0,
-            platform: "",
-            ownershipType: ""
-        }]
+        library: [],
+        favorites: [],
+        blacklist: []
     })
 
     const [searchQuery, setSearchQuery] = useState({
@@ -56,7 +35,7 @@ function CreateProfile() {
 
     //Testing
     useEffect(() => {
-            const data = [
+        const data = [
                 {name: "Pokemon Rejuvenation", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
                 {name: "Touhou 7: Perfect Cherry Blossom", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
                 {name: "Honkai: Star Rail", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
@@ -66,6 +45,14 @@ function CreateProfile() {
         setGames(data);
         setFilteredGames({library: data, favorites: data, blacklist: data});
     }, [])
+
+    useEffect(() => {
+        console.log(filteredGames)
+    }, [filteredGames])
+
+    useEffect(() => {
+        console.log("search: ", searchQuery.library)
+    }, [searchQuery.library])
 
     /*
     useEffect(() => {
@@ -90,14 +77,20 @@ function CreateProfile() {
             .catch(err => console.log(err));*/
     }
 
+
+
+
     useEffect(() => {
         let updatedList = games;
-        updatedList = updatedList.filter(game =>
-            game.name.toLowerCase().includes(searchQuery.library.toLowerCase()) ||
-            game.year.toString().includes(searchQuery.library)
-        )
+        if (searchQuery.library) {
+            updatedList = updatedList.filter(game =>
+                game.name.toLowerCase().includes(searchQuery.library.toLowerCase()) ||
+                game.year.toString().includes(searchQuery.library)
+            )
+        }
         setFilteredGames({...filteredGames, library: updatedList});
     }, [games, searchQuery.library]);
+
 
     useEffect(() => {
         let updatedList = games;
@@ -116,6 +109,7 @@ function CreateProfile() {
         )
         setFilteredGames({...filteredGames, blacklist: updatedList});
     }, [games, searchQuery.blacklist]);
+
 
     const handleSearchChange = (e) => {
         const {name, value} = e.target;
