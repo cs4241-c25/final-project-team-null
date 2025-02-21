@@ -3,7 +3,7 @@ import SubmitButtonComponent from "./SubmitButtonComponent.jsx";
 import FormTextFieldComponent from "./FormTextFieldComponent.jsx";
 import GameSearchComponent from "./GameSearchComponent.jsx";
 
-function ProfileFormComponent({profile, filteredGames, search, handleChange, handleSubmit}) {
+function ProfileFormComponent({profile, games, handleChange, handleSubmit}) {
 
     return (
         <>
@@ -13,15 +13,15 @@ function ProfileFormComponent({profile, filteredGames, search, handleChange, han
                                             label="Profile Name" value={profile.profileName} onChange={handleChange}/>
                 </div>
                 <div>
-                    <GameSearchComponent id="addLibrary" games={filteredGames.library} label="Add Game to Library" search={search} name="library"/>
+                    <GameSearchComponent id="addLibrary" games={games} label="Add Game to Library" name="library"/>
 
                 </div>
                 <div>
-                    <GameSearchComponent id="addFavorite" games={filteredGames.favorites} label="Add Game to Favorites" search={search} name="favorite"/>
+                    <GameSearchComponent id="addFavorite" games={games} label="Add Game to Favorites" name="favorite"/>
 
                 </div>
                 <div>
-                    <GameSearchComponent id="addBlacklist" games={filteredGames.blacklist} label="Add Game to Blacklist" search={search} name="blacklist"/>
+                    <GameSearchComponent id="addBlacklist" games={games} label="Add Game to Blacklist" name="blacklist"/>
 
                 </div>
                 <SubmitButtonComponent/>

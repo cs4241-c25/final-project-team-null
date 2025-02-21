@@ -1,15 +1,15 @@
 import {Autocomplete, TextField} from "@mui/material";
 
-function GameSearchComponent({id, games, label, search, name}) {
+function GameSearchComponent({id, games, label, name}) {
 
     return (
         <>
             <Autocomplete
                 id={id}
                 freeSolo
-                options={games.map((option) => option.name)}
+                options={games.map((option) => option.name + " (" + option.year + ")")}
                 renderInput={(params) =>
-                    <TextField {...params} label={label} onChange={search} name={name} />}
+                    <TextField {...params} label={label} />}
             />
         </>
     )

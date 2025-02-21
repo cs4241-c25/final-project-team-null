@@ -21,11 +21,6 @@ function CreateProfile() {
         platform: "",
         ownershipType: ""
     }]);
-    const [filteredGames, setFilteredGames] = useState({
-        library: [],
-        favorites: [],
-        blacklist: []
-    })
 
     const [searchQuery, setSearchQuery] = useState({
         library: "",
@@ -43,12 +38,7 @@ function CreateProfile() {
                 {name: "Warframe", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
                 {name: "Rivals of Aether", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""}];
         setGames(data);
-        setFilteredGames({library: data, favorites: data, blacklist: data});
     }, [])
-
-    useEffect(() => {
-        console.log(filteredGames)
-    }, [filteredGames])
 
     useEffect(() => {
         console.log("search: ", searchQuery.library)
@@ -60,7 +50,6 @@ function CreateProfile() {
             .then(res => {
                 const data = res.data;
                 setGames(data);
-                setFilteredGames({library: data, favorites: data, blacklist: data});
             })
             .catch(err => console.log(err));
     }, [])*/
@@ -77,45 +66,6 @@ function CreateProfile() {
             .catch(err => console.log(err));*/
     }
 
-
-
-
-    useEffect(() => {
-        let updatedList = games;
-        if (searchQuery.library) {
-            updatedList = updatedList.filter(game =>
-                game.name.toLowerCase().includes(searchQuery.library.toLowerCase()) ||
-                game.year.toString().includes(searchQuery.library)
-            )
-        }
-        setFilteredGames({...filteredGames, library: updatedList});
-    }, [games, searchQuery.library]);
-
-
-    useEffect(() => {
-        let updatedList = games;
-        updatedList = updatedList.filter(game =>
-            game.name.toLowerCase().includes(searchQuery.favorites.toLowerCase()) ||
-            game.year.toString().includes(searchQuery.favorites)
-        )
-        setFilteredGames({...filteredGames, favorites: updatedList});
-    }, [games, searchQuery.favorites]);
-
-    useEffect(() => {
-        let updatedList = games;
-        updatedList = updatedList.filter(game =>
-            game.name.toLowerCase().includes(searchQuery.blacklist.toLowerCase()) ||
-            game.year.toString().includes(searchQuery.blacklist)
-        )
-        setFilteredGames({...filteredGames, blacklist: updatedList});
-    }, [games, searchQuery.blacklist]);
-
-
-    const handleSearchChange = (e) => {
-        const {name, value} = e.target;
-        setSearchQuery({...searchQuery, [name]: value})
-    }
-
     const handleChange = (e) => {
         const {name, value} = e.target;
         setNewProfile({...newProfile, [name]: value})
@@ -123,7 +73,7 @@ function CreateProfile() {
 
     return (
         <>
-            <ProfileFormComponent profile={newProfile} filteredGames={filteredGames} search={handleSearchChange}
+            <ProfileFormComponent profile={newProfile} games={games}
                                   handleChange={handleChange} handleSubmit={handleSubmit}/>
         </>
         //Form Component - send states as prop
