@@ -4,10 +4,10 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import ProfileFormComponent from "./components/ProfileFormComponent.jsx";
 
-function CreateProfile() {
+function CreateProfile({user}) {
 
     const [newProfile, setNewProfile] = useState({
-        username: "",
+        username: user,
         profileName: "",
         library: [{
             name: "",
@@ -46,7 +46,7 @@ function CreateProfile() {
 
 
     useEffect(() => {
-        axios.get("/findgame")
+        axios.post("/backend/findgame")
             .then(res => {
                 const data = res.data;
                 setGames(data);
@@ -59,11 +59,10 @@ function CreateProfile() {
         console.log("New Profile:", newProfile);
 
 
-        axios.post("/submitprofile", (newProfile))
-            /*
+        axios.post("/backend/submitprofile", (newProfile))
             .then(res => {
 
-            })*/
+            })
             .catch(err => console.log(err));
     }
 

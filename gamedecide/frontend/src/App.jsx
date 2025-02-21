@@ -6,14 +6,16 @@ import UserProfiles from "./UserProfiles.jsx";
 import CreateProfile from "./CreateProfile.jsx";
 
 function App() {
+
+  const [username, setUsername] = useState("guest");
+
   return (
       <>
           <BrowserRouter>
               <Routes>
                   <Route path="/" element={<Test/>}/>
-                  <Route path="/2" element={<Test/>}/>
-                  <Route path="/userprofiles" element={<UserProfiles user={"name"}/>}/>
-                  <Route path="/createprofile" element={<CreateProfile />}/>
+                  <Route path="/userprofiles" element={<UserProfiles user={username}/>}/>
+                  <Route path="/createprofile" element={<CreateProfile user={username}/>}/>
               </Routes>
           </BrowserRouter>
       </>

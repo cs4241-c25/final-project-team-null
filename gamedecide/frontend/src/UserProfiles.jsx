@@ -1,4 +1,3 @@
-
 import './App.css'
 import React, {useEffect, useState} from "react";
 import axios from "axios";
@@ -9,9 +8,8 @@ function UserProfiles({user}) {
 
     const [profiles, setProfiles] = useState([]);
 
-    useEffect(async () => {
-        const username = user.username;
-        axios.post("/getprofiles/", (username))
+    useEffect(() => {
+        axios.post("/backend/getprofiles/", JSON.stringify({"username": user}))
             .then(res => {
                 setProfiles(res.data);
             })

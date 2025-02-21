@@ -87,11 +87,7 @@ async function AttemptUpdateGroup(data){
 //#endregion
 
 app.post("/findgame", (req, res) => {
-    req.on("end", function () {
-        SendAllGames(res);
-
-    })
-
+    SendAllGames(res);
 })
 
 app.post("/submitgame", (req, res) => {
