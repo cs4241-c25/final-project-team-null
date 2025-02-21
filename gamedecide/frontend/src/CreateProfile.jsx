@@ -9,10 +9,28 @@ function CreateProfile() {
     const [newProfile, setNewProfile] = useState({
         username: "",
         profileName: "",
+        library: [{name: "Pokemon Rejuvenation", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
+            {name: "Touhou 7: Perfect Cherry Blossom", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
+            {name: "Touhou 7: Perfect Cherry Blossom", year: 1000, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
+        ],
+        favorites: [{name: "Pokemon Rejuvenation", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
+            {name: "Touhou 7: Perfect Cherry Blossom", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
+            {name: "Touhou 7: Perfect Cherry Blossom", year: 1000, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
+        ],
+        blacklist: [{name: "Pokemon Rejuvenation", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
+            {name: "Touhou 7: Perfect Cherry Blossom", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
+            {name: "Touhou 7: Perfect Cherry Blossom", year: 1000, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""},
+        ],
+    });
+    /*
+    const [newProfile, setNewProfile] = useState({
+        username: "",
+        profileName: "",
         library: [],
         favorites: [],
         blacklist: [],
     });
+     */
     const [games, setGames] = useState([{
         name: "",
         year: 0,
@@ -21,12 +39,6 @@ function CreateProfile() {
         platform: "",
         ownershipType: ""
     }]);
-
-    const [searchQuery, setSearchQuery] = useState({
-        library: "",
-        favorites: "",
-        blacklist: ""
-    })
 
     //Testing
     useEffect(() => {
@@ -39,10 +51,6 @@ function CreateProfile() {
                 {name: "Rivals of Aether", year: 0, minPlayerCount: 0, maxPlayerCount: 0, platform: "", ownershipType: ""}];
         setGames(data);
     }, [])
-
-    useEffect(() => {
-        console.log("search: ", searchQuery.library)
-    }, [searchQuery.library])
 
     /*
     useEffect(() => {
@@ -71,10 +79,55 @@ function CreateProfile() {
         setNewProfile({...newProfile, [name]: value})
     }
 
+    function handleGameDelete(list, name, year) {
+        let gameList;
+        if(list === "library") {
+            gameList = newProfile.library.filter(game => !(game.name === name && game.year === year));
+        }
+        else if(list === "favorites") {
+            gameList = newProfile.favorites.filter(game => !(game.name === name && game.year === year));
+        }
+        else if(list === "blacklist") {
+            gameList = newProfile.blacklist.filter(game => !(game.name === name && game.year === year));
+        }
+        else
+        {
+            return null;
+        }
+        setNewProfile({...newProfile, [list]: gameList})
+    }
+
+    function handleGameAdd(list, name, year) {
+        let game;
+        if(list === "library") {
+            game = games.find(g => g.name === name && g.year === year);
+            const newList = newProfile.library;
+            newList.push(game);
+            setNewProfile({...newProfile, library: newList})
+        }
+        else if(list === "favorites") {
+            game = games.find(g => g.name === name && g.year === year);
+            const newList = newProfile.favorites;
+            newList.push(game);
+            setNewProfile({...newProfile, favorites: newList})
+        }
+        else if(list === "blacklist") {
+            game = games.find(g => g.name === name && g.year === year);
+            const newList = newProfile.blacklist;
+            newList.push(game);
+            setNewProfile({...newProfile, blacklist: newList})
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     return (
         <>
             <ProfileFormComponent profile={newProfile} games={games}
-                                  handleChange={handleChange} handleSubmit={handleSubmit}/>
+                                  functions={{handleChange: handleChange, handleSubmit: handleSubmit,
+                                  handleGameAdd: handleGameAdd, handleGameDelete: handleGameDelete}}/>
         </>
         //Form Component - send states as prop
         //Profile Name
