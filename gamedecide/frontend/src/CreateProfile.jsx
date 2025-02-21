@@ -9,9 +9,30 @@ function CreateProfile() {
     const [newProfile, setNewProfile] = useState({
         username: "",
         profileName: "",
-        library: [],
-        favorites: [],
-        blacklist: [],
+        library: [{
+            name: "",
+            year: 0,
+            minPlayerCount: 0,
+            maxPlayerCount: 0,
+            platform: "",
+            ownershipType: ""
+        }],
+        favorites: [{
+            name: "",
+            year: 0,
+            minPlayerCount: 0,
+            maxPlayerCount: 0,
+            platform: "",
+            ownershipType: ""
+        }],
+        blacklist: [{
+            name: "",
+            year: 0,
+            minPlayerCount: 0,
+            maxPlayerCount: 0,
+            platform: "",
+            ownershipType: ""
+        }],
     });
 
     const [games, setGames] = useState([{
