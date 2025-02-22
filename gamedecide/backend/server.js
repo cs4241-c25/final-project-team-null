@@ -2,6 +2,7 @@ import express from 'express';
 const app = express();
 import mongo from 'mongodb';
 const MongoClient = mongo.MongoClient;
+const port = 3000;
 
 app.use(express.json());
 const url = "mongodb+srv://samuelwilensky:mYPfcGTI98Bvc987@samuelwilensky.r3mmr.mongodb.net/?retryWrites=true&w=majority&appName=SamuelWilensky";
@@ -40,7 +41,8 @@ async function AttemptUpdateGame(data){
 }
 
 async function SendAllProfileNames(username, res){
-    const result = await profiles.find({username:username}).toArray();
+    const result = await profiles.find({username:username.username}).toArray();
+
     const names = [];
     for(let i=0; i<result.length; i++){
         names.push(result[i].name);
@@ -85,11 +87,7 @@ async function AttemptUpdateGroup(data){
 //#endregion
 
 app.post("/findgame", (req, res) => {
-    req.on("end", function () {
-        SendAllGames(res);
-
-    })
-
+    SendAllGames(res);
 })
 
 app.post("/submitgame", (req, res) => {
@@ -125,7 +123,6 @@ app.post("/getprofiles", (req, res) => {
     let dataString = ""
 
     req.on("data", function (data) {
-
         dataString += data
 
     })
@@ -157,7 +154,6 @@ app.post("/submitprofile", (req, res) => {
     let dataString = ""
 
     req.on("data", function (data) {
-
         dataString += data
 
     })
@@ -230,3 +226,7 @@ app.post("/submitgroup", (req, res) => {
         })
     })
 })
+
+app.listen(port, () => {
+    console.log("Server running on port: " + port);
+});
