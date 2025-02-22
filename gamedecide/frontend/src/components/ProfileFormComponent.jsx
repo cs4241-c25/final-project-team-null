@@ -10,8 +10,8 @@ function ProfileFormComponent({profile, games, functions}) {
         <>
             <form onSubmit={functions.handleSubmit}>
                 <div>
-                    <FormTextFieldComponent id="profileName" name="profileName"
-                                            label="Profile Name" value={profile.profileName} onChange={functions.handleChange}/>
+                    <FormTextFieldComponent id="name" name="name"
+                                            label="Profile Name" value={profile.name} onChange={functions.handleChange}/>
                 </div>
                 <div>
                     <GameSearchComponent id="addLibrary" games={games} label="Add Game to Library"

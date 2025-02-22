@@ -154,7 +154,6 @@ app.post("/submitprofile", (req, res) => {
     let dataString = ""
 
     req.on("data", function (data) {
-
         dataString += data
 
     })

@@ -8,31 +8,10 @@ function CreateProfile({user}) {
 
     const [newProfile, setNewProfile] = useState({
         username: user,
-        profileName: "",
-        library: [{
-            name: "",
-            year: 0,
-            minPlayerCount: 0,
-            maxPlayerCount: 0,
-            platform: "",
-            ownershipType: ""
-        }],
-        favorites: [{
-            name: "",
-            year: 0,
-            minPlayerCount: 0,
-            maxPlayerCount: 0,
-            platform: "",
-            ownershipType: ""
-        }],
-        blacklist: [{
-            name: "",
-            year: 0,
-            minPlayerCount: 0,
-            maxPlayerCount: 0,
-            platform: "",
-            ownershipType: ""
-        }],
+        name: "",
+        library: [],
+        favorites: [],
+        blacklist: [],
     });
 
     const [games, setGames] = useState([{
@@ -59,9 +38,9 @@ function CreateProfile({user}) {
         console.log("New Profile:", newProfile);
 
 
-        axios.post("/backend/submitprofile", (newProfile))
+        axios.post("/backend/submitprofile", JSON.stringify(newProfile))
             .then(res => {
-
+                console.log("res: ", res.data);
             })
             .catch(err => console.log(err));
     }
