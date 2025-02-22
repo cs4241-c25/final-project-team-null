@@ -5,8 +5,8 @@ function GameSelectionComponent({list, name, year, handleGameDelete}) {
 
     return (
         <>
-            <div>
-                <p>{name} ({year})</p>
+            <div className="flex flex-row align-center justify-evenly">
+                <p className="text-base">{name} ({year})</p>
                 <ActionButtonComponent action={() => handleGameDelete(list, name, year)}/>
             </div>
         </>

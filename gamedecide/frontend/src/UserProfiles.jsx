@@ -17,7 +17,7 @@ function UserProfiles({user}) {
     }, [])
 
     return (
-        <>
+        <div className="w-lg flex flex-col justify-start items-center gap-4">
             <h1>User Profiles</h1>
             <section>
                 {profiles.map(item => (
@@ -25,7 +25,7 @@ function UserProfiles({user}) {
                 ))}
             </section>
             <RedirectButtonComponent link={"/createprofile"} text={"Create New Profile"}/>
-        </>
+        </div>
     )
 
 }

@@ -38,20 +38,21 @@ function GameSearchComponent({id, games, label, list, currentList, handleGameAdd
     }
 
     return (
-        <>
+        <div className="w-full flex flex-row align-center justify-between gap-2">
             <Autocomplete
                 id={id}
                 freeSolo
+                className="w-4/5 h-full"
                 onChange={handleAutocompleteChange}
                 options={games.map((option) => option.name + " (" + option.year + ")")}
                 renderInput={(params) =>
                     <TextField {...params} label={label}
                                value={input} onChange={handleChange}
-                               error={error}
+                               error={error} fullWidth
                                helperText={errorMessage}/>}
             />
-            <ActionButtonComponent text={"Add"} action={handleSubmit}/>
-        </>
+            <ActionButtonComponent className="w-1/5 h-full" text={"Add Game to List"} action={handleSubmit}/>
+        </div>
     )
 
 }

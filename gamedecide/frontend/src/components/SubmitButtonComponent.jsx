@@ -4,7 +4,7 @@ function SubmitButtonComponent() {
 
     return (
         <>
-            <Button variant="contained" color="primary" type="submit">Submit</Button>
+            <Button fullWidth size="large" variant="contained" color="primary" type="submit">Submit</Button>
         </>
     )
 

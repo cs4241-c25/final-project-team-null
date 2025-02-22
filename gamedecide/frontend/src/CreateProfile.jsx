@@ -99,11 +99,12 @@ function CreateProfile({user}) {
     }
 
     return (
-        <>
+        <div className="flex flex-col justify-start items-center gap-4">
+            <h1>Create New Profile</h1>
             <ProfileFormComponent profile={newProfile} games={games}
                                   functions={{handleChange: handleChange, handleSubmit: handleSubmit,
                                   handleGameAdd: handleGameAdd, handleGameDelete: handleGameDelete}}/>
-        </>
+        </div>
     )
 }
 
