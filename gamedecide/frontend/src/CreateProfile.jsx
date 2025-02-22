@@ -3,8 +3,11 @@ import './App.css'
 import {useEffect, useState} from "react";
 import axios from "axios";
 import ProfileFormComponent from "./components/ProfileFormComponent.jsx";
+import {useNavigate} from "react-router-dom";
 
 function CreateProfile({user}) {
+
+    const navigate = useNavigate();
 
     const [newProfile, setNewProfile] = useState({
         username: user,
@@ -41,6 +44,7 @@ function CreateProfile({user}) {
         axios.post("/backend/submitprofile", JSON.stringify(newProfile))
             .then(res => {
                 console.log("res: ", res.data);
+                navigate("/");
             })
             .catch(err => console.log(err));
     }
