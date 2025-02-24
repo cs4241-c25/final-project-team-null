@@ -48,6 +48,15 @@ async function SendAllProfileNames(username, res){
     res.end(JSON.stringify(names));
 }
 
+async function SendAllProfiles(res){
+    const result = await profiles.find().toArray();
+    const profileKeys = [];
+    for(let i=0; i<result.length; i++){
+        profileKeys.push({username:result[i].username,name:result[i].name});
+    }
+    res.end(JSON.stringify(profileKeys));
+}
+
 async function SendProfile(username, name, res){
     const result = await profiles.findOne({username:username, name:name});
     res.end(JSON.stringify(result));
@@ -230,3 +239,67 @@ app.post("/submitgroup", (req, res) => {
         })
     })
 })
+
+
+
+
+app.post("/generate", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        if(data.group === null || data.group === ""){
+            res.end("No group found");
+            return;
+        }
+
+        if(data.library === null || data.library === ""){
+            res.end("No library found");
+            return;
+        }
+
+        GenerateGame(data.username, data.group, data.library, res);
+    })
+})
+
+app.post("/getallprofiles", (req, res) => {
+
+    req.on("end", function () {
+        SendAllProfiles(res);
+    })
+})
+
+async function GenerateGame(username, groupname, libraryname, res){
+    const group = await groups.findOne({username:username, name:groupname});
+    const library = await profiles.findOne({username:username, name:libraryname}).library;
+    const profilesInGroup = [];
+    const profileList = group.profiles;
+    for(let i=0; i<profileList.length; i++){
+        const curProfile = await profiles.findOne({username:profileList[i].username, name:profileList[i].name});
+        profilesInGroup.push(curProfile);
+    }
+
+    const gamesInLibrary = [];
+    for(let i=0; i<library.length; i++){
+        const curGame = await games.findOne({name:library[i].name, year:library[i].year});
+        gamesInLibrary.push(curGame);
+    }
+
+    const globalBlacklist = [];
+    const globalFavorites = [];
+    for(let i = 0; i<profilesInGroup.length; i++){
+        const blacklist = profilesInGroup[i].blacklist;
+        for(let j=0; j<blacklist.length; j++){
+            global
+        }
+
+    }
+
+}
