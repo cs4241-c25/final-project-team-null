@@ -263,7 +263,7 @@ app.post("/generate", (req, res) => {
             return;
         }
 
-        GenerateGame(data.username, data.group, data.library, res);
+        GenerateGame(data.username, data.group, data.library, data.platform, res);
     })
 })
 
@@ -274,7 +274,11 @@ app.post("/getallprofiles", (req, res) => {
     })
 })
 
-async function GenerateGame(username, groupname, libraryname, res){
+async function GenerateGame(username, groupname, libraryname, platform, res){
+    if(libraryname === "any"){
+        return GenerateFromAnyLibrary(username, groupname, platform, res);
+    }
+
     const group = await groups.findOne({username:username, name:groupname});
     const library = await profiles.findOne({username:username, name:libraryname}).library;
     const profilesInGroup = [];
@@ -288,20 +292,29 @@ async function GenerateGame(username, groupname, libraryname, res){
     const gamesInLibrary = [];
     for(let i=0; i<library.length; i++){
         const curGame = await games.findOne({name:library[i].name, year:library[i].year});
-        if(curGame.minplayers <= playerCount && curGame.maxplayers >= playerCount) {
+        const validPlayerCount = (curGame.minplayers <= playerCount && curGame.maxplayers >= playerCount);
+        const validPlatform = (platform === "any" || curGame.platform === platform);
+        if(validPlayerCount && validPlatform) {
             gamesInLibrary.push(curGame);
         }
     }
 
-    const globalBlacklist = [];
-    const globalFavorites = [];
+    let globalBlacklist = [];
+    let globalFavorites = [];
     for(let i = 0; i<profilesInGroup.length; i++){
-        globalBlacklist.concat(profilesInGroup[i].blacklist);
-        globalFavorites.concat(profilesInGroup[i].favorites);
+        if(i === 0){
+            globalBlacklist = profilesInGroup[i].blacklist;
+            globalFavorites = profilesInGroup[i].favorites;
+        }
+        else{
+            globalBlacklist.concat(profilesInGroup[i].blacklist);
+            globalFavorites.concat(profilesInGroup[i].favorites);
+        }
     }
 
     const validGames = [];
-    const gameWeights = [];
+    const gameWeights = []; //parallel arrays
+
     let totalWeight = 0;
     for(let i = 0; i<gamesInLibrary.length; i++){
         const curGame = gamesInLibrary[i];
@@ -341,7 +354,8 @@ async function GenerateGame(username, groupname, libraryname, res){
         let validWeight = false;
         let randomWeight = -1;
         while(!validWeight){
-            randomWeight = Math.floor(Math.random()*totalWeight);
+            randomWeight = Math.floor(Math.random()*(totalWeight-1));
+            randomWeight++;
             validWeight = true;
             for(let j=0; j<selectedWeights.length; j++){
                 if(randomWeight === selectedWeights[j]){
@@ -352,8 +366,60 @@ async function GenerateGame(username, groupname, libraryname, res){
         }
         selectedWeights[i]=randomWeight;
     }
+    selectedWeights.sort((a, b)=>{return a - b});
 
+    let curWeightIndex = 0;
+    let curWeightTotal = 0;
+    for(let i = 0; i<gameWeights.length; i++){
+        curWeightTotal += gameWeights[i];
+        if(curWeightTotal >= selectedWeights[curWeightIndex]){
+            curWeightIndex++;
+            selectedGames.push(validGames[i]);
+        }
+    }
+
+    res.end(JSON.stringify(selectedGames));
 }
+
+async function GenerateFromAnyLibrary(username, groupname, platform, res){
+    const group = await groups.findOne({username:username, name:groupname});
+    const profilesInGroup = [];
+    const profileList = group.profiles;
+    for(let i=0; i<profileList.length; i++){
+        const curProfile = await profiles.findOne({username:profileList[i].username, name:profileList[i].name});
+        profilesInGroup.push(curProfile);
+    }
+    const playerCount = profilesInGroup.length;
+
+    const globalLibrary = [];
+    const ownedByAny = [];
+    const ownedByAll = [];
+    let globalBlacklist = [];
+    let globalFavorites = [];
+    for(let i = 0; i<playerCount; i++){
+        const curProfile = profilesInGroup[i];
+        if(i === 0){
+            globalBlacklist = curProfile.blacklist;
+            globalFavorites = curProfile.favorites;
+        }
+        else{
+            globalBlacklist.concat(profilesInGroup[i].blacklist);
+            globalFavorites.concat(profilesInGroup[i].favorites);
+        }
+
+        const curLibrary = curProfile.library;
+        for(let j = 0; j<curLibrary.length; j++){
+            const curGame = await games.findOne({name:curLibrary[j].name, year:curLibrary[j].year});
+            if(curGame.ownershipType === "any"){
+                ownedByAny.push(curGame);
+            }
+            else if(curGame.ownershipType === "all"){
+                ownedByAll.push(curGame);
+            }
+        }
+    }
+}
+
 app.listen(port, () => {
     console.log("Server running on port: " + port);
 });
