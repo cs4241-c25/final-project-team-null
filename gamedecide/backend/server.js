@@ -4,6 +4,8 @@ import mongo from 'mongodb';
 const MongoClient = mongo.MongoClient;
 const port = 3000;
 
+const NUM_GAMES_RETURNED = 5;
+
 app.use(express.json());
 const url = "mongodb+srv://samuelwilensky:mYPfcGTI98Bvc987@samuelwilensky.r3mmr.mongodb.net/?retryWrites=true&w=majority&appName=SamuelWilensky";
 const dbconnect = new MongoClient(url);
@@ -281,21 +283,74 @@ async function GenerateGame(username, groupname, libraryname, res){
         const curProfile = await profiles.findOne({username:profileList[i].username, name:profileList[i].name});
         profilesInGroup.push(curProfile);
     }
+    const playerCount = profilesInGroup.length;
 
     const gamesInLibrary = [];
     for(let i=0; i<library.length; i++){
         const curGame = await games.findOne({name:library[i].name, year:library[i].year});
-        gamesInLibrary.push(curGame);
+        if(curGame.minplayers <= playerCount && curGame.maxplayers >= playerCount) {
+            gamesInLibrary.push(curGame);
+        }
     }
 
     const globalBlacklist = [];
     const globalFavorites = [];
     for(let i = 0; i<profilesInGroup.length; i++){
-        const blacklist = profilesInGroup[i].blacklist;
-        for(let j=0; j<blacklist.length; j++){
-            global
+        globalBlacklist.concat(profilesInGroup[i].blacklist);
+        globalFavorites.concat(profilesInGroup[i].favorites);
+    }
+
+    const validGames = [];
+    const gameWeights = [];
+    let totalWeight = 0;
+    for(let i = 0; i<gamesInLibrary.length; i++){
+        const curGame = gamesInLibrary[i];
+        let valid = true;
+        for(let j = 0; j<globalBlacklist.length; j++){
+            if(curGame === globalBlacklist[j]){
+                valid = false;
+                break;
+            }
         }
 
+        if(valid){
+            validGames.push(curGame);
+            gameWeights.push(0);
+        }
+    }
+
+    for(let i = 0; i<validGames.length; i++){
+        const curGame = validGames[i];
+        let gameWeight = 1;
+        for(let j = 0; j<globalFavorites.length; j++){
+            if(curGame === globalFavorites[j]){
+                gameWeight++;
+            }
+        }
+        gameWeights[i] = gameWeight;
+        totalWeight += gameWeight;
+    }
+
+    if(totalWeight <= NUM_GAMES_RETURNED){
+        return validGames;
+    }
+
+    const selectedWeights = [];
+    const selectedGames = [];
+    for(let i = 0; i<NUM_GAMES_RETURNED; i++){
+        let validWeight = false;
+        let randomWeight = -1;
+        while(!validWeight){
+            randomWeight = Math.floor(Math.random()*totalWeight);
+            validWeight = true;
+            for(let j=0; j<selectedWeights.length; j++){
+                if(randomWeight === selectedWeights[j]){
+                    validWeight = false;
+                    break;
+                }
+            }
+        }
+        selectedWeights[i]=randomWeight;
     }
 
 }
