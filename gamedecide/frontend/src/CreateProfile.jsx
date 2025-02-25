@@ -1,9 +1,11 @@
 
 import './App.css'
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import ProfileFormComponent from "./components/ProfileFormComponent.jsx";
 import {useNavigate} from "react-router-dom";
+import {Box} from "@mui/material";
+import H1Component from "./components/TypographyComponents/H1Component.jsx";
 
 function CreateProfile({user}) {
 
@@ -99,12 +101,12 @@ function CreateProfile({user}) {
     }
 
     return (
-        <div className="flex flex-col justify-start items-center gap-4">
-            <h1>Create New Profile</h1>
+        <Box className="flex flex-col justify-start items-center gap-4">
+            <H1Component text={"Create New Profile"}/>
             <ProfileFormComponent profile={newProfile} games={games}
                                   functions={{handleChange: handleChange, handleSubmit: handleSubmit,
                                   handleGameAdd: handleGameAdd, handleGameDelete: handleGameDelete}}/>
-        </div>
+        </Box>
     )
 }
 

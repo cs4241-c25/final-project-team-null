@@ -1,14 +1,17 @@
-import ActionButtonComponent from "./DeleteButtonComponent.jsx";
-
+import ActionButtonComponent from "./ButtonComponents//DeleteButtonComponent.jsx";
+import {Box, Typography} from "@mui/material";
+import React from "react";
+import PComponent from "./TypographyComponents/PComponent.jsx";
 
 function GameSelectionComponent({list, name, year, handleGameDelete}) {
 
+    const text = name + "(" + year + ")";
     return (
         <>
-            <div className="flex flex-row align-center justify-evenly">
-                <p className="text-base">{name} ({year})</p>
+            <Box className="flex flex-row align-center justify-evenly">
+                <PComponent className="text-base" text={text}/>
                 <ActionButtonComponent action={() => handleGameDelete(list, name, year)}/>
-            </div>
+            </Box>
         </>
     )
 

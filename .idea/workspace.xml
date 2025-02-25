@@ -4,59 +4,130 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f313fb74-46cf-4a27-ac53-d4a3494c7097" name="Changes" comment="">
+    <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/CreateProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/CreateProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/UserProfiles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/UserProfiles.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/ActionButtonComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/ActionButtonComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/DeleteButtonComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/DeleteButtonComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSearchComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSearchComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSelectionComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSelectionComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileFormComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileFormComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/RedirectButtonComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/RedirectButtonComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/SubmitButtonComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/SubmitButtonComponent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="JSX File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
-  <component name="ProjectId" id="2tUpgCHORqBd4PyAtywJEhJ4Sia" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2tEHNidlIeicsh9pJWwFdgbgm5k" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Node.js.ProfileFormComponent.jsx.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "samuel",
+    "git-widget-placeholder": "jyip168-changes2",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Toby Wilensky/Documents/GitHub/final-project-team-null",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
-      </set>
-    </attachedChunks>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\backend" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\components\TypographyComponents" />
+      <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\components\ButtonComponents" />
+      <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\backend" />
+      <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\frontend" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/gamedecide/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f313fb74-46cf-4a27-ac53-d4a3494c7097" name="Changes" comment="" />
-      <created>1740416617272</created>
+      <changelist id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="" />
+      <created>1739910275886</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1740416617272</updated>
-      <workItem from="1740416619214" duration="2798000" />
+      <updated>1739910275886</updated>
+      <workItem from="1739910276955" duration="484000" />
+      <workItem from="1740012510510" duration="2110000" />
+      <workItem from="1740072723118" duration="348000" />
+      <workItem from="1740166622403" duration="3074000" />
+      <workItem from="1740175066847" duration="140000" />
+      <workItem from="1740175267985" duration="26000" />
+      <workItem from="1740175401087" duration="3295000" />
+      <workItem from="1740419023914" duration="432000" />
+      <workItem from="1740495541603" duration="5366000" />
     </task>
+    <task id="LOCAL-00001" summary="merge from main">
+      <option name="closed" value="true" />
+      <created>1740159753370</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740159753370</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Object fix" />
+    <MESSAGE value="merge from main" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge from main" />
   </component>
 </project>

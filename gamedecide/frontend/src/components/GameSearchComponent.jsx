@@ -1,6 +1,6 @@
-import {Autocomplete, TextField} from "@mui/material";
-import ActionButtonComponent from "./ActionButtonComponent.jsx";
-import {useEffect, useState} from "react";
+import {Autocomplete, Box, TextField} from "@mui/material";
+import ActionButtonComponent from "./ButtonComponents//ActionButtonComponent.jsx";
+import React, {useEffect, useState} from "react";
 
 function GameSearchComponent({id, games, label, list, currentList, handleGameAdd}) {
 
@@ -38,7 +38,7 @@ function GameSearchComponent({id, games, label, list, currentList, handleGameAdd
     }
 
     return (
-        <div className="w-full flex flex-row align-center justify-between gap-2">
+        <Box className="w-full flex flex-row align-center justify-between gap-2">
             <Autocomplete
                 id={id}
                 freeSolo
@@ -52,7 +52,7 @@ function GameSearchComponent({id, games, label, list, currentList, handleGameAdd
                                helperText={errorMessage}/>}
             />
             <ActionButtonComponent className="w-1/5 h-full" text={"Add Game to List"} action={handleSubmit}/>
-        </div>
+        </Box>
     )
 
 }
