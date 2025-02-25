@@ -6,13 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/CreateProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/CreateProfile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/UserProfiles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/UserProfiles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/ActionButtonComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/ActionButtonComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/DeleteButtonComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/DeleteButtonComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSearchComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSearchComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSelectionComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSelectionComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileFormComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileFormComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/RedirectButtonComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/RedirectButtonComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/SubmitButtonComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/SubmitButtonComponent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,10 +27,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -42,10 +52,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Node.js.ProfileFormComponent.jsx.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "jyip-changes",
+    "git-widget-placeholder": "jyip168-changes2",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Toby Wilensky/Documents/GitHub/final-project-team-null",
     "node.js.detected.package.eslint": "true",
@@ -54,6 +65,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -63,9 +75,23 @@
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\components\TypographyComponents" />
+      <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\components\ButtonComponents" />
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\backend" />
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\frontend" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/gamedecide/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -82,6 +108,8 @@
       <workItem from="1740175066847" duration="140000" />
       <workItem from="1740175267985" duration="26000" />
       <workItem from="1740175401087" duration="3295000" />
+      <workItem from="1740419023914" duration="432000" />
+      <workItem from="1740495541603" duration="5366000" />
     </task>
     <task id="LOCAL-00001" summary="merge from main">
       <option name="closed" value="true" />
