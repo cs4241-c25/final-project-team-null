@@ -2,7 +2,9 @@ import './App.css'
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import ProfileComponent from "./components/ProfileComponent.jsx";
-import RedirectButtonComponent from "./components/RedirectButtonComponent.jsx";
+import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
+import {Box, Container} from "@mui/material";
+import H1Component from "./components/TypographyComponents/H1Component.jsx";
 
 function UserProfiles({user}) {
 
@@ -17,15 +19,15 @@ function UserProfiles({user}) {
     }, [])
 
     return (
-        <div className="w-lg flex flex-col justify-start items-center self-center gap-4">
-            <h1>User Profiles</h1>
-            <section>
-                {profiles.map(item => (
-                    <ProfileComponent key={item} profile={item}/>
-                ))}
-            </section>
-            <RedirectButtonComponent link={"/createprofile"} text={"Create New Profile"}/>
-        </div>
+        <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
+        <H1Component text={"User Profiles"}/>
+        <Box sx={{ mt: 4 }}>
+             {profiles.map(item => (
+                 <ProfileComponent key={item} profile={item}/>
+             ))}
+        </Box>
+        <RedirectButtonComponent link={"/createprofile"} text={"Create New Profile"}/>
+        </Container>
     )
 
 }

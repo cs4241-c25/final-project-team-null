@@ -1,12 +1,15 @@
+import {Box} from "@mui/material";
+import PComponent from "./TypographyComponents/PComponent.jsx";
+import React from "react";
 
 
 function ProfileComponent({profile}) {
 
     return (
         <>
-            <div>
-                <p>{profile}</p>
-            </div>
+            <Box>
+                <PComponent text={profile}/>
+            </Box>
         </>
     )
 
