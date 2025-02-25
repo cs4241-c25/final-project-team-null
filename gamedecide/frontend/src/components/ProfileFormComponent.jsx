@@ -2,7 +2,7 @@ import React from "react";
 import SubmitButtonComponent from "./ButtonComponents/SubmitButtonComponent.jsx";
 import FormTextFieldComponent from "./FormTextFieldComponent.jsx";
 import {Box} from "@mui/material";
-import GameSearchListComponent from "../GameSearchListComponent.jsx";
+import GameSearchListComponent from "./GameSearchListComponent.jsx";
 
 function ProfileFormComponent({profile, games, functions}) {
 

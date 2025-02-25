@@ -20,13 +20,13 @@ function UserProfiles({user}) {
 
     return (
         <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
-        <H1Component text={"User Profiles"}/>
-        <Box sx={{ mt: 4 }}>
-             {profiles.map(item => (
-                 <ProfileComponent key={item} profile={item}/>
-             ))}
-        </Box>
-        <RedirectButtonComponent link={"/createprofile"} text={"Create New Profile"}/>
+            <H1Component text={"User Profiles"}/>
+            <Box sx={{ mt: 4 }}>
+                {profiles.map(item => (
+                    <ProfileComponent key={item} profile={item}/>
+                ))}
+            </Box>
+            <RedirectButtonComponent link={"/createprofile"} text={"Create New Profile"}/>
         </Container>
     )
 
