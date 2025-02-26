@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/backend/server.js" afterDir="false" />
-    </list>
+    <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,7 +104,7 @@
       <workItem from="1740175401087" duration="3295000" />
       <workItem from="1740419023914" duration="432000" />
       <workItem from="1740495541603" duration="5366000" />
-      <workItem from="1740502643432" duration="2844000" />
+      <workItem from="1740502643432" duration="3100000" />
     </task>
     <task id="LOCAL-00001" summary="merge from main">
       <option name="closed" value="true" />
