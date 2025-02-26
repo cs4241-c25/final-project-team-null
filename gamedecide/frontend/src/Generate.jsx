@@ -17,6 +17,7 @@ import ProfileComponent from "./components/ProfileComponent.jsx";
 import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
 import ActionButtonComponent from "./components/ButtonComponents/ActionButtonComponent.jsx";
 import ActionSelectorComponent from "./components/ActionSelectorComponent.jsx";
+import H2Component from "./components/TypographyComponents/H2Component.jsx";
 
 function Generate({user}) {
 
