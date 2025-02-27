@@ -33,7 +33,7 @@ function UserProfiles({user}) {
             <H1Component text={"User Profiles"}/>
             <Box sx={{ mt: 4 }} className="w-full flex flex-col gap-4">
                 {profiles.map(item => (
-                    <ProfileComponent key={item} user={user} profile={item} handleDelete={handleDelete}/>
+                    <ProfileComponent key={item} user={user} profile={item} functions={{handleDelete: handleDelete}}/>
                 ))}
             </Box>
             <RedirectButtonComponent link={"/createprofile"} text={"Create New Profile"}/>

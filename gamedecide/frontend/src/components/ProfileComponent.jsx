@@ -1,20 +1,27 @@
 import {Box} from "@mui/material";
 import PComponent from "./TypographyComponents/PComponent.jsx";
-import React, {useEffect} from "react";
+import React from "react";
 import RedirectButtonComponent from "./ButtonComponents/RedirectButtonComponent.jsx";
 import DeleteButtonComponent from "./ButtonComponents/DeleteButtonComponent.jsx";
-import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import ActionButtonComponent from "./ButtonComponents/ActionButtonComponent.jsx";
 
 
-function ProfileComponent({user, profile, handleDelete}) {
+function ProfileComponent({user, profile, functions}) {
+    const navigate = useNavigate();
+    const link = "/editprofile/";
+
+    function handleRedirect() {
+        navigate("/editprofile", {state: {username: user, name: profile}});
+    }
 
     return (
         <>
             <Box className="flex flex-row items-center justify-between">
                 <PComponent text={profile}/>
                 <Box className="flex flex-row gap-4">
-                    <RedirectButtonComponent link="/editprofile" text="Edit"/>
-                    <DeleteButtonComponent action={() => handleDelete(user, profile)}/>
+                    <ActionButtonComponent action={handleRedirect} text="Edit"/>
+                    <DeleteButtonComponent action={() => functions.handleDelete(user, profile)}/>
                 </Box>
             </Box>
         </>
