@@ -15,7 +15,6 @@ function Generate({user}) {
     const [profiles, setProfiles] = useState([]);
 
     const [groupSelect, setGroupSelect] = useState({name: "", profiles: []});
-    const [librarySelect, setLibrarySelect] = useState([]);
 
     const [game, setGame] = useState("");
 
@@ -26,15 +25,16 @@ function Generate({user}) {
         platform: ""
     });
 
-    /*
+
     useEffect(() => {
         axios.post("/backend/getgroups/", JSON.stringify({"username": user}))
             .then(res => {
                 setGroups(res.data);
             })
             .catch(err => console.log(err));
-    }, [])*/
+    }, [])
 
+    /*
     useEffect(() => {
         setGroups(["The Squad", "Snackies", "PokePals", "Just Vibin"]);
     }, [])
@@ -49,35 +49,36 @@ function Generate({user}) {
 
     useEffect(() => {
         console.log("generation: ", generation);
-    }, [generation])
+    }, [generation])*/
 
     function handleGenerate() {
-        /*
+
         axios.post("/backend/generate/", JSON.stringify(generation))
             .then(res => {
                 setGame(res.data);
             })
-            .catch(err => console.log(err));*/
-        setGame("Pokemon Reborn");
+            .catch(err => console.log(err));
+        //setGame("Pokemon Reborn");
     }
 
     function selectGroup(name) {
         const target = groups.find(group => group === name);
-        console.log("name", name)
-        console.log("target", target)
+        //console.log("name", name)
+        //console.log("target", target)
 
-        /*
+
         axios.post("/backend/editgroup/", JSON.stringify({username: user, groupName: target}))
             .then(res => {
                 setGroupSelect(res.data);
             })
-            .catch(err => console.log(err));*/
+            .catch(err => console.log(err));
         //editGroups
+        /*
         setGroupSelect({name: "The Squad", profiles: [
                 {username: "a", name:"a"},
                 {username: "b", name:"b"},
                 {username: "c", name:"c"},
-                {username: "d", name:"d"},]});
+                {username: "d", name:"d"},]});*/
 
         setGeneration({...generation, groupName: name})
     }
@@ -136,11 +137,6 @@ function Generate({user}) {
             <H2Component text={game}/>
         </Container>
     )
-
-
-    //Lock Generate until all fields are filled
-
-    //Have errors to tell what you need to select to have generate button undisabled
 }
 
 export default Generate

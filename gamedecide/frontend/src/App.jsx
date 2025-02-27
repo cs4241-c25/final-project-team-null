@@ -5,6 +5,7 @@ import Test from "./Test.jsx";
 import UserProfiles from "./UserProfiles.jsx";
 import CreateProfile from "./CreateProfile.jsx";
 import CreateBoardGame from "./CreateBoardgame.jsx";
+import Generate from "./Generate.jsx";
 
 function App() {
 
