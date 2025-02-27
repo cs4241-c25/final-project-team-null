@@ -1,33 +1,18 @@
-
-//props username
-//getProfiles
-
-//select profile
-
-//send json of username, group, library
-//Select library from a list of "Any" + List of Profile Names in Group
-
-//receive list of games
-
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Box, Container} from "@mui/material";
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
-import ProfileComponent from "./components/ProfileComponent.jsx";
-import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
 import ActionButtonComponent from "./components/ButtonComponents/ActionButtonComponent.jsx";
 import ActionSelectorComponent from "./components/ActionSelectorComponent.jsx";
 import H2Component from "./components/TypographyComponents/H2Component.jsx";
 
+
 function Generate({user}) {
 
-    const [groups, setGroups] = useState([{
-        name: "",
-        profiles: [""],
-    }]);
+    const [groups, setGroups] = useState([""]);
     const [profiles, setProfiles] = useState([]);
 
-    const [groupSelect, setGroupSelect] = useState([]);
+    const [groupSelect, setGroupSelect] = useState({name: "", profiles: []});
     const [librarySelect, setLibrarySelect] = useState([]);
 
     const [game, setGame] = useState("");
@@ -35,7 +20,7 @@ function Generate({user}) {
     const [generation, setGeneration] = useState({
         username: user,
         groupName: "",
-        profileName: ""
+        library: {username: "", name: ""}
     });
 
     /*
@@ -48,13 +33,12 @@ function Generate({user}) {
     }, [])*/
 
     useEffect(() => {
-        setGroups([
-            {name: "The Squad", profiles: ["Mary", "Sue", "Joan", "Henry"]},
-            {name: "Snackies", profiles: ["Lilo", "Mitchell", "Cross", "Jude"]},
-            {name: "PokePals", profiles: ["Starter", "Partner", "Duo", "Zwei"]},
-            {name: "Just Vibin", profiles: ["Remi", "Emilia", "Scarlet", "Sugar"]},
-        ]);
+        setGroups(["The Squad", "Snackies", "PokePals", "Just Vibin"]);
     }, [])
+
+    useEffect(() => {
+        console.log("groupSelect: ", groupSelect);
+    }, [groupSelect])
 
     useEffect(() => {
         console.log("profiles: ", profiles);
@@ -65,37 +49,74 @@ function Generate({user}) {
     }, [generation])
 
     function handleGenerate() {
+        /*
         axios.post("/backend/generate/", JSON.stringify(generation))
             .then(res => {
                 setGame(res.data);
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err));*/
+        setGame("Pokemon Reborn");
     }
 
     function selectGroup(name) {
-        const target = groups.find(group => group.name === name);
+        const target = groups.find(group => group === name);
         console.log("name", name)
         console.log("target", target)
+
+        /*
+        axios.post("/backend/editgroup/", JSON.stringify({username: user, groupName: target}))
+            .then(res => {
+                setGroupSelect(res.data);
+            })
+            .catch(err => console.log(err));*/
+        //editGroups
+        setGroupSelect({name: "The Squad", profiles: [
+                {username: "a", name:"a"},
+                {username: "b", name:"b"},
+                {username: "c", name:"c"},
+                {username: "d", name:"d"},]});
+
         setGeneration({...generation, groupName: name})
-        setProfiles(target.profiles);
     }
 
-    function selectLibrary(name) {
-        setGeneration({...generation, profileName: name})
+    useEffect(() => {
+        if(groupSelect) {
+            const tempProfiles = groupSelect.profiles;
+            tempProfiles.unshift({username: "", name: "Any"});
+            setProfiles(tempProfiles);
+        }
+    }, [groupSelect])
+
+    function selectLibrary(profile) {
+        setGeneration({...generation, library: {username: profile.username, name: profile.name}})
     }
 
-    const mapGroups = (itemList) => itemList.map((option) => option.name);
-    const mapProfiles = (itemList) => itemList.map((option) => option);
+    const mapGroups = (itemList) => itemList.map((option) => option);
+    const mapProfiles = (itemList) => itemList.map((option) => option.username === "" ? "Any" : option.name + " (" + option.username + ")");
 
-    const validGroup = (itemList, input) => itemList.find(item => item.name === input).name;
-    const validProfile = (itemList, input) => itemList.find(item => item === input);
+    const validGroup = (itemList, input) => itemList.find(item => item === input);
+    const validProfile = (itemList, input) => itemList.find(item => (item.name === "Any" && input === "Any") || item.name + " (" + item.username + ")" === input);
 
 
     return (
         <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
             <H1Component text={"Generate"}/>
-            <ActionSelectorComponent itemList={groups} label={"Select a Group"} text="View Group" map={mapGroups} validCheck={validGroup} action={selectGroup} />
-            <ActionSelectorComponent itemList={profiles} label={"Select someone's Library"} text="Pick Library" map={mapProfiles} validCheck={validProfile} action={selectLibrary}/>
+            <Box className="flex flex-col gap-4 w-full m-4">
+                <H2Component text={"Current Group: " + groupSelect.name}/>
+                <ActionSelectorComponent itemList={groups} label={"Select a Group"} text="View Group" map={mapGroups} validCheck={validGroup} action={selectGroup} />
+            </Box>
+            {groupSelect.name !== "" && groupSelect.profiles.length !== 0 &&
+                <Box className="flex flex-col gap-4 w-full m-4">
+                    <H2Component text={"Current Profile: " + (generation.library.username === "" ?
+                        generation.library.name : generation.library.name + " (" + generation.library.username + ")")}/>
+                    <ActionSelectorComponent itemList={profiles} label={"Select Someone's Library"} text="Pick Library" map={mapProfiles} validCheck={validProfile} action={selectLibrary}/>
+                </Box>
+            }
+            {groupSelect.name !== "" && groupSelect.profiles.length !== 0 &&
+                <Box className="flex flex-col gap-4 w-full m-4">
+                    <H2Component text={"Current Platform: " + ""}/>
+                </Box>
+            }
             <ActionButtonComponent text={"Generate"} action={handleGenerate}/>
             <H2Component text={game}/>
         </Container>
@@ -103,8 +124,13 @@ function Generate({user}) {
 
     //Component to select a Group with all Profiles in next selection
     //Component to select a Library from a list, including any
+    //Component to select a Platform
     //Generate button
     //Output games
+
 }
 
 export default Generate
+
+
+//Add Any to Profile List (and also Platform list)

@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/ActionButtonComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/ActionButtonComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/Generate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/Generate.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +100,7 @@
       <workItem from="1740175267985" duration="26000" />
       <workItem from="1740175401087" duration="3295000" />
       <workItem from="1740419023914" duration="432000" />
-      <workItem from="1740495541603" duration="25302000" />
+      <workItem from="1740495541603" duration="28650000" />
     </task>
     <task id="LOCAL-00001" summary="merge from main">
       <option name="closed" value="true" />
