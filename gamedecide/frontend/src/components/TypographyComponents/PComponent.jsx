@@ -2,11 +2,11 @@ import {Typography} from "@mui/material";
 import React from "react";
 
 
-function PComponent({text}) {
+function PComponent({text, color}) {
 
     return (
         <>
-            <Typography variant="p" component="p">{text}</Typography>
+            <Typography variant="p" component="p" color={color}>{text}</Typography>
         </>
     )
 

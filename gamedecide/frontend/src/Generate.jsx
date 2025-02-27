@@ -6,6 +6,7 @@ import ActionButtonComponent from "./components/ButtonComponents/ActionButtonCom
 import ActionSelectorComponent from "./components/ActionSelectorComponent.jsx";
 import H2Component from "./components/TypographyComponents/H2Component.jsx";
 import RadioGroupComponent from "./components/RadioGroupComponent.jsx";
+import PComponent from "./components/TypographyComponents/PComponent.jsx";
 
 
 function Generate({user}) {
@@ -114,7 +115,7 @@ function Generate({user}) {
             </Box>
             {groupSelect.name !== "" && groupSelect.profiles.length !== 0 &&
                 <Box className="flex flex-col gap-4 w-full m-4">
-                    <H2Component text={"Current Profile: " + (generation.library.username === "" ?
+                    <H2Component text={"Current Profile Library: " + (generation.library.username === "" ?
                         generation.library.name : generation.library.name + " (" + generation.library.username + ")")}/>
                     <ActionSelectorComponent itemList={profiles} label={"Select Someone's Library"} text="Pick Library" map={mapProfiles} validCheck={validProfile} action={selectLibrary}/>
                 </Box>
@@ -124,8 +125,12 @@ function Generate({user}) {
                     <RadioGroupComponent id="platformSelect" formLabel="Platform" value={generation.platform} onChange={handlePlatformChange} buttons={["Any", "Physical", "Virtual"]}/>
                 </Box>
             }
-
-            <ActionButtonComponent text={"Generate"} action={handleGenerate} disabled={!(groupSelect.name !== "" && (generation.library.username !== "" && generation.library.name !== "") && generation.platform !== "")}/>
+            <Box className="flex flex-col gap-2 w-full m-4">
+                <ActionButtonComponent text={"Generate"} action={handleGenerate} disabled={!(groupSelect.name !== "" && (generation.library.username !== "" && generation.library.name !== "") && generation.platform !== "")}/>
+                {groupSelect.name === "" && <PComponent text={"A group needs to be selected."} color="error"/>}
+                {(generation.library.username === "" && generation.library.name === "") && <PComponent text={"A profile's library needs to be selected."} color="error"/>}
+                {generation.platform === "" && <PComponent text={"A platform needs to be selected."} color="error"/>}
+            </Box>
 
 
             <H2Component text={game}/>

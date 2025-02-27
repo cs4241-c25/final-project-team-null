@@ -12,7 +12,7 @@ function RadioGroupComponent({id, formLabel, buttons, value, onChange}) {
                 <FormLabelComponent id={id} formLabel={formLabel} />
                 <RadioGroup row value={value} onChange={onChange} className="flex flex-row justify-evenly items-center">
                     {buttons.map(item => (
-                        <RadioButtonComponent value={item}/>
+                        <RadioButtonComponent key={id + "-" + item} value={item}/>
                     ))}
                 </RadioGroup>
             </FormControl>
