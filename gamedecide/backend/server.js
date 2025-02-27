@@ -102,6 +102,8 @@ app.post("/findgame", (req, res) => {
 })
 
 app.post("/submitgame", (req, res) => {
+    console.log("submitgame");
+
     let dataString = ""
 
     req.on("data", function (data) {
@@ -294,7 +296,8 @@ async function GenerateGame(username, groupname, libraryname, platform, res){
         const curGame = await games.findOne({name:library[i].name, year:library[i].year});
         const validPlayerCount = (curGame.minplayers <= playerCount && curGame.maxplayers >= playerCount);
         const validPlatform = (platform === "any" || curGame.platform === platform);
-        if(validPlayerCount && validPlatform) {
+        const validOwnership = (curGame.ownershipType === "single");
+        if(validPlayerCount && validPlatform && validOwnership) {
             gamesInLibrary.push(curGame);
         }
     }
@@ -312,15 +315,96 @@ async function GenerateGame(username, groupname, libraryname, platform, res){
         }
     }
 
+    const selectedGames = SelectValidGames(gamesInLibrary, globalBlacklist, globalFavorites);
+
+    res.end(JSON.stringify(selectedGames));
+}
+
+async function GenerateFromAnyLibrary(username, groupname, platform, res){
+    const group = await groups.findOne({username:username, name:groupname});
+    const profilesInGroup = [];
+    const profileList = group.profiles;
+    for(let i=0; i<profileList.length; i++){
+        const curProfile = await profiles.findOne({username:profileList[i].username, name:profileList[i].name});
+        profilesInGroup.push(curProfile);
+    }
+    const playerCount = profilesInGroup.length;
+
+    const ownedByAny = [];
+    const ownedByAll = [];
+    let globalBlacklist = [];
+    let globalFavorites = [];
+    for(let i = 0; i<playerCount; i++){
+        const curProfile = profilesInGroup[i];
+        if(i === 0){
+            globalBlacklist = curProfile.blacklist;
+            globalFavorites = curProfile.favorites;
+        }
+        else{
+            globalBlacklist.concat(profilesInGroup[i].blacklist);
+            globalFavorites.concat(profilesInGroup[i].favorites);
+        }
+
+        const curLibrary = curProfile.library;
+        for(let j = 0; j<curLibrary.length; j++){
+            const curGame = await games.findOne({name:curLibrary[j].name, year:curLibrary[j].year});
+            const validPlayerCount = (curGame.minplayers <= playerCount && curGame.maxplayers >= playerCount);
+            const validPlatform = (platform === "any" || curGame.platform === platform);
+            if(validPlayerCount && validPlatform){
+                if(curGame.ownershipType === "any"){
+                    ownedByAny.push(curGame);
+                }
+                else if(curGame.ownershipType === "all"){
+                    ownedByAll.push(curGame);
+                }
+            }
+        }
+    }
+
+    const globalLibrary = ownedByAny;
+    ownedByAll.sort((a, b) => a.name.localeCompare(b.name)); //alphabetical order, putting duplicate games next to each other
+
+    for(let i=0; i<ownedByAll.length; i++) {
+        let curGame = ownedByAll[i];
+
+        let everyoneOwns = true;
+        for (let j = i; j < playerCount; j++) {
+            if (j >= ownedByAll[j].length) {
+                i = j;
+                everyoneOwns = false;
+                break;
+            }
+
+            if (ownedByAll[j] !== ownedByAll[i]) { //if there are not enough of the same game for everyone to own it
+                i = j; //the current game is not a duplicate of a previous one, so jump to it
+                everyoneOwns = false;
+                break;
+            }
+        }
+
+        if (everyoneOwns) {
+            i+=playerCount; //there were playerCount copies of the game, so the next unique game is playerCount indices away
+            globalLibrary.push(curGame);
+        }
+    }
+
+
+    const selectedGames = SelectValidGames(globalLibrary, globalBlacklist, globalFavorites);
+
+    res.end(JSON.stringify(selectedGames));
+
+}
+
+function SelectValidGames(games, blacklist, favorites){
     const validGames = [];
     const gameWeights = []; //parallel arrays
 
     let totalWeight = 0;
-    for(let i = 0; i<gamesInLibrary.length; i++){
-        const curGame = gamesInLibrary[i];
+    for(let i = 0; i<games.length; i++){
+        const curGame = games[i];
         let valid = true;
-        for(let j = 0; j<globalBlacklist.length; j++){
-            if(curGame === globalBlacklist[j]){
+        for(let j = 0; j<blacklist.length; j++){
+            if(curGame === blacklist[j]){
                 valid = false;
                 break;
             }
@@ -335,8 +419,8 @@ async function GenerateGame(username, groupname, libraryname, platform, res){
     for(let i = 0; i<validGames.length; i++){
         const curGame = validGames[i];
         let gameWeight = 1;
-        for(let j = 0; j<globalFavorites.length; j++){
-            if(curGame === globalFavorites[j]){
+        for(let j = 0; j<favorites.length; j++){
+            if(curGame === favorites[j]){
                 gameWeight++;
             }
         }
@@ -378,46 +462,7 @@ async function GenerateGame(username, groupname, libraryname, platform, res){
         }
     }
 
-    res.end(JSON.stringify(selectedGames));
-}
-
-async function GenerateFromAnyLibrary(username, groupname, platform, res){
-    const group = await groups.findOne({username:username, name:groupname});
-    const profilesInGroup = [];
-    const profileList = group.profiles;
-    for(let i=0; i<profileList.length; i++){
-        const curProfile = await profiles.findOne({username:profileList[i].username, name:profileList[i].name});
-        profilesInGroup.push(curProfile);
-    }
-    const playerCount = profilesInGroup.length;
-
-    const globalLibrary = [];
-    const ownedByAny = [];
-    const ownedByAll = [];
-    let globalBlacklist = [];
-    let globalFavorites = [];
-    for(let i = 0; i<playerCount; i++){
-        const curProfile = profilesInGroup[i];
-        if(i === 0){
-            globalBlacklist = curProfile.blacklist;
-            globalFavorites = curProfile.favorites;
-        }
-        else{
-            globalBlacklist.concat(profilesInGroup[i].blacklist);
-            globalFavorites.concat(profilesInGroup[i].favorites);
-        }
-
-        const curLibrary = curProfile.library;
-        for(let j = 0; j<curLibrary.length; j++){
-            const curGame = await games.findOne({name:curLibrary[j].name, year:curLibrary[j].year});
-            if(curGame.ownershipType === "any"){
-                ownedByAny.push(curGame);
-            }
-            else if(curGame.ownershipType === "all"){
-                ownedByAll.push(curGame);
-            }
-        }
-    }
+    return selectedGames;
 }
 
 app.listen(port, () => {

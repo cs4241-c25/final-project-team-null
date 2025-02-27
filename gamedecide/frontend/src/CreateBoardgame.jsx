@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FormTextFieldComponent from './components/FormTextFieldComponent';
-import SubmitButtonComponent from './components/SubmitButtonComponent';
+import SubmitButtonComponent from './components/ButtonComponents/SubmitButtonComponent';
 
 import {
   Container,
@@ -30,6 +30,11 @@ function CreateBoardGame({user}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const body = JSON.stringify(formData);
+    fetch('/backend/submitgame', {
+      method: "POST",
+      body
+    })
     console.log(formData);
   };
 
@@ -57,7 +62,7 @@ function CreateBoardGame({user}) {
             rows={4}
           />
           <FormTextFieldComponent
-            label="Platform (tabletop, Console, ect.)"
+            label="Platform (physical, digital, etc.)"
             name="platform"
             value={formData.platform}
             onChange={handleChange}
