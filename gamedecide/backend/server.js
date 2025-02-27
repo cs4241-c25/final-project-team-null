@@ -66,6 +66,11 @@ async function SendProfile(username, name, res){
     res.end(JSON.stringify(result));
 }
 
+async function DeleteProfile(username, name, res){
+    const result = await profiles.deleteOne({username:username, name:name});
+    res.end(JSON.stringify(result));
+}
+
 async function AttemptUpdateProfile(data){
     const result = await profiles.replaceOne({username:data.username, name:data.name}, data);
 
@@ -184,6 +189,19 @@ app.post("/submitprofile", (req, res) => {
         })
     })
 })
+
+app.delete("/deleteprofile", async (req, res) => {
+    let dataString = ""
+
+    req.on("data", async function (data) {
+        dataString += data
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+        DeleteProfile(data.username, data.name, res);
+    })
+});
 
 app.post("/getgroups", (req, res) => {
     let dataString = ""

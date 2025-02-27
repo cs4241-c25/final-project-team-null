@@ -1,22 +1,21 @@
 import {Box} from "@mui/material";
 import PComponent from "./TypographyComponents/PComponent.jsx";
-import React from "react";
+import React, {useEffect} from "react";
 import RedirectButtonComponent from "./ButtonComponents/RedirectButtonComponent.jsx";
 import DeleteButtonComponent from "./ButtonComponents/DeleteButtonComponent.jsx";
+import axios from "axios";
 
 
-function ProfileComponent({profile}) {
-
-    function handleDelete() {
-        return 0;
-    }
+function ProfileComponent({user, profile, handleDelete}) {
 
     return (
         <>
-            <Box>
+            <Box className="flex flex-row items-center justify-between">
                 <PComponent text={profile}/>
-                <RedirectButtonComponent link="/editprofile" text="Edit"/>
-                <DeleteButtonComponent action={handleDelete}/>
+                <Box className="flex flex-row gap-4">
+                    <RedirectButtonComponent link="/editprofile" text="Edit"/>
+                    <DeleteButtonComponent action={() => handleDelete(user, profile)}/>
+                </Box>
             </Box>
         </>
     )

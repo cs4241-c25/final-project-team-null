@@ -18,12 +18,22 @@ function UserProfiles({user}) {
             .catch(err => console.log(err));
     }, [])
 
+    function handleDelete(user, profile) {
+        axios.delete("/backend/deleteprofile/", {data: JSON.stringify({"username": user, "name": profile})})
+            .then(res => {
+                console.log("Deleted profile " + profile);
+                const newProfiles = profiles.filter(item => item !== profile)
+                setProfiles(newProfiles);
+            })
+            .catch(err => console.log(err));
+    }
+
     return (
         <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
             <H1Component text={"User Profiles"}/>
-            <Box sx={{ mt: 4 }}>
+            <Box sx={{ mt: 4 }} className="w-full flex flex-col gap-4">
                 {profiles.map(item => (
-                    <ProfileComponent key={item} profile={item}/>
+                    <ProfileComponent key={item} user={user} profile={item} handleDelete={handleDelete}/>
                 ))}
             </Box>
             <RedirectButtonComponent link={"/createprofile"} text={"Create New Profile"}/>
