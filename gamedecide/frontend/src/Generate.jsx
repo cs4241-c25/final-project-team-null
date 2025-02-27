@@ -5,6 +5,7 @@ import H1Component from "./components/TypographyComponents/H1Component.jsx";
 import ActionButtonComponent from "./components/ButtonComponents/ActionButtonComponent.jsx";
 import ActionSelectorComponent from "./components/ActionSelectorComponent.jsx";
 import H2Component from "./components/TypographyComponents/H2Component.jsx";
+import RadioGroupComponent from "./components/RadioGroupComponent.jsx";
 
 
 function Generate({user}) {
@@ -20,7 +21,8 @@ function Generate({user}) {
     const [generation, setGeneration] = useState({
         username: user,
         groupName: "",
-        library: {username: "", name: ""}
+        library: {username: "", name: ""},
+        platform: ""
     });
 
     /*
@@ -97,6 +99,11 @@ function Generate({user}) {
     const validGroup = (itemList, input) => itemList.find(item => item === input);
     const validProfile = (itemList, input) => itemList.find(item => (item.name === "Any" && input === "Any") || item.name + " (" + item.username + ")" === input);
 
+    const handlePlatformChange = (e) => {
+        const {value} = e.target;
+        setGeneration({...generation, platform: value})
+    }
+
 
     return (
         <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
@@ -114,23 +121,21 @@ function Generate({user}) {
             }
             {groupSelect.name !== "" && groupSelect.profiles.length !== 0 &&
                 <Box className="flex flex-col gap-4 w-full m-4">
-                    <H2Component text={"Current Platform: " + ""}/>
+                    <RadioGroupComponent id="platformSelect" formLabel="Platform" value={generation.platform} onChange={handlePlatformChange} buttons={["Any", "Physical", "Virtual"]}/>
                 </Box>
             }
-            <ActionButtonComponent text={"Generate"} action={handleGenerate}/>
+
+            <ActionButtonComponent text={"Generate"} action={handleGenerate} disabled={!(groupSelect.name !== "" && (generation.library.username !== "" && generation.library.name !== "") && generation.platform !== "")}/>
+
+
             <H2Component text={game}/>
         </Container>
     )
 
-    //Component to select a Group with all Profiles in next selection
-    //Component to select a Library from a list, including any
-    //Component to select a Platform
-    //Generate button
-    //Output games
 
+    //Lock Generate until all fields are filled
+
+    //Have errors to tell what you need to select to have generate button undisabled
 }
 
 export default Generate
-
-
-//Add Any to Profile List (and also Platform list)
