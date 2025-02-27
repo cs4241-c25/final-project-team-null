@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/Generate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/Generate.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/CreateBoardgame.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/CreateBoardgame.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,17 +47,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "jyip168-changes2",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Toby Wilensky/Documents/GitHub/final-project-team-null",
+    "last_opened_file_path": "C:/Users/tobyw/AppData/Roaming/JetBrains/WebStorm2024.3/node/versions/node3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
+    "nodejs_interpreter_path": "C:/Users/tobyw/AppData/Roaming/JetBrains/WebStorm2024.3/node/versions/node3/node",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -65,7 +66,6 @@
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\components" />
       <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\components\TypographyComponents" />
       <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\components\ButtonComponents" />
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\backend" />
@@ -84,6 +84,13 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -100,7 +107,9 @@
       <workItem from="1740175267985" duration="26000" />
       <workItem from="1740175401087" duration="3295000" />
       <workItem from="1740419023914" duration="432000" />
-      <workItem from="1740495541603" duration="28650000" />
+      <workItem from="1740495541603" duration="5366000" />
+      <workItem from="1740502643432" duration="3100000" />
+      <workItem from="1740611328642" duration="4191000" />
     </task>
     <task id="LOCAL-00001" summary="merge from main">
       <option name="closed" value="true" />
