@@ -79,6 +79,15 @@ async function AttemptUpdateProfile(data){
     }
 }
 
+async function EditProfile(data){
+    const profile = ({username: data.username,
+        name: data.name,
+        library: data.library,
+        favorites: data.favorites,
+        blacklist: data.blacklist});
+    const result = await profiles.replaceOne({username:data.username, name:data.oldname}, profile);
+}
+
 async function SendAllGroupNames(username, res){
     const result = await groups.find({username:username}).toArray();
     const names = [];
@@ -185,6 +194,28 @@ app.post("/submitprofile", (req, res) => {
         }
 
         AttemptUpdateProfile(data).then(()=>{
+            res.end("Submitted");
+        })
+    })
+})
+
+app.post("/updateprofile", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        if(data.name === null || data.name === ""){
+            res.end("Not updated");
+            return;
+        }
+
+        EditProfile(data).then(()=>{
             res.end("Submitted");
         })
     })
