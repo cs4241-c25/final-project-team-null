@@ -70,6 +70,7 @@ function CreateBoardGame({user}) {
             value={formData.platform}
             onChange={handleChange}
           />
+          <Box sx={{ mt:4, display:'flex', justifyContent: 'space-between'}}>
           <FormNumberFieldComponent
             label="min player count"
             name="minplayers"
@@ -82,6 +83,7 @@ function CreateBoardGame({user}) {
               value={formData.maxplayers}
               onChange={handleChange}
           />
+            </Box>
           <FormControl component="fieldset" margin="normal">
             <FormLabel component="legend">
               Ownership Requirement
