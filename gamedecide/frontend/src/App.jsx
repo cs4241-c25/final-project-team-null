@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import axios from "axios";
 import Test from "./Test.jsx";
+import Home from "./Home.jsx";
 import UserProfiles from "./UserProfiles.jsx";
 import CreateProfile from "./CreateProfile.jsx";
 import EditProfile from "./EditProfile.jsx";
