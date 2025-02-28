@@ -3,7 +3,7 @@ import axios from "axios";
 import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
 import {Box, Container} from "@mui/material";
-import AutocompleteComponent from "./AutocompleteComponent.jsx";
+import AutocompleteComponent from "./components/AutocompleteComponent.jsx";
 import GameComponent from "./components/GameComponent.jsx";
 
 function GameSearch({user}) {

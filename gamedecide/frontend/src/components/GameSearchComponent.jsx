@@ -1,7 +1,7 @@
 import {Autocomplete, Box, TextField} from "@mui/material";
 import ActionButtonComponent from "./ButtonComponents//ActionButtonComponent.jsx";
 import React, {useEffect, useState} from "react";
-import AutocompleteComponent from "../AutocompleteComponent.jsx";
+import AutocompleteComponent from "./AutocompleteComponent.jsx";
 
 function GameSearchComponent({id, games, label, list, currentList, handleGameAdd}) {
 

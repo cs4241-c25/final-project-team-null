@@ -16,6 +16,8 @@ function CreateBoardGame({user}) {
     description: '',
     year: null,
     platform: '',
+    minplayers: 0,
+    maxplayers: 0,
     ownership: 'single',
   });
 
@@ -33,10 +35,6 @@ function CreateBoardGame({user}) {
     }).then(navigate("/gamesearch"));
     console.log(formData);
   };
-
-  //Add min and max player
-  //Change Platform to Radio, Physical and Virtual
-
 
   return (
     <Container maxWidth="sm">

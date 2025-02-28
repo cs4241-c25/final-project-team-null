@@ -5,7 +5,7 @@ function RadioButtonComponent({value}) {
 
     return (
         <>
-            <FormControlLabel value={value} control={<Radio />} label={value}/>
+            <FormControlLabel value={value} control={<Radio required={true} />} label={value}/>
         </>
     )
 

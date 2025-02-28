@@ -3,6 +3,7 @@ import FormTextFieldComponent from "./FormTextFieldComponent.jsx";
 import {Box, FormControl, FormLabel, TextField} from "@mui/material";
 import RadioGroupComponent from "./RadioGroupComponent.jsx";
 import SubmitButtonComponent from "./ButtonComponents/SubmitButtonComponent.jsx";
+import FormNumberFieldComponent from "./FormNumberFieldComponent.jsx";
 
 function GameFormComponent({formData, functions}) {
 
@@ -27,26 +28,26 @@ function GameFormComponent({formData, functions}) {
                     rows={4}
                 />
                 <Box className="w-full flex flex-row align-center justify-between gap-2">
-                    <FormTextFieldComponent
+                    <FormNumberFieldComponent
+                        id="gameYear"
                         label="Year"
                         name="year"
-                        type={"number"}
                         value={formData.year}
                         onChange={functions.handleChange}
                         className="w-1/3 h-full"
                     />
-                    <FormTextFieldComponent
+                    <FormNumberFieldComponent
+                        id="gameMinPlayers"
                         label="Min Players"
                         name="minplayers"
-                        type={"number"}
                         value={formData.minplayers}
                         onChange={functions.handleChange}
                         className="w-1/3 h-full"
                     />
-                    <FormTextFieldComponent
+                    <FormNumberFieldComponent
+                        id="gameMaxPlayers"
                         label="Max Players"
                         name="maxplayers"
-                        type={"number"}
                         value={formData.maxplayers}
                         onChange={functions.handleChange}
                         className="w-1/3 h-full"
