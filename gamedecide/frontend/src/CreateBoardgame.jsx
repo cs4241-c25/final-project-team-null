@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
-import FormTextFieldComponent from './components/FormTextFieldComponent';
-import SubmitButtonComponent from './components/ButtonComponents/SubmitButtonComponent';
 
 import {
   Container,
-  TextField,
-  Typography,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
   Box,
 } from '@mui/material';
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
-import RadioGroupComponent from "./components/RadioGroupComponent.jsx";
+import GameFormComponent from "./components/GameFormComponent.jsx";
 
 function CreateBoardGame({user}) {
   const [formData, setFormData] = useState({
@@ -44,50 +35,10 @@ function CreateBoardGame({user}) {
     <Container maxWidth="sm">
       <Box sx={{ mt: 4 }}>
         <H1Component text={"Create a Game"}/>
-        <form onSubmit={handleSubmit}>
-          <FormTextFieldComponent
-            label="Game Name"
-            name="name"
-            type={"text"}
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <TextField
-            label="Description"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            multiline
-            rows={4}
-          />
-          <FormTextFieldComponent
-              label="Year"
-              name="year"
-              type={"number"}
-              value={formData.year}
-              onChange={handleChange}
-          />
-          <FormTextFieldComponent
-            label="Platform (physical, digital, etc.)"
-            name="platform"
-            type={"text"}
-            value={formData.platform}
-            onChange={handleChange}
-          />
-          <FormControl component="fieldset" margin="normal">
-            <FormLabel component="legend">
-              Ownership Requirement
-            </FormLabel>
-            <RadioGroupComponent id="platformSelect" name={"ownership"} value={formData.ownership}
-                                 onChange={handleChange} buttons={["Only One Person", "Multiple People"]}/>
-          </FormControl>
-          <SubmitButtonComponent/>
-        </form>
+        <GameFormComponent formData={formData} functions={{handleChange: handleChange, handleSubmit: handleSubmit}} />
       </Box>
     </Container>
-  );
+  )
 }
 
 export default CreateBoardGame;

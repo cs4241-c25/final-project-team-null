@@ -3,7 +3,6 @@ import SubmitButtonComponent from "./ButtonComponents/SubmitButtonComponent.jsx"
 import FormTextFieldComponent from "./FormTextFieldComponent.jsx";
 import {Box} from "@mui/material";
 import GameSearchListComponent from "./GameSearchListComponent.jsx";
-import ActionSelectorComponent from "./ActionSelectorComponent.jsx";
 
 function ProfileFormComponent({profile, games, functions}) {
 
