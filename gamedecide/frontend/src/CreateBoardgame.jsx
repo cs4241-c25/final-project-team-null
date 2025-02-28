@@ -6,8 +6,11 @@ import {
 } from '@mui/material';
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
 import GameFormComponent from "./components/GameFormComponent.jsx";
+import {useNavigate} from "react-router-dom";
 
 function CreateBoardGame({user}) {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -27,7 +30,7 @@ function CreateBoardGame({user}) {
     fetch('/backend/submitgame', {
       method: "POST",
       body
-    })
+    }).then(navigate("/gamesearch"));
     console.log(formData);
   };
 

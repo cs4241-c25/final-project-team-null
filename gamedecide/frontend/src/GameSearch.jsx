@@ -4,7 +4,7 @@ import RedirectButtonComponent from "./components/ButtonComponents/RedirectButto
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
 import {Box, Container} from "@mui/material";
 import AutocompleteComponent from "./AutocompleteComponent.jsx";
-import GameComponent from "./GameComponent.jsx";
+import GameComponent from "./components/GameComponent.jsx";
 
 function GameSearch({user}) {
 

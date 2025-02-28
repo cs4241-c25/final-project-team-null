@@ -1,16 +1,25 @@
 import {useNavigate} from "react-router-dom";
 import {Box} from "@mui/material";
-import PComponent from "./components/TypographyComponents/PComponent.jsx";
-import ActionButtonComponent from "./components/ButtonComponents/ActionButtonComponent.jsx";
-import DeleteButtonComponent from "./components/ButtonComponents/DeleteButtonComponent.jsx";
-import React from "react";
+import PComponent from "./TypographyComponents/PComponent.jsx";
+import ActionButtonComponent from "./ButtonComponents/ActionButtonComponent.jsx";
+import DeleteButtonComponent from "./ButtonComponents/DeleteButtonComponent.jsx";
+import React, {useState} from "react";
 
 
 function GameComponent({game, functions}) {
     const navigate = useNavigate();
 
     function handleRedirect() {
-        navigate("/editgame", {state: {game}});
+        console.log(game)
+        navigate("/editgame", {state: {
+                name: game.name,
+                description: game.description,
+                year: game.year,
+                platform: game.platform,
+                ownership: game.ownership,
+                minplayers: game.minplayers,
+                maxplayers: game.maxplayers
+            }});
     }
 
     return (

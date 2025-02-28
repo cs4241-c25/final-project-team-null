@@ -61,7 +61,7 @@ function EditProfile({user}) {
         axios.post("/backend/updateprofile", JSON.stringify(profile))
             .then(res => {
                 console.log("res: ", res.data);
-                navigate("/");
+                navigate("/userprofiles");
             })
             .catch(err => console.log(err));
     }

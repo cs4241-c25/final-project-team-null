@@ -46,7 +46,7 @@ function CreateProfile({user}) {
         axios.post("/backend/submitprofile", JSON.stringify(newProfile))
             .then(res => {
                 console.log("res: ", res.data);
-                navigate("/");
+                navigate("/userprofiles");
             })
             .catch(err => console.log(err));
     }
