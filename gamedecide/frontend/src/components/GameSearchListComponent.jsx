@@ -1,8 +1,8 @@
-import GameSearchComponent from "./components/GameSearchComponent.jsx";
+import GameSearchComponent from "./GameSearchComponent.jsx";
 import {Box, Typography} from "@mui/material";
-import GameSelectionComponent from "./components/GameSelectionComponent.jsx";
+import GameSelectionComponent from "./GameSelectionComponent.jsx";
 import React from "react";
-import H2Component from "./components/TypographyComponents/H2Component.jsx";
+import H2Component from "./TypographyComponents/H2Component.jsx";
 
 function GameSearchListComponent({id, label, games, list, currentList, functions, h2Text}) {
 

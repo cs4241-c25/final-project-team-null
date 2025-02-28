@@ -42,6 +42,23 @@ async function AttemptUpdateGame(data){
     }
 }
 
+async function EditGame(data){
+    const game = ({
+        name: data.name,
+        description: data.description,
+        year: data.year,
+        platform: data.platform,
+        ownership: data.ownership,
+        minplayers: data.minplayers,
+        maxplayers: data.maxplayers});
+    const result = await games.replaceOne({name:data.oldname, year:data.oldyear}, game);
+}
+
+async function DeleteGame(name, year, res){
+    const result = await games.deleteOne({name:name, year:year});
+    res.end(JSON.stringify(result));
+}
+
 async function SendAllProfileNames(username, res){
     const result = await profiles.find({username:username.username}).toArray();
 
@@ -66,12 +83,26 @@ async function SendProfile(username, name, res){
     res.end(JSON.stringify(result));
 }
 
+async function DeleteProfile(username, name, res){
+    const result = await profiles.deleteOne({username:username, name:name});
+    res.end(JSON.stringify(result));
+}
+
 async function AttemptUpdateProfile(data){
     const result = await profiles.replaceOne({username:data.username, name:data.name}, data);
 
     if(result.modifiedCount === 0){
         await insertIntoCollection(data, profiles);
     }
+}
+
+async function EditProfile(data){
+    const profile = ({username: data.username,
+        name: data.name,
+        library: data.library,
+        favorites: data.favorites,
+        blacklist: data.blacklist});
+    const result = await profiles.replaceOne({username:data.username, name:data.oldname}, profile);
 }
 
 async function SendAllGroupNames(username, res){
@@ -132,6 +163,45 @@ app.post("/submitgame", (req, res) => {
 
 })
 
+app.post("/updategame", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        if(data.name === null || data.name === ""){
+            res.end("Not submitted");
+            return;
+        }
+
+        if(data.year === null || data.year === ""){
+            data.year = "none";
+        }
+
+        EditGame(data).then(()=>{
+            res.end("Submitted");
+        })
+    })
+})
+
+app.delete("/deletegame", async (req, res) => {
+    let dataString = ""
+
+    req.on("data", async function (data) {
+        dataString += data
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+        DeleteGame(data.name, data.year, res);
+    })
+});
+
 app.post("/getprofiles", (req, res) => {
     let dataString = ""
 
@@ -184,6 +254,41 @@ app.post("/submitprofile", (req, res) => {
         })
     })
 })
+
+app.post("/updateprofile", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        if(data.name === null || data.name === ""){
+            res.end("Not updated");
+            return;
+        }
+
+        EditProfile(data).then(()=>{
+            res.end("Submitted");
+        })
+    })
+})
+
+app.delete("/deleteprofile", async (req, res) => {
+    let dataString = ""
+
+    req.on("data", async function (data) {
+        dataString += data
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+        DeleteProfile(data.username, data.name, res);
+    })
+});
 
 app.post("/getgroups", (req, res) => {
     let dataString = ""

@@ -2,15 +2,16 @@ import React from "react";
 import SubmitButtonComponent from "./ButtonComponents/SubmitButtonComponent.jsx";
 import FormTextFieldComponent from "./FormTextFieldComponent.jsx";
 import {Box} from "@mui/material";
-import GameSearchListComponent from "../GameSearchListComponent.jsx";
+import GameSearchListComponent from "./GameSearchListComponent.jsx";
 
 function ProfileFormComponent({profile, games, functions}) {
+
 
     return (
         <>
             <form className="flex flex-col justify-start items-center gap-4 w-full" onSubmit={functions.handleSubmit}>
                 <Box className="w-full m-4">
-                    <FormTextFieldComponent id="name" name="name"
+                    <FormTextFieldComponent id="name" name="name" type={"text"}
                                             label="Profile Name" value={profile.name}
                                             onChange={functions.handleChange}/>
                 </Box>
