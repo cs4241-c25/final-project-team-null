@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FormTextFieldComponent from './components/FormTextFieldComponent';
 import SubmitButtonComponent from './components/ButtonComponents/SubmitButtonComponent';
+import FormNumberFieldComponent from './components/FormNumberFieldComponent';
 
 import {
   Container,
@@ -20,6 +21,8 @@ function CreateBoardGame({user}) {
     name: '',
     description: '',
     platform: '',
+    minplayers: 0,
+    maxplayers: 0,
     ownership: 'single',
   });
 
@@ -66,6 +69,18 @@ function CreateBoardGame({user}) {
             name="platform"
             value={formData.platform}
             onChange={handleChange}
+          />
+          <FormNumberFieldComponent
+            label="min player count"
+            name="minplayers"
+            value={formData.minplayers}
+            onChange={handleChange}
+          />
+          <FormNumberFieldComponent
+              label="max player count"
+              name="maxplayers"
+              value={formData.maxplayers}
+              onChange={handleChange}
           />
           <FormControl component="fieldset" margin="normal">
             <FormLabel component="legend">
