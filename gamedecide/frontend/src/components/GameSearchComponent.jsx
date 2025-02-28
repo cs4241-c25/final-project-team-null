@@ -1,6 +1,7 @@
 import {Autocomplete, Box, TextField} from "@mui/material";
 import ActionButtonComponent from "./ButtonComponents//ActionButtonComponent.jsx";
 import React, {useEffect, useState} from "react";
+import AutocompleteComponent from "../AutocompleteComponent.jsx";
 
 function GameSearchComponent({id, games, label, list, currentList, handleGameAdd}) {
 
@@ -37,26 +38,17 @@ function GameSearchComponent({id, games, label, list, currentList, handleGameAdd
         setInput(value);
     }
 
+    const mapGames = (itemList) => itemList.map((option) => option.name + " (" + option.year + ")");
+
     return (
         <Box className="w-full flex flex-row align-center justify-between gap-2">
-            <Autocomplete
-                id={id}
-                freeSolo
-                className="w-4/5 h-full"
-                onChange={handleAutocompleteChange}
-                options={games.map((option) => option.name + " (" + option.year + ")")}
-                renderInput={(params) =>
-                    <TextField {...params} label={label}
-                               value={input} onChange={handleChange}
-                               error={error} fullWidth
-                               helperText={errorMessage}/>}
-            />
+            <AutocompleteComponent id={id} autocompleteChange={handleAutocompleteChange} map={mapGames} list={games}
+                                   label={label} input={input} onChange={handleChange} error={error} errorMessage={errorMessage}/>
             <ActionButtonComponent className="w-1/5 h-full" text={"Add Game to List"} action={handleSubmit}/>
         </Box>
     )
 
 }
-
 export default GameSearchComponent
 
 

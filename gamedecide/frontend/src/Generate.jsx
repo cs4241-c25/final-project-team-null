@@ -112,13 +112,13 @@ function Generate({user}) {
             <H1Component text={"Generate"}/>
             <Box className="flex flex-col gap-4 w-full m-4">
                 <H2Component text={"Current Group: " + groupSelect.name}/>
-                <ActionSelectorComponent itemList={groups} label={"Select a Group"} text="View Group" map={mapGroups} validCheck={validGroup} action={selectGroup} />
+                <ActionSelectorComponent id={"groupSelector"} itemList={groups} label={"Select a Group"} text="View Group" map={mapGroups} validCheck={validGroup} action={selectGroup} />
             </Box>
             {groupSelect.name !== "" && groupSelect.profiles.length !== 0 &&
                 <Box className="flex flex-col gap-4 w-full m-4">
                     <H2Component text={"Current Profile Library: " + (generation.library.username === "" ?
                         generation.library.name : generation.library.name + " (" + generation.library.username + ")")}/>
-                    <ActionSelectorComponent itemList={profiles} label={"Select Someone's Library"} text="Pick Library" map={mapProfiles} validCheck={validProfile} action={selectLibrary}/>
+                    <ActionSelectorComponent id={"librarySelector"} itemList={profiles} label={"Select Someone's Library"} text="Pick Library" map={mapProfiles} validCheck={validProfile} action={selectLibrary}/>
                 </Box>
             }
             {groupSelect.name !== "" && groupSelect.profiles.length !== 0 &&
