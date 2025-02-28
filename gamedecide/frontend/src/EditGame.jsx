@@ -9,11 +9,13 @@ function EditGame({user}) {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        name: '',
-        description: '',
-        year: null,
-        platform: '',
-        ownership: 'single',
+        name: "",
+        description: "",
+        year: 0,
+        platform: "",
+        ownership: "",
+        minplayers: 0,
+        maxplayers: 0
     });
 
     const location = useLocation();
@@ -28,6 +30,8 @@ function EditGame({user}) {
             minplayers: minplayers,
             maxplayers: maxplayers
         }
+        game.oldname = name;
+        game.oldyear = year;
         console.log("game: ", game)
         setFormData(game);
     }, [])
@@ -40,7 +44,7 @@ function EditGame({user}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const body = JSON.stringify(formData);
-        fetch('/backend/submitgame', {
+        fetch('/backend/updategame', {
             method: "POST",
             body
         }).then(navigate("/gamesearch"));

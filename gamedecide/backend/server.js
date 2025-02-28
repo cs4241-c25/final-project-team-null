@@ -42,6 +42,18 @@ async function AttemptUpdateGame(data){
     }
 }
 
+async function EditGame(data){
+    const game = ({
+        name: data.name,
+        description: data.description,
+        year: data.year,
+        platform: data.platform,
+        ownership: data.ownership,
+        minplayers: data.minplayers,
+        maxplayers: data.maxplayers});
+    const result = await games.replaceOne({name:data.oldname, year:data.oldyear}, game);
+}
+
 async function DeleteGame(name, year, res){
     const result = await games.deleteOne({name:name, year:year});
     res.end(JSON.stringify(result));
@@ -149,6 +161,32 @@ app.post("/submitgame", (req, res) => {
 
     })
 
+})
+
+app.post("/updategame", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        if(data.name === null || data.name === ""){
+            res.end("Not submitted");
+            return;
+        }
+
+        if(data.year === null || data.year === ""){
+            data.year = "none";
+        }
+
+        EditGame(data).then(()=>{
+            res.end("Submitted");
+        })
+    })
 })
 
 app.delete("/deletegame", async (req, res) => {

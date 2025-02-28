@@ -34,6 +34,10 @@ function CreateBoardGame({user}) {
     console.log(formData);
   };
 
+  //Add min and max player
+  //Change Platform to Radio, Physical and Virtual
+
+
   return (
     <Container maxWidth="sm">
       <Box sx={{ mt: 4 }}>
