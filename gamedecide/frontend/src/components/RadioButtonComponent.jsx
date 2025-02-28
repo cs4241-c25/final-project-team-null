@@ -1,11 +1,11 @@
 import {FormControlLabel, Radio} from "@mui/material";
 import React from "react";
 
-function RadioButtonComponent({value}) {
+function RadioButtonComponent({value, required}) {
 
     return (
         <>
-            <FormControlLabel value={value} control={<Radio required={true} />} label={value}/>
+            <FormControlLabel value={value} control={<Radio required={required} />} label={value}/>
         </>
     )
 

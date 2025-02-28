@@ -123,7 +123,7 @@ function Generate({user}) {
             }
             {groupSelect.name !== "" && groupSelect.profiles.length !== 0 &&
                 <Box className="flex flex-col gap-4 w-full m-4">
-                    <RadioGroupComponent id="platformSelect" formLabel="Platform" value={generation.platform} onChange={handlePlatformChange} buttons={["Any", "Physical", "Virtual"]}/>
+                    <RadioGroupComponent id="platformSelect" formLabel="Platform" value={generation.platform} onChange={handlePlatformChange} required={true} buttons={["Any", "Physical", "Virtual"]}/>
                 </Box>
             }
             <Box className="flex flex-col gap-2 w-full m-4">

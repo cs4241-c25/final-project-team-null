@@ -56,13 +56,13 @@ function GameFormComponent({formData, functions}) {
                 <FormControl component="fieldset" margin="normal">
                     <Box className="flex flex-col justify-start items-center gap-4 w-full">
                         <FormLabel component="legend">Platform</FormLabel>
-                        <RadioGroupComponent id="platformSelect" name={"platform"} value={formData.platform}
+                        <RadioGroupComponent id="platformSelect" name={"platform"} value={formData.platform} required={true}
                                              onChange={functions.handleChange} buttons={["Physical", "Digital"]}/>
                     </Box>
                 </FormControl>
                     <Box className="flex flex-col justify-start items-center gap-4 w-full">
                         <FormLabel component="legend">Ownership Requirement</FormLabel>
-                        <RadioGroupComponent id="ownnershipSelect" name={"ownership"} value={formData.ownership}
+                        <RadioGroupComponent id="ownnershipSelect" name={"ownership"} value={formData.ownership} required={true}
                                              onChange={functions.handleChange} buttons={["Only One Person", "Multiple People"]}/>
                     </Box>
                 <FormControl component="fieldset" margin="normal">
