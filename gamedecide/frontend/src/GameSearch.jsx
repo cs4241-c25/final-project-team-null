@@ -3,6 +3,8 @@ import axios from "axios";
 import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
 import {Box, Container} from "@mui/material";
+import AutocompleteComponent from "./AutocompleteComponent.jsx";
+import GameComponent from "./GameComponent.jsx";
 
 function GameSearch({user}) {
 
@@ -37,29 +39,40 @@ function GameSearch({user}) {
     }, [])
 
     //useEffect for when search is changed to rerender list with a filter
-    /*
     useEffect(() => {
         let searchedGames = games;
 
         if (search) {
-            searchedGames = searchedGames.filter(game => );
+            searchedGames = searchedGames.filter(game => (game.name + " (" + game.year + ")").includes(search));
         }
 
         setFilteredGames(searchedGames);
-    }, [search])*/
+    }, [games, search])
 
     const handleSearch = (e) => {
         setSearch(e.target.value);
     };
 
+    const handleAutocompleteChange = (event, value) => {
+        setSearch(value);
+    }
+
+    const mapGames = (itemList) => itemList.map((option) => option.name + " (" + option.year + ")");
+
+    function handleDelete(game) {
+        console.log("WIP");
+    }
 
     return (
         <>
-            <Container>
+            <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
                 <H1Component text={"Search for Games"}/>
-
-                <Box>
-
+                <AutocompleteComponent id={"gamesSearch"} label={"Search for Games"} map={mapGames} list={games}
+                input={search} onChange={handleSearch} autocompleteChange={handleAutocompleteChange} error={false} errorMessage={""}/>
+                <Box sx={{ mt: 4 }} className="w-full flex flex-col gap-4">
+                    {filteredGames.map(game => (
+                        <GameComponent key={game.name + "(" + game.year + ")"} game={game} functions={{handleDelete: handleDelete}}/>
+                    ))}
                 </Box>
                 <RedirectButtonComponent link={"/createboardgame"} text={"Create New Game"}/>
             </Container>

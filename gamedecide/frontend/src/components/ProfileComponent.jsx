@@ -9,7 +9,6 @@ import ActionButtonComponent from "./ButtonComponents/ActionButtonComponent.jsx"
 
 function ProfileComponent({user, profile, functions}) {
     const navigate = useNavigate();
-    const link = "/editprofile/";
 
     function handleRedirect() {
         navigate("/editprofile", {state: {username: user, name: profile}});
