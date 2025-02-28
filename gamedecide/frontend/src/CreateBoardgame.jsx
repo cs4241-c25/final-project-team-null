@@ -13,11 +13,14 @@ import {
   Radio,
   Box,
 } from '@mui/material';
+import H1Component from "./components/TypographyComponents/H1Component.jsx";
+import RadioGroupComponent from "./components/RadioGroupComponent.jsx";
 
 function CreateBoardGame({user}) {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
+    year: null,
     platform: '',
     ownership: 'single',
   });
@@ -40,13 +43,12 @@ function CreateBoardGame({user}) {
   return (
     <Container maxWidth="sm">
       <Box sx={{ mt: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Create a Game
-        </Typography>
+        <H1Component text={"Create a Game"}/>
         <form onSubmit={handleSubmit}>
           <FormTextFieldComponent
             label="Game Name"
             name="name"
+            type={"text"}
             value={formData.name}
             onChange={handleChange}
           />
@@ -61,8 +63,16 @@ function CreateBoardGame({user}) {
             rows={4}
           />
           <FormTextFieldComponent
+              label="Year"
+              name="year"
+              type={"number"}
+              value={formData.year}
+              onChange={handleChange}
+          />
+          <FormTextFieldComponent
             label="Platform (physical, digital, etc.)"
             name="platform"
+            type={"text"}
             value={formData.platform}
             onChange={handleChange}
           />
@@ -70,23 +80,8 @@ function CreateBoardGame({user}) {
             <FormLabel component="legend">
               Ownership Requirement
             </FormLabel>
-            <RadioGroup
-              row
-              name="ownership"
-              value={formData.ownership}
-              onChange={handleChange}
-            >
-              <FormControlLabel
-                value="single"
-                control={<Radio />}
-                label="Only One Person"
-              />
-              <FormControlLabel
-                value="multiple"
-                control={<Radio />}
-                label="Multiple People"
-              />
-            </RadioGroup>
+            <RadioGroupComponent id="platformSelect" name={"ownership"} value={formData.ownership}
+                                 onChange={handleChange} buttons={["Only One Person", "Multiple People"]}/>
           </FormControl>
           <SubmitButtonComponent/>
         </form>

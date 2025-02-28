@@ -12,7 +12,7 @@ function ProfileFormComponent({profile, games, functions}) {
         <>
             <form className="flex flex-col justify-start items-center gap-4 w-full" onSubmit={functions.handleSubmit}>
                 <Box className="w-full m-4">
-                    <FormTextFieldComponent id="name" name="name"
+                    <FormTextFieldComponent id="name" name="name" type={"text"}
                                             label="Profile Name" value={profile.name}
                                             onChange={functions.handleChange}/>
                 </Box>
