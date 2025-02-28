@@ -42,6 +42,11 @@ async function AttemptUpdateGame(data){
     }
 }
 
+async function DeleteGame(name, year, res){
+    const result = await games.deleteOne({name:name, year:year});
+    res.end(JSON.stringify(result));
+}
+
 async function SendAllProfileNames(username, res){
     const result = await profiles.find({username:username.username}).toArray();
 
@@ -145,6 +150,19 @@ app.post("/submitgame", (req, res) => {
     })
 
 })
+
+app.delete("/deletegame", async (req, res) => {
+    let dataString = ""
+
+    req.on("data", async function (data) {
+        dataString += data
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+        DeleteGame(data.name, data.year, res);
+    })
+});
 
 app.post("/getprofiles", (req, res) => {
     let dataString = ""

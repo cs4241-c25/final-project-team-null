@@ -60,8 +60,15 @@ function GameSearch({user}) {
     const mapGames = (itemList) => itemList.map((option) => option.name + " (" + option.year + ")");
 
     function handleDelete(game) {
-        console.log("WIP");
+        axios.delete("/backend/deletegame/", {data: JSON.stringify({"name": game.name, "year": game.year})})
+            .then(res => {
+                console.log("Deleted game " + game);
+                const newGames = games.filter(item => !((item.name === game.name) && (item.year === game.year)))
+                setGames(newGames);
+            })
+            .catch(err => console.log(err));
     }
+
 
     return (
         <>
