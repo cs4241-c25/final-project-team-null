@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
-      <change afterPath="$PROJECT_DIR$/gamedecide/frontend/src/Home.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gamedecide/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/App.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,28 +40,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.ProfileFormComponent.jsx.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "samuel",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Toby Wilensky/Documents/GitHub/final-project-team-null/gamedecide/frontend/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "C:/Users/tobyw/AppData/Roaming/JetBrains/WebStorm2024.3/node/versions/node3/node",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.ProfileFormComponent.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;samuel&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tobyw/OneDrive/Documents/GitHub/final-project-team-null/gamedecide&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/tobyw/AppData/Roaming/JetBrains/WebStorm2024.3/node/versions/node3/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide" />
       <recent name="C:\Users\Toby Wilensky\Documents\GitHub\final-project-team-null\gamedecide\frontend\src" />
       <recent name="C:\Users\Toby Wilensky\Documents\GitHub\final-project-team-null\gamedecide\frontend\src\components" />
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\backend" />
@@ -112,6 +112,7 @@
       <workItem from="1740495541603" duration="5366000" />
       <workItem from="1740502643432" duration="3100000" />
       <workItem from="1740611328642" duration="4191000" />
+      <workItem from="1740866126426" duration="382000" />
     </task>
     <task id="LOCAL-00001" summary="merge from main">
       <option name="closed" value="true" />
