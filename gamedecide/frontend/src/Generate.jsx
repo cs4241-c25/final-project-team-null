@@ -60,7 +60,6 @@ function Generate({user}) {
     function handleGenerate() {
         axios.post("/backend/generate/", JSON.stringify(generation))
             .then(res => {
-                console.log(res.data)
                 setGames(res.data);
             })
             .catch(err => console.log(err));
@@ -122,7 +121,7 @@ function Generate({user}) {
                 </Box>
             }
             <Box className="flex flex-col gap-2 w-full m-4">
-                <ActionButtonComponent text={"Generate"} action={handleGenerate} disabled={!(groupSelect.name !== "" && (generation.library.username !== "" && generation.library.name !== "") && generation.platform !== "")}/>
+                <ActionButtonComponent text={"Generate"} action={handleGenerate} disabled={!(groupSelect.name !== "" && ((generation.library.username === "" && generation.library.name === "Any") || (generation.library.username !== "" && generation.library.name !== "")) && generation.platform !== "")}/>
                 {groupSelect.name === "" && <PComponent text={"A group needs to be selected."} color="error"/>}
                 {(generation.library.username === "" && generation.library.name === "") && <PComponent text={"A profile's library needs to be selected."} color="error"/>}
                 {generation.platform === "" && <PComponent text={"A platform needs to be selected."} color="error"/>}

@@ -381,7 +381,7 @@ app.post("/getallprofiles", (req, res) => {
 })
 
 async function GenerateGame(username, groupname, libraryname, platform, res){
-    if(libraryname === "Any"){
+    if(libraryname.username === "" && libraryname.name === "Any"){
         return GenerateFromAnyLibrary(username, groupname, platform, res);
     }
 
