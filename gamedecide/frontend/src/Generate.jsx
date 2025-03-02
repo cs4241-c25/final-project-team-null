@@ -7,6 +7,7 @@ import ActionSelectorComponent from "./components/ActionSelectorComponent.jsx";
 import H2Component from "./components/TypographyComponents/H2Component.jsx";
 import RadioGroupComponent from "./components/RadioGroupComponent.jsx";
 import PComponent from "./components/TypographyComponents/PComponent.jsx";
+import RadioButtonComponent from "./components/RadioButtonComponent.jsx";
 
 
 function Generate({user}) {
@@ -16,28 +17,33 @@ function Generate({user}) {
 
     const [groupSelect, setGroupSelect] = useState({name: "", profiles: []});
 
-    const [game, setGame] = useState("");
+    const [games, setGames] = useState([{
+        name: "",
+        description: "",
+        year: 0,
+        platform: "",
+        ownership: "",
+        minplayers: 0,
+        maxplayers: 0
+    }]);
 
     const [generation, setGeneration] = useState({
         username: user,
-        groupName: "",
+        group: "",
         library: {username: "", name: ""},
         platform: ""
     });
 
 
     useEffect(() => {
-        axios.post("/backend/getgroups/", JSON.stringify({"username": user}))
+        axios.post("/backend/getgroups/", JSON.stringify({username: user}))
             .then(res => {
                 setGroups(res.data);
             })
             .catch(err => console.log(err));
+        setGames([]);
     }, [])
 
-    /*
-    useEffect(() => {
-        setGroups(["The Squad", "Snackies", "PokePals", "Just Vibin"]);
-    }, [])
 
     useEffect(() => {
         console.log("groupSelect: ", groupSelect);
@@ -49,38 +55,27 @@ function Generate({user}) {
 
     useEffect(() => {
         console.log("generation: ", generation);
-    }, [generation])*/
+    }, [generation])
 
     function handleGenerate() {
-
         axios.post("/backend/generate/", JSON.stringify(generation))
             .then(res => {
-                setGame(res.data);
+                console.log(res.data)
+                setGames(res.data);
             })
             .catch(err => console.log(err));
-        //setGame("Pokemon Reborn");
     }
 
     function selectGroup(name) {
         const target = groups.find(group => group === name);
-        //console.log("name", name)
-        //console.log("target", target)
 
-
-        axios.post("/backend/editgroup/", JSON.stringify({username: user, groupName: target}))
+        axios.post("/backend/editgroup/", JSON.stringify({username: user, name: target}))
             .then(res => {
                 setGroupSelect(res.data);
             })
             .catch(err => console.log(err));
-        //editGroups
-        /*
-        setGroupSelect({name: "The Squad", profiles: [
-                {username: "a", name:"a"},
-                {username: "b", name:"b"},
-                {username: "c", name:"c"},
-                {username: "d", name:"d"},]});*/
 
-        setGeneration({...generation, groupName: name})
+        setGeneration({...generation, group: name})
     }
 
     useEffect(() => {
@@ -133,8 +128,14 @@ function Generate({user}) {
                 {generation.platform === "" && <PComponent text={"A platform needs to be selected."} color="error"/>}
             </Box>
 
-
-            <H2Component text={game}/>
+            {games.length !== 0 &&
+                <Box className="flex flex-col gap-2 w-full m-4">
+                    <H2Component text={"Selected Games"}/>
+                    {games.map(item => (
+                        <PComponent text={item.name}/>
+                    ))}
+                </Box>
+            }
         </Container>
     )
 }

@@ -106,7 +106,7 @@ async function EditProfile(data){
 }
 
 async function SendAllGroupNames(username, res){
-    const result = await groups.find({username:username}).toArray();
+    const result = await groups.find({username:username.username}).toArray();
     const names = [];
     for(let i=0; i<result.length; i++){
         names.push(result[i].name);
@@ -294,7 +294,6 @@ app.post("/getgroups", (req, res) => {
     let dataString = ""
 
     req.on("data", function (data) {
-
         dataString += data
 
     })
@@ -382,12 +381,14 @@ app.post("/getallprofiles", (req, res) => {
 })
 
 async function GenerateGame(username, groupname, libraryname, platform, res){
-    if(libraryname === "any"){
+    if(libraryname === "Any"){
         return GenerateFromAnyLibrary(username, groupname, platform, res);
     }
 
     const group = await groups.findOne({username:username, name:groupname});
-    const library = await profiles.findOne({username:username, name:libraryname}).library;
+    const profile = await profiles.findOne({username:libraryname.username, name:libraryname.name});
+    const library = profile.library;
+
     const profilesInGroup = [];
     const profileList = group.profiles;
     for(let i=0; i<profileList.length; i++){
@@ -400,8 +401,9 @@ async function GenerateGame(username, groupname, libraryname, platform, res){
     for(let i=0; i<library.length; i++){
         const curGame = await games.findOne({name:library[i].name, year:library[i].year});
         const validPlayerCount = (curGame.minplayers <= playerCount && curGame.maxplayers >= playerCount);
-        const validPlatform = (platform === "any" || curGame.platform === platform);
-        const validOwnership = (curGame.ownershipType === "single");
+        const validPlatform = (platform === "Any" || curGame.platform === platform);
+        const validOwnership = (curGame.ownership === "Single");
+
         if(validPlayerCount && validPlatform && validOwnership) {
             gamesInLibrary.push(curGame);
         }
@@ -454,12 +456,12 @@ async function GenerateFromAnyLibrary(username, groupname, platform, res){
         for(let j = 0; j<curLibrary.length; j++){
             const curGame = await games.findOne({name:curLibrary[j].name, year:curLibrary[j].year});
             const validPlayerCount = (curGame.minplayers <= playerCount && curGame.maxplayers >= playerCount);
-            const validPlatform = (platform === "any" || curGame.platform === platform);
+            const validPlatform = (platform === "Any" || curGame.platform === platform);
             if(validPlayerCount && validPlatform){
-                if(curGame.ownershipType === "any"){
+                if(curGame.ownership === "Any"){
                     ownedByAny.push(curGame);
                 }
-                else if(curGame.ownershipType === "all"){
+                else if(curGame.ownership === "All"){
                     ownedByAll.push(curGame);
                 }
             }

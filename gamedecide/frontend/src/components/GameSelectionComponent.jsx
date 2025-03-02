@@ -5,7 +5,7 @@ import PComponent from "./TypographyComponents/PComponent.jsx";
 
 function GameSelectionComponent({list, name, year, handleGameDelete}) {
 
-    const text = name + "(" + year + ")";
+    const text = name + " (" + year + ")";
     return (
         <>
             <Box className="flex flex-row align-center justify-evenly">
