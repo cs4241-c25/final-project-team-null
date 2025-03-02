@@ -63,7 +63,7 @@ function GameFormComponent({formData, functions}) {
                     <Box className="flex flex-col justify-start items-center gap-4 w-full">
                         <FormLabel component="legend">Ownership Requirement</FormLabel>
                         <RadioGroupComponent id="ownnershipSelect" name={"ownership"} value={formData.ownership} required={true}
-                                             onChange={functions.handleChange} buttons={["Only One Person", "Multiple People"]}/>
+                                             onChange={functions.handleChange} buttons={["Single", "All"]}/>
                     </Box>
                 <FormControl component="fieldset" margin="normal">
                 </FormControl>
