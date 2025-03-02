@@ -9,7 +9,7 @@
     "start:backend": "cd backend && node server.js"
   },
   "engines": {
-    "node": "16"
+    "node": "22.14.0"
   },
   "dependencies": {
     "concurrently": "^9.1.2"
