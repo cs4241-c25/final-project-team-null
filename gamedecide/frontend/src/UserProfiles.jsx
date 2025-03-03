@@ -5,8 +5,8 @@ import ProfileComponent from "./components/ProfileComponent.jsx";
 import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
 import {Box, Container} from "@mui/material";
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
-const BACKEND_URL = process.env.BACKEND_URL || "/backend";
-//const BACKEND_URL = "/backend";
+//const BACKEND_URL = process.env.BACKEND_URL || "/backend";
+const BACKEND_URL = "/backend";
 
 function UserProfiles({user}) {
 
