@@ -2,7 +2,7 @@ import express from 'express';
 const app = express();
 import mongo from 'mongodb';
 const MongoClient = mongo.MongoClient;
-const port = 3000;
+const port = 5173;
 
 const NUM_GAMES_RETURNED = 5;
 
