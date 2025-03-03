@@ -3,6 +3,8 @@ const app = express();
 import mongo from 'mongodb';
 const MongoClient = mongo.MongoClient;
 const port = 5173;
+//const host = "localhost";
+const host = "0.0.0.0";
 
 const NUM_GAMES_RETURNED = 5;
 
@@ -572,6 +574,6 @@ function SelectValidGames(games, blacklist, favorites){
     return selectedGames;
 }
 
-app.listen(process.env.PORT || port, () => {
+app.listen(process.env.PORT || port, host,() => {
     console.log("Server running on port: " + port);
 });
