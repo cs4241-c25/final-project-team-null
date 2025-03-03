@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import axios from "axios";
 import Test from "./Test.jsx";
 import Home from "./Home.jsx";
@@ -17,7 +17,7 @@ function App() {
 
   return (
       <>
-          <BrowserRouter>
+          <Router>
               <Routes>
                   <Route path="/" element={<Home user={username}/>}/>
                   <Route path="/userprofiles" element={<UserProfiles user={username}/>}/>
@@ -29,7 +29,7 @@ function App() {
                   <Route path="/generate" element={<Generate user={username}/>}/>
 
               </Routes>
-          </BrowserRouter>
+          </Router>
       </>
   )
 }
