@@ -5,13 +5,14 @@ import ProfileComponent from "./components/ProfileComponent.jsx";
 import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
 import {Box, Container} from "@mui/material";
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
+const BACKEND_URL = process.env.BACKEND_URL || "/backend";
 
 function UserProfiles({user}) {
 
     const [profiles, setProfiles] = useState([]);
 
     useEffect(() => {
-        axios.post("/backend/getprofiles/", JSON.stringify({"username": user}))
+        axios.post(BACKEND_URL+"/getprofiles/", JSON.stringify({"username": user}))
             .then(res => {
                 setProfiles(res.data);
             })
@@ -19,7 +20,7 @@ function UserProfiles({user}) {
     }, [])
 
     function handleDelete(user, profile) {
-        axios.delete("/backend/deleteprofile/", {data: JSON.stringify({"username": user, "name": profile})})
+        axios.delete(BACKEND_URL+"/deleteprofile/", {data: JSON.stringify({"username": user, "name": profile})})
             .then(res => {
                 console.log("Deleted profile " + profile);
                 const newProfiles = profiles.filter(item => item !== profile)
