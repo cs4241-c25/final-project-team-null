@@ -30,7 +30,7 @@ function CreateProfile({user}) {
 
 
     useEffect(() => {
-        axios.post("/backend/findgame")
+        axios.post("/findgame")
             .then(res => {
                 const data = res.data;
                 setGames(data);
@@ -43,7 +43,7 @@ function CreateProfile({user}) {
         console.log("New Profile:", newProfile);
 
 
-        axios.post("/backend/submitprofile", JSON.stringify(newProfile))
+        axios.post("/submitprofile", JSON.stringify(newProfile))
             .then(res => {
                 console.log("res: ", res.data);
                 navigate("/userprofiles");

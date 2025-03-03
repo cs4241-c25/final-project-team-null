@@ -31,7 +31,7 @@ function CreateBoardGame({user}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const body = JSON.stringify(formData);
-    fetch(BACKEND_URL+'/submitgame', {
+    fetch('/submitgame', {
       method: "POST",
       body
     }).then(navigate("/gamesearch"));

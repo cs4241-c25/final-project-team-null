@@ -13,7 +13,7 @@ function UserProfiles({user}) {
     const [profiles, setProfiles] = useState([]);
 
     useEffect(() => {
-        axios.post(BACKEND_URL+"/getprofiles/", JSON.stringify({"username": user}))
+        axios.post("/getprofiles/", JSON.stringify({"username": user}))
             .then(res => {
                 setProfiles(res.data);
             })
@@ -21,7 +21,7 @@ function UserProfiles({user}) {
     }, [])
 
     function handleDelete(user, profile) {
-        axios.delete(BACKEND_URL+"/deleteprofile/", {data: JSON.stringify({"username": user, "name": profile})})
+        axios.delete("/deleteprofile/", {data: JSON.stringify({"username": user, "name": profile})})
             .then(res => {
                 console.log("Deleted profile " + profile);
                 const newProfiles = profiles.filter(item => item !== profile)

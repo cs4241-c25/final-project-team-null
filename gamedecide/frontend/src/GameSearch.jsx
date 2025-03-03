@@ -30,7 +30,7 @@ function GameSearch({user}) {
 
 
     useEffect(() => {
-        axios.post("/backend/findgame")
+        axios.post("/findgame")
             .then(res => {
                 const data = res.data;
                 setGames(data);
@@ -60,7 +60,7 @@ function GameSearch({user}) {
     const mapGames = (itemList) => itemList.map((option) => option.name + " (" + option.year + ")");
 
     function handleDelete(game) {
-        axios.delete("/backend/deletegame/", {data: JSON.stringify({"name": game.name, "year": game.year})})
+        axios.delete("/deletegame/", {data: JSON.stringify({"name": game.name, "year": game.year})})
             .then(res => {
                 console.log("Deleted game " + game);
                 const newGames = games.filter(item => !((item.name === game.name) && (item.year === game.year)))

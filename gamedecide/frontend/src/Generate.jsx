@@ -36,7 +36,7 @@ function Generate({user}) {
 
 
     useEffect(() => {
-        axios.post("/backend/getgroups/", JSON.stringify({username: user}))
+        axios.post("/getgroups/", JSON.stringify({username: user}))
             .then(res => {
                 setGroups(res.data);
             })
@@ -58,7 +58,7 @@ function Generate({user}) {
     }, [generation])
 
     function handleGenerate() {
-        axios.post("/backend/generate/", JSON.stringify(generation))
+        axios.post("/generate/", JSON.stringify(generation))
             .then(res => {
                 setGames(res.data);
             })
@@ -68,7 +68,7 @@ function Generate({user}) {
     function selectGroup(name) {
         const target = groups.find(group => group === name);
 
-        axios.post("/backend/editgroup/", JSON.stringify({username: user, name: target}))
+        axios.post("/editgroup/", JSON.stringify({username: user, name: target}))
             .then(res => {
                 setGroupSelect(res.data);
             })

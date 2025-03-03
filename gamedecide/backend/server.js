@@ -1,6 +1,8 @@
 import express from 'express';
 const app = express();
+import ViteExpress from 'vite-express';
 import mongo from 'mongodb';
+import path from 'path';
 const MongoClient = mongo.MongoClient;
 const port = 5173;
 //const host = "localhost";
@@ -574,6 +576,17 @@ function SelectValidGames(games, blacklist, favorites){
     return selectedGames;
 }
 
-app.listen(process.env.PORT || port, host,() => {
+/*app.listen(process.env.PORT || port, host,() => {
+    console.log("Server running on port: " + port);
+});*/
+
+app.use(express.static('../frontend/dist'));
+
+app.get("*", (req,res)=>{
+    res.sendFile(path.join(import.meta.dirname, '..','frontend','dist','index.html'))
+})
+
+ViteExpress.listen(app, port, () => {
     console.log("Server running on port: " + port);
 });
+

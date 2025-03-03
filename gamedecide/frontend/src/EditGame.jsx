@@ -44,7 +44,7 @@ function EditGame({user}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const body = JSON.stringify(formData);
-        fetch('/backend/updategame', {
+        fetch('/updategame', {
             method: "POST",
             body
         }).then(navigate("/gamesearch"));
