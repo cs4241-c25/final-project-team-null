@@ -10,6 +10,7 @@ import CreateBoardGame from "./CreateBoardgame.jsx";
 import EditGame from "./EditGame.jsx";
 import Generate from "./Generate.jsx";
 import GameSearch from "./GameSearch.jsx";
+import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
   return (
       <>
           <Router>
+              <RedirectButtonComponent link="/" text="home"></RedirectButtonComponent>
               <Routes>
                   <Route path="/" element={<Home user={username}/>}/>
                   <Route path="/userprofiles" element={<UserProfiles user={username}/>}/>

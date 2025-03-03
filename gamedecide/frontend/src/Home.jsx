@@ -11,7 +11,9 @@ function Home({user}) {
       <>
             <H1Component text="GAME DECIDE"></H1Component>
             <RedirectButtonComponent link="/userprofiles" text="profiles"></RedirectButtonComponent>
+          <br/>
           <RedirectButtonComponent link="/gamesearch" text="games"></RedirectButtonComponent>
+          <br/>
           <RedirectButtonComponent link="/generate" text="generate game"></RedirectButtonComponent>
       </>
   )
