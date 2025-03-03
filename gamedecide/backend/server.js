@@ -572,6 +572,6 @@ function SelectValidGames(games, blacklist, favorites){
     return selectedGames;
 }
 
-app.listen(port || process.env.PORT, () => {
+app.listen(process.env.PORT || port, () => {
     console.log("Server running on port: " + port);
 });
