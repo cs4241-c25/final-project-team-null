@@ -16,6 +16,9 @@
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12"
   },
+  "engines": {
+    "node": "22.14.0"
+  },
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "server.js",
   "author": "Team Null",

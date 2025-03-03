@@ -2,7 +2,7 @@ import express from 'express';
 const app = express();
 import mongo from 'mongodb';
 const MongoClient = mongo.MongoClient;
-const port = 3000;
+const port = 5173;
 
 const NUM_GAMES_RETURNED = 5;
 
@@ -42,6 +42,23 @@ async function AttemptUpdateGame(data){
     }
 }
 
+async function EditGame(data){
+    const game = ({
+        name: data.name,
+        description: data.description,
+        year: data.year,
+        platform: data.platform,
+        ownership: data.ownership,
+        minplayers: data.minplayers,
+        maxplayers: data.maxplayers});
+    const result = await games.replaceOne({name:data.oldname, year:data.oldyear}, game);
+}
+
+async function DeleteGame(name, year, res){
+    const result = await games.deleteOne({name:name, year:year});
+    res.end(JSON.stringify(result));
+}
+
 async function SendAllProfileNames(username, res){
     const result = await profiles.find({username:username.username}).toArray();
 
@@ -66,6 +83,11 @@ async function SendProfile(username, name, res){
     res.end(JSON.stringify(result));
 }
 
+async function DeleteProfile(username, name, res){
+    const result = await profiles.deleteOne({username:username, name:name});
+    res.end(JSON.stringify(result));
+}
+
 async function AttemptUpdateProfile(data){
     const result = await profiles.replaceOne({username:data.username, name:data.name}, data);
 
@@ -74,8 +96,17 @@ async function AttemptUpdateProfile(data){
     }
 }
 
+async function EditProfile(data){
+    const profile = ({username: data.username,
+        name: data.name,
+        library: data.library,
+        favorites: data.favorites,
+        blacklist: data.blacklist});
+    const result = await profiles.replaceOne({username:data.username, name:data.oldname}, profile);
+}
+
 async function SendAllGroupNames(username, res){
-    const result = await groups.find({username:username}).toArray();
+    const result = await groups.find({username:username.username}).toArray();
     const names = [];
     for(let i=0; i<result.length; i++){
         names.push(result[i].name);
@@ -132,6 +163,45 @@ app.post("/submitgame", (req, res) => {
 
 })
 
+app.post("/updategame", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        if(data.name === null || data.name === ""){
+            res.end("Not submitted");
+            return;
+        }
+
+        if(data.year === null || data.year === ""){
+            data.year = "none";
+        }
+
+        EditGame(data).then(()=>{
+            res.end("Submitted");
+        })
+    })
+})
+
+app.delete("/deletegame", async (req, res) => {
+    let dataString = ""
+
+    req.on("data", async function (data) {
+        dataString += data
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+        DeleteGame(data.name, data.year, res);
+    })
+});
+
 app.post("/getprofiles", (req, res) => {
     let dataString = ""
 
@@ -185,11 +255,45 @@ app.post("/submitprofile", (req, res) => {
     })
 })
 
+app.post("/updateprofile", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        if(data.name === null || data.name === ""){
+            res.end("Not updated");
+            return;
+        }
+
+        EditProfile(data).then(()=>{
+            res.end("Submitted");
+        })
+    })
+})
+
+app.delete("/deleteprofile", async (req, res) => {
+    let dataString = ""
+
+    req.on("data", async function (data) {
+        dataString += data
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+        DeleteProfile(data.username, data.name, res);
+    })
+});
+
 app.post("/getgroups", (req, res) => {
     let dataString = ""
 
     req.on("data", function (data) {
-
         dataString += data
 
     })
@@ -277,12 +381,14 @@ app.post("/getallprofiles", (req, res) => {
 })
 
 async function GenerateGame(username, groupname, libraryname, platform, res){
-    if(libraryname === "any"){
+    if(libraryname.username === "" && libraryname.name === "Any"){
         return GenerateFromAnyLibrary(username, groupname, platform, res);
     }
 
     const group = await groups.findOne({username:username, name:groupname});
-    const library = await profiles.findOne({username:username, name:libraryname}).library;
+    const profile = await profiles.findOne({username:libraryname.username, name:libraryname.name});
+    const library = profile.library;
+
     const profilesInGroup = [];
     const profileList = group.profiles;
     for(let i=0; i<profileList.length; i++){
@@ -295,8 +401,9 @@ async function GenerateGame(username, groupname, libraryname, platform, res){
     for(let i=0; i<library.length; i++){
         const curGame = await games.findOne({name:library[i].name, year:library[i].year});
         const validPlayerCount = (curGame.minplayers <= playerCount && curGame.maxplayers >= playerCount);
-        const validPlatform = (platform === "any" || curGame.platform === platform);
-        const validOwnership = (curGame.ownershipType === "single");
+        const validPlatform = (platform === "Any" || curGame.platform === platform);
+        const validOwnership = (curGame.ownership === "Single");
+
         if(validPlayerCount && validPlatform && validOwnership) {
             gamesInLibrary.push(curGame);
         }
@@ -349,12 +456,12 @@ async function GenerateFromAnyLibrary(username, groupname, platform, res){
         for(let j = 0; j<curLibrary.length; j++){
             const curGame = await games.findOne({name:curLibrary[j].name, year:curLibrary[j].year});
             const validPlayerCount = (curGame.minplayers <= playerCount && curGame.maxplayers >= playerCount);
-            const validPlatform = (platform === "any" || curGame.platform === platform);
+            const validPlatform = (platform === "Any" || curGame.platform === platform);
             if(validPlayerCount && validPlatform){
-                if(curGame.ownershipType === "any"){
+                if(curGame.ownership === "Any"){
                     ownedByAny.push(curGame);
                 }
-                else if(curGame.ownershipType === "all"){
+                else if(curGame.ownership === "All"){
                     ownedByAll.push(curGame);
                 }
             }
@@ -465,6 +572,6 @@ function SelectValidGames(games, blacklist, favorites){
     return selectedGames;
 }
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log("Server running on port: " + port);
 });
