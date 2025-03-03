@@ -8,6 +8,9 @@ import H1Component from "./components/TypographyComponents/H1Component.jsx";
 import GameFormComponent from "./components/GameFormComponent.jsx";
 import {useNavigate} from "react-router-dom";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "/backend";
+//const BACKEND_URL = "/backend";
+
 function CreateBoardGame({user}) {
   const navigate = useNavigate();
 
@@ -29,7 +32,7 @@ function CreateBoardGame({user}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const body = JSON.stringify(formData);
-    fetch('/backend/submitgame', {
+    fetch(BACKEND_URL+'/submitgame', {
       method: "POST",
       body
     }).then(navigate("/gamesearch"));
