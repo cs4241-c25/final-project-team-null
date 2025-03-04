@@ -56,7 +56,7 @@ function EditGame({user}) {
     return (
         <>
             <Container maxWidth="sm">
-                <Box sx={{ mt: 4 }}>
+                <Box sx={{ mt: 4 }} className="flex flex-col justify-center items-center my-8">
                     <H1Component text={"Edit a Game"}/>
                     <GameFormComponent formData={formData} functions={{handleChange: handleChange, handleSubmit: handleSubmit}} />
                 </Box>
