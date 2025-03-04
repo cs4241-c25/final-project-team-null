@@ -1,7 +1,6 @@
 import {Box} from "@mui/material";
 import PComponent from "./TypographyComponents/PComponent.jsx";
 import React from "react";
-import RedirectButtonComponent from "./ButtonComponents/RedirectButtonComponent.jsx";
 import DeleteButtonComponent from "./ButtonComponents/DeleteButtonComponent.jsx";
 import {useNavigate} from "react-router-dom";
 import ActionButtonComponent from "./ButtonComponents/ActionButtonComponent.jsx";

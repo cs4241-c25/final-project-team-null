@@ -3,7 +3,7 @@ import {Box} from "@mui/material";
 import PComponent from "./TypographyComponents/PComponent.jsx";
 import ActionButtonComponent from "./ButtonComponents/ActionButtonComponent.jsx";
 import DeleteButtonComponent from "./ButtonComponents/DeleteButtonComponent.jsx";
-import React, {useState} from "react";
+import React from "react";
 
 
 function GameComponent({game, functions}) {
@@ -25,7 +25,7 @@ function GameComponent({game, functions}) {
     return (
         <>
             <Box className="flex flex-row items-center justify-between p-4 rounded-md" bgcolor="itemBG.main">
-                <PComponent text={game.name + " (" + game.year + ")"} />
+                <PComponent text={game.name + " (" + game.year + ")"}/>
                 <Box className="flex flex-row gap-4">
                     <ActionButtonComponent action={handleRedirect} text="Edit"/>
                     <DeleteButtonComponent action={() => functions.handleDelete(game)}/>
