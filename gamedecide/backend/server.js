@@ -378,10 +378,7 @@ app.post("/generate", (req, res) => {
 })
 
 app.post("/getallprofiles", (req, res) => {
-
-    req.on("end", function () {
-        SendAllProfiles(res);
-    })
+    SendAllProfiles(res);
 })
 
 async function GenerateGame(username, groupname, libraryname, platform, res){
