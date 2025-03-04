@@ -10,12 +10,12 @@ function ProfileFormComponent({profile, games, functions}) {
     return (
         <>
             <form className="flex flex-col justify-start items-center gap-4 w-full" onSubmit={functions.handleSubmit}>
-                <Box className="w-full m-4">
+                <Box className="w-full m-4 p-8 rounded-md" bgcolor="cardBG.main">
                     <FormTextFieldComponent id="name" name="name" type={"text"}
                                             label="Profile Name" value={profile.name}
                                             onChange={functions.handleChange}/>
                 </Box>
-                <Box className="flex flex-col gap-4 w-full m-4">
+                <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md" bgcolor="cardBG.main">
                     <GameSearchListComponent id={"addLibrary"} games={games} label={"Add Game to Library"}
                                              list={"library"} currentList={profile.library}
                                              h2Text={"Current Games in Library"}
@@ -24,7 +24,7 @@ function ProfileFormComponent({profile, games, functions}) {
                                                  handleGameDelete: functions.handleGameDelete
                                              }}/>
                 </Box>
-                <Box className="flex flex-col gap-4 w-full m-4">
+                <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md" bgcolor="cardBG.main">
                     <GameSearchListComponent id={"addFavorite"} games={games} label={"Add Game to Favorites"}
                                              list={"favorites"} currentList={profile.favorites}
                                              h2Text={"Current Favorite Games"}
@@ -33,7 +33,7 @@ function ProfileFormComponent({profile, games, functions}) {
                                                  handleGameDelete: functions.handleGameDelete
                                              }}/>
                 </Box>
-                <Box className="flex flex-col gap-4 w-full m-4">
+                <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md" bgcolor="cardBG.main">
                     <GameSearchListComponent id={"addBlacklist"} games={games} label={"Add Game to Blacklist"}
                                              list={"blacklist"} currentList={profile.blacklist}
                                              h2Text={"Current Blacklisted Games"}

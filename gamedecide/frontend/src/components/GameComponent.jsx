@@ -24,8 +24,8 @@ function GameComponent({game, functions}) {
 
     return (
         <>
-            <Box className="flex flex-row items-center justify-between">
-                <PComponent text={game.name + " (" + game.year + ")"}/>
+            <Box className="flex flex-row items-center justify-between p-4 rounded-md" bgcolor="itemBG.main">
+                <PComponent text={game.name + " (" + game.year + ")"} />
                 <Box className="flex flex-row gap-4">
                     <ActionButtonComponent action={handleRedirect} text="Edit"/>
                     <DeleteButtonComponent action={() => functions.handleDelete(game)}/>

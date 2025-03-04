@@ -7,7 +7,6 @@ import ActionSelectorComponent from "./components/ActionSelectorComponent.jsx";
 import H2Component from "./components/TypographyComponents/H2Component.jsx";
 import RadioGroupComponent from "./components/RadioGroupComponent.jsx";
 import PComponent from "./components/TypographyComponents/PComponent.jsx";
-import RadioButtonComponent from "./components/RadioButtonComponent.jsx";
 
 
 function Generate({user}) {
@@ -104,31 +103,31 @@ function Generate({user}) {
     return (
         <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
             <H1Component text={"Generate"}/>
-            <Box className="flex flex-col gap-4 w-full m-4">
+            <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md" bgcolor="cardBG.main">
                 <H2Component text={"Current Group: " + groupSelect.name}/>
                 <ActionSelectorComponent id={"groupSelector"} itemList={groups} label={"Select a Group"} text="View Group" map={mapGroups} validCheck={validGroup} action={selectGroup} />
             </Box>
             {groupSelect.name !== "" && groupSelect.profiles.length !== 0 &&
-                <Box className="flex flex-col gap-4 w-full m-4">
+                <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md" bgcolor="cardBG.main">
                     <H2Component text={"Current Profile Library: " + (generation.library.username === "" ?
                         generation.library.name : generation.library.name + " (" + generation.library.username + ")")}/>
                     <ActionSelectorComponent id={"librarySelector"} itemList={profiles} label={"Select Someone's Library"} text="Pick Library" map={mapProfiles} validCheck={validProfile} action={selectLibrary}/>
                 </Box>
             }
             {groupSelect.name !== "" && groupSelect.profiles.length !== 0 &&
-                <Box className="flex flex-col gap-4 w-full m-4">
+                <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md" bgcolor="cardBG.main">
                     <RadioGroupComponent id="platformSelect" formLabel="Platform" value={generation.platform} onChange={handlePlatformChange} required={true} buttons={["Any", "Physical", "Digital"]}/>
                 </Box>
             }
-            <Box className="flex flex-col gap-2 w-full m-4">
-                <ActionButtonComponent text={"Generate"} action={handleGenerate} disabled={!(groupSelect.name !== "" && ((generation.library.username === "" && generation.library.name === "Any") || (generation.library.username !== "" && generation.library.name !== "")) && generation.platform !== "")}/>
+            <Box className="flex flex-col gap-2 w-full m-4 p-8 rounded-md" bgcolor="cardBG.main">
+                <ActionButtonComponent text={"Generate"} action={handleGenerate} importance={"primary"} disabled={!(groupSelect.name !== "" && ((generation.library.username === "" && generation.library.name === "Any") || (generation.library.username !== "" && generation.library.name !== "")) && generation.platform !== "")}/>
                 {groupSelect.name === "" && <PComponent text={"A group needs to be selected."} color="error"/>}
                 {(generation.library.username === "" && generation.library.name === "") && <PComponent text={"A profile's library needs to be selected."} color="error"/>}
                 {generation.platform === "" && <PComponent text={"A platform needs to be selected."} color="error"/>}
             </Box>
 
             {games.length !== 0 &&
-                <Box className="flex flex-col gap-2 w-full m-4">
+                <Box className="flex flex-col gap-2 w-full m-4 p-8 rounded-md" bgcolor="cardBG.main">
                     <H2Component text={"Selected Games"}/>
                     {games.map(item => (
                         <PComponent text={item.name}/>
