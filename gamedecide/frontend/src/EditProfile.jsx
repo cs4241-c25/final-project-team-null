@@ -21,7 +21,7 @@ function EditProfile({user}) {
         const {username, name} = location.state || {};
         console.log("username: ", username)
         console.log("name: ", name)
-        axios.post("/backend/editprofile/", JSON.stringify({"username": user, "name": name}))
+        axios.post("/editprofile/", JSON.stringify({"username": user, "name": name}))
             .then(res => {
                 const newProfile = res.data;
                 newProfile.oldname = name;
@@ -45,7 +45,7 @@ function EditProfile({user}) {
 
 
     useEffect(() => {
-        axios.post("/backend/findgame")
+        axios.post("/findgame")
             .then(res => {
                 const data = res.data;
                 setGames(data);
@@ -58,7 +58,7 @@ function EditProfile({user}) {
         console.log("Updated Profile:", profile);
 
 
-        axios.post("/backend/updateprofile", JSON.stringify(profile))
+        axios.post("/updateprofile", JSON.stringify(profile))
             .then(res => {
                 console.log("res: ", res.data);
                 navigate("/userprofiles");
@@ -116,7 +116,7 @@ function EditProfile({user}) {
     }
 
     return (
-        <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
+        <Container maxWidth="sm" className="flex flex-col justify-center items-center gap-4 my-8">
             <H1Component text={"Edit Profile"}/>
             <ProfileFormComponent profile={profile} games={games}
                                   functions={{handleChange: handleChange, handleSubmit: handleSubmit,

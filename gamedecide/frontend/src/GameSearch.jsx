@@ -30,7 +30,7 @@ function GameSearch({user}) {
 
 
     useEffect(() => {
-        axios.post("/backend/findgame")
+        axios.post("/findgame")
             .then(res => {
                 const data = res.data;
                 setGames(data);
@@ -60,7 +60,7 @@ function GameSearch({user}) {
     const mapGames = (itemList) => itemList.map((option) => option.name + " (" + option.year + ")");
 
     function handleDelete(game) {
-        axios.delete("/backend/deletegame/", {data: JSON.stringify({"name": game.name, "year": game.year})})
+        axios.delete("/deletegame/", {data: JSON.stringify({"name": game.name, "year": game.year})})
             .then(res => {
                 console.log("Deleted game " + game);
                 const newGames = games.filter(item => !((item.name === game.name) && (item.year === game.year)))
@@ -72,11 +72,19 @@ function GameSearch({user}) {
 
     return (
         <>
-            <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
+            <Container maxWidth="sm" className="flex flex-col justify-center items-center gap-4 my-8">
                 <H1Component text={"Search for Games"}/>
-                <AutocompleteComponent id={"gamesSearch"} label={"Search for Games"} map={mapGames} list={games}
-                input={search} onChange={handleSearch} autocompleteChange={handleAutocompleteChange} error={false} errorMessage={""}/>
-                <Box sx={{ mt: 4 }} className="w-full flex flex-col gap-4">
+                <Box className="flex flex-col justify-center items-center w-full p-4 rounded-md items-center" bgcolor="cardBG.main">
+                    <AutocompleteComponent id={"gamesSearch"} label={"Search for Games"} map={mapGames} list={games}
+                                           input={search} onChange={handleSearch} autocompleteChange={handleAutocompleteChange} error={false} errorMessage={""}/>
+                </Box>
+                <Box className="w-full flex flex-col gap-4 p-8 rounded-md items-center" bgcolor="cardBG.main"
+                     sx={{
+                         mt: 4,
+                         height: 500,
+                         overflow: "hidden",
+                         overflowY: "scroll",
+                     }}>
                     {filteredGames.map(game => (
                         <GameComponent key={game.name + "(" + game.year + ")"} game={game} functions={{handleDelete: handleDelete}}/>
                     ))}

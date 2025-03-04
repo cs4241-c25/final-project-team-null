@@ -4,7 +4,7 @@ function RedirectButtonComponent({link, text}) {
 
     return (
         <>
-            <Button variant="contained" href={link}>{text}</Button>
+            <Button variant="contained" color="primary" href={link}>{text}</Button>
         </>
     )
 

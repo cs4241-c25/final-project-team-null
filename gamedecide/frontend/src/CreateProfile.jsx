@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import ProfileFormComponent from "./components/ProfileFormComponent.jsx";
 import {useNavigate} from "react-router-dom";
-import {Box} from "@mui/material";
+import {Box, Container} from "@mui/material";
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
 
 function CreateProfile({user}) {
@@ -30,7 +30,7 @@ function CreateProfile({user}) {
 
 
     useEffect(() => {
-        axios.post("/backend/findgame")
+        axios.post("/findgame")
             .then(res => {
                 const data = res.data;
                 setGames(data);
@@ -43,7 +43,7 @@ function CreateProfile({user}) {
         console.log("New Profile:", newProfile);
 
 
-        axios.post("/backend/submitprofile", JSON.stringify(newProfile))
+        axios.post("/submitprofile", JSON.stringify(newProfile))
             .then(res => {
                 console.log("res: ", res.data);
                 navigate("/userprofiles");
@@ -101,12 +101,12 @@ function CreateProfile({user}) {
     }
 
     return (
-        <Box className="flex flex-col justify-start items-center gap-4">
+        <Container maxWidth="sm" className="flex flex-col justify-center items-center gap-4 my-8">
             <H1Component text={"Create New Profile"}/>
             <ProfileFormComponent profile={newProfile} games={games}
                                   functions={{handleChange: handleChange, handleSubmit: handleSubmit,
                                   handleGameAdd: handleGameAdd, handleGameDelete: handleGameDelete}}/>
-        </Box>
+        </Container>
     )
 }
 

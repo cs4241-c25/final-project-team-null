@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes, Link, Navigate} from 'react-router-dom';
 import axios from "axios";
 import Test from "./Test.jsx";
 import Home from "./Home.jsx";
@@ -14,22 +14,26 @@ import GameSearch from "./GameSearch.jsx";
 function App() {
 
   const [username, setUsername] = useState("guest");
+  //const [isAuthed, setIsAuthed] = useState(false);
+
+  const [isAuthed, setIsAuthed] = useState(true);
+
 
   return (
       <>
-          <BrowserRouter>
+          <Router>
               <Routes>
-                  <Route path="/" element={<Home user={username}/>}/>
-                  <Route path="/userprofiles" element={<UserProfiles user={username}/>}/>
-                  <Route path="/createprofile" element={<CreateProfile user={username}/>}/>
-                  <Route path="/editprofile" element={<EditProfile user={username}/>}/>
-                  <Route path="/gamesearch" element={<GameSearch user={username}/>}/>
-                  <Route path="/createboardgame" element={<CreateBoardGame user={username}/>}/>
-                  <Route path="/editgame" element={<EditGame user={username}/>}/>
-                  <Route path="/generate" element={<Generate user={username}/>}/>
+                  <Route path="/" element={isAuthed ? <Home user={username}/> : <Home user={username}/>}/>
+                  <Route path="/userprofiles" element={isAuthed ? <UserProfiles user={username}/> : <Navigate to="/" />}/>
+                  <Route path="/createprofile" element={ isAuthed ? <CreateProfile user={username} /> : <Navigate to="/" />}/>
+                  <Route path="/editprofile" element={ isAuthed ? <EditProfile user={username}/> : <Navigate to="/" />}/>
+                  <Route path="/gamesearch" element={ isAuthed ? <GameSearch user={username}/> : <Navigate to="/" />}/>
+                  <Route path="/createboardgame" element={isAuthed ? <CreateBoardGame user={username}/> : <Navigate to="/" />}/>
+                  <Route path="/editgame" element={isAuthed ? <EditGame user={username}/> : <Navigate to="/" />}/>
+                  <Route path="/generate" element={isAuthed ? <Generate user={username}/> : <Navigate to="/" />}/>
 
               </Routes>
-          </BrowserRouter>
+          </Router>
       </>
   )
 }

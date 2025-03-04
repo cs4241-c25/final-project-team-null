@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamedecide/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +53,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "C:/Users/tobyw/AppData/Roaming/JetBrains/WebStorm2024.3/node/versions/node3/node",
+    "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
@@ -91,7 +89,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
       </set>
     </attachedChunks>
   </component>
@@ -119,6 +117,7 @@
       <workItem from="1740944398038" duration="2000" />
       <workItem from="1740944698555" duration="32000" />
       <workItem from="1740944751420" duration="470000" />
+      <workItem from="1741021116107" duration="2121000" />
     </task>
     <task id="LOCAL-00001" summary="merge from main">
       <option name="closed" value="true" />
