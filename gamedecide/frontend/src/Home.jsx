@@ -5,6 +5,7 @@ import RedirectButtonComponent from "./components/ButtonComponents/RedirectButto
 import {Box, Container} from "@mui/material";
 import H2Component from "./components/TypographyComponents/H2Component.jsx";
 import hero from "./assets/hero.jpg"
+import HeroTextComponent from "./components/TypographyComponents/HeroTextComponent.jsx";
 
 function Home({user}) {
 
@@ -18,8 +19,7 @@ function Home({user}) {
               backgroundSize: "cover",
               backgroundPosition: "center",
           }}>
-              <H1Component text={"GAME DECIDE"} color={"white"}/>
-              <H2Component text={"Game more, decide less!"} color={"white"}/>
+              <HeroTextComponent h1Text={"GAME DECIDE"} h2Text={"Game more, decide less!"} color={"white"}/>
           </Box>
           <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
               <Box sx={{ mt: 4 }} className="w-full h-full flex flex-col gap-4">
