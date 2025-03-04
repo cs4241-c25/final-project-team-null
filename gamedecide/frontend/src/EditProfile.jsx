@@ -116,7 +116,7 @@ function EditProfile({user}) {
     }
 
     return (
-        <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
+        <Container maxWidth="sm" className="flex flex-col justify-center items-center gap-4">
             <H1Component text={"Edit Profile"}/>
             <ProfileFormComponent profile={profile} games={games}
                                   functions={{handleChange: handleChange, handleSubmit: handleSubmit,

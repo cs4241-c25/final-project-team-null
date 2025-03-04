@@ -6,7 +6,7 @@ import {ThemeProvider} from "@mui/material";
 import theme from "./theme.js";
 import CssBaseline from '@mui/material/CssBaseline';
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('app-root')).render(
   <StrictMode>
       <ThemeProvider theme={theme}>
           <CssBaseline />

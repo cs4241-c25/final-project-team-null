@@ -15,7 +15,7 @@ function ProfileComponent({user, profile, functions}) {
 
     return (
         <>
-            <Box className="flex flex-row items-center justify-between p-4 rounded-md"  bgcolor="itemBG.main">
+            <Box className="w-full flex flex-row items-center justify-between p-4 rounded-md"  bgcolor="itemBG.main">
                 <PComponent text={profile} />
                 <Box className="flex flex-row gap-4">
                     <ActionButtonComponent action={handleRedirect} text="Edit"/>

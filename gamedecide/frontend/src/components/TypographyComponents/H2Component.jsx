@@ -3,11 +3,11 @@ import React from "react";
 import theme from "../../theme.js";
 
 
-function H2Component({text}) {
+function H2Component({text, color}) {
 
     return (
         <>
-            <Typography variant="h4" component="h2">{text}</Typography>
+            <Typography variant="h4" component="h2" color={color}>{text}</Typography>
         </>
     )
 

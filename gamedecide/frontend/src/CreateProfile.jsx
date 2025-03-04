@@ -101,7 +101,7 @@ function CreateProfile({user}) {
     }
 
     return (
-        <Box className="flex flex-col justify-start items-center gap-4">
+        <Box className="flex flex-col justify-center items-center gap-4">
             <H1Component text={"Create New Profile"}/>
             <ProfileFormComponent profile={newProfile} games={games}
                                   functions={{handleChange: handleChange, handleSubmit: handleSubmit,

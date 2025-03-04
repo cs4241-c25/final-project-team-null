@@ -13,7 +13,7 @@ function GameSearchListComponent({id, label, games, list, currentList, functions
             <GameSearchComponent id={id} games={games} label={label}
                                  list={list} currentList={gamesLibrary} handleGameAdd={functions.handleGameAdd}/>
             <H2Component text={h2Text}/>
-            <Box className="flex flex-col gap-2" sx={{
+            <Box className="w-full flex flex-col gap-2" sx={{
                 height: 300,
                 overflow: "hidden",
                 overflowY: "scroll",

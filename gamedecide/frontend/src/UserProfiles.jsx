@@ -31,9 +31,9 @@ function UserProfiles({user}) {
     }
 
     return (
-        <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4 p-4 rounded-md">
+        <Container maxWidth="sm" className="flex flex-col justify-center items-center gap-4 p-4 rounded-md">
             <H1Component text={"User Profiles"}/>
-            <Box className="w-full flex flex-col gap-4 m-4 p-8 rounded-md" bgcolor="cardBG.main"
+            <Box className="w-full flex flex-col gap-4 m-4 p-8 rounded-md items-center" bgcolor="cardBG.main"
                  sx={{
                      mt: 4,
                      height: 500,
