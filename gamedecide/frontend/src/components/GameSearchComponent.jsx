@@ -41,7 +41,7 @@ function GameSearchComponent({id, games, label, list, currentList, handleGameAdd
     const mapGames = (itemList) => itemList.map((option) => option.name + " (" + option.year + ")");
 
     return (
-        <Box className="w-full flex flex-row align-center justify-between gap-2">
+        <Box className="w-full flex flex-row align-center justify-between gap-4">
             <AutocompleteComponent id={id} autocompleteChange={handleAutocompleteChange} map={mapGames} list={games}
                                    label={label} input={input} onChange={handleChange} error={error} errorMessage={errorMessage}/>
             <ActionButtonComponent className="w-1/5 h-full" text={"Add Game to List"} action={handleSubmit}/>

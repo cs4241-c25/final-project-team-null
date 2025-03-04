@@ -72,7 +72,7 @@ function GameSearch({user}) {
 
     return (
         <>
-            <Container maxWidth="sm" className="flex flex-col justify-center items-center gap-4">
+            <Container maxWidth="sm" className="flex flex-col justify-center items-center gap-4 my-8">
                 <H1Component text={"Search for Games"}/>
                 <Box className="flex flex-col justify-center items-center w-full p-4 rounded-md items-center" bgcolor="cardBG.main">
                     <AutocompleteComponent id={"gamesSearch"} label={"Search for Games"} map={mapGames} list={games}

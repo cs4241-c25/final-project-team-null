@@ -101,7 +101,7 @@ function Generate({user}) {
 
 
     return (
-        <Container maxWidth="sm" className="w-full flex flex-col justify-center items-center gap-4">
+        <Container maxWidth="sm" className="w-full flex flex-col justify-center items-center my-8 gap-4">
             <H1Component text={"Generate"}/>
             <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md items-center" bgcolor="cardBG.main">
                 <H2Component text={"Current Group: " + groupSelect.name}/>
