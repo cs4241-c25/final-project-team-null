@@ -13,7 +13,11 @@ function GameSearchListComponent({id, label, games, list, currentList, functions
             <GameSearchComponent id={id} games={games} label={label}
                                  list={list} currentList={gamesLibrary} handleGameAdd={functions.handleGameAdd}/>
             <H2Component text={h2Text}/>
-            <Box className="flex flex-col gap-2">
+            <Box className="w-full flex flex-col gap-2" sx={{
+                height: 300,
+                overflow: "hidden",
+                overflowY: "scroll",
+            }}>
                 {gamesLibrary.map(game => (
                     <GameSelectionComponent key={game.name + " (" + game.year + ")"} list={list}
                                             name={game.name} year={game.year}

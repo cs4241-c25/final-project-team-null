@@ -72,11 +72,19 @@ function GameSearch({user}) {
 
     return (
         <>
-            <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
+            <Container maxWidth="sm" className="flex flex-col justify-center items-center gap-4 my-8">
                 <H1Component text={"Search for Games"}/>
-                <AutocompleteComponent id={"gamesSearch"} label={"Search for Games"} map={mapGames} list={games}
-                input={search} onChange={handleSearch} autocompleteChange={handleAutocompleteChange} error={false} errorMessage={""}/>
-                <Box sx={{ mt: 4 }} className="w-full flex flex-col gap-4">
+                <Box className="flex flex-col justify-center items-center w-full p-4 rounded-md items-center" bgcolor="cardBG.main">
+                    <AutocompleteComponent id={"gamesSearch"} label={"Search for Games"} map={mapGames} list={games}
+                                           input={search} onChange={handleSearch} autocompleteChange={handleAutocompleteChange} error={false} errorMessage={""}/>
+                </Box>
+                <Box className="w-full flex flex-col gap-4 p-8 rounded-md items-center" bgcolor="cardBG.main"
+                     sx={{
+                         mt: 4,
+                         height: 500,
+                         overflow: "hidden",
+                         overflowY: "scroll",
+                     }}>
                     {filteredGames.map(game => (
                         <GameComponent key={game.name + "(" + game.year + ")"} game={game} functions={{handleDelete: handleDelete}}/>
                     ))}

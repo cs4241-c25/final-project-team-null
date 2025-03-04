@@ -31,9 +31,15 @@ function UserProfiles({user}) {
     }
 
     return (
-        <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
+        <Container maxWidth="sm" className="h-full flex flex-col justify-center items-center my-8 gap-4 p-4 rounded-md">
             <H1Component text={"User Profiles"}/>
-            <Box sx={{ mt: 4 }} className="w-full flex flex-col gap-4">
+            <Box className="w-full flex flex-col gap-4 m-4 p-8 rounded-md items-center" bgcolor="cardBG.main"
+                 sx={{
+                     mt: 4,
+                     height: 500,
+                     overflow: "hidden",
+                     overflowY: "scroll",
+                 }}>
                 {profiles.map(item => (
                     <ProfileComponent key={item} user={user} profile={item} functions={{handleDelete: handleDelete}}/>
                 ))}
