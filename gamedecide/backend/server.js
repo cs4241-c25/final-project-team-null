@@ -4,7 +4,7 @@ import ViteExpress from 'vite-express';
 import mongo from 'mongodb';
 import path from 'path';
 const MongoClient = mongo.MongoClient;
-const port = 5173;
+const port = 3000;
 //const host = "localhost";
 const host = "0.0.0.0";
 
