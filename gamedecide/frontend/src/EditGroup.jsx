@@ -88,7 +88,7 @@ function EditGroup({ user }) {
     return (
         <>
             <Container maxWidth="sm">
-                <H1Component text={"Create New Group"} />
+                <H1Component text={"Edit New Group"} />
 
                 <FormTextFieldComponent
                     label="Group Name"
