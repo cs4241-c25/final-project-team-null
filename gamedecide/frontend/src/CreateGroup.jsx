@@ -2,15 +2,8 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Autocomplete, Box, Container} from "@mui/material";
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
-import ActionButtonComponent from "./components/ButtonComponents/ActionButtonComponent.jsx";
-import ActionSelectorComponent from "./components/ActionSelectorComponent.jsx";
-import H2Component from "./components/TypographyComponents/H2Component.jsx";
-import RadioGroupComponent from "./components/RadioGroupComponent.jsx";
-import PComponent from "./components/TypographyComponents/PComponent.jsx";
-import RadioButtonComponent from "./components/RadioButtonComponent.jsx";
 import FormTextFieldComponent from "./components/FormTextFieldComponent.jsx";
 import SubmitButtonComponent from "./components/ButtonComponents/SubmitButtonComponent.jsx";
-import AutocompleteComponent from "./components/AutocompleteComponent.jsx";
 import ProfileComponent from "./components/ProfileComponent.jsx";
 import ActionSelectorComponent2 from "./components/ActionSelectorComponent2.jsx";
 

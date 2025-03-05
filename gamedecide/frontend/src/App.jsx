@@ -10,6 +10,7 @@ import Generate from "./Generate.jsx";
 import GameSearch from "./GameSearch.jsx";
 import CreateGroup from "./CreateGroup.jsx";
 import UserGroups from "./UserGroups.jsx";
+import EditGroup from "./EditGroup.jsx";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                   <Route path="/generate" element={isAuthed ? <Generate user={username}/> : <Navigate to="/" />}/>
                   <Route path="/creategroup" element={isAuthed ? <CreateGroup user={username}/> : <Navigate to="/" />}/>
                   <Route path="/usergroups" element={isAuthed ? <UserGroups user={username}/> : <Navigate to="/" />}/>
+                  <Route path="/editgroup" element={isAuthed ? <EditGroup user={username}/> : <Navigate to="/" />}/>
 
               </Routes>
           </Router>
