@@ -7,11 +7,9 @@ const theme = createTheme({
     },
     palette: {
         background: {
-            //default: "#FADDAC",
             default: "#FADDAC",
         },
         primary: {
-            //main: "#FAEEDC",
             main: "#FAEEDC",
         },
         secondary: {
@@ -26,26 +24,9 @@ const theme = createTheme({
         itemBG: {
             main: "#C09069",
         },
-        //color 1 for background
-        //FADDAC
-
-        //color 2 for card bg
-        //C09069
-
-        //color 3 for list item bg
-        //E0BDA6
-
-        //color 4 for h1 and primary buttons (redirect & submit)
-        //FAEEDC
-
-        //color 5 for navbar
-        //68473A
-
-        //color 6 for secondary buttons (action)
-        //777da7
-
-        //color 7 for warning buttons (delete)
-        //d81e5b
+        navbar: {
+            main: "#68473A",
+        }
     }
 })
 

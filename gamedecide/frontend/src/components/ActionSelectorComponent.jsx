@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Autocomplete, Box, Container, TextField} from "@mui/material";
 import H1Component from "./TypographyComponents/H1Component.jsx";
-import ProfileComponent from "./ProfileComponent.jsx";
 import RedirectButtonComponent from "./ButtonComponents/RedirectButtonComponent.jsx";
 import ActionButtonComponent from "./ButtonComponents/ActionButtonComponent.jsx";
 import AutocompleteComponent from "./AutocompleteComponent.jsx";

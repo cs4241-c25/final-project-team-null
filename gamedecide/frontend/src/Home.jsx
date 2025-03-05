@@ -5,6 +5,7 @@ import RedirectButtonComponent from "./components/ButtonComponents/RedirectButto
 import {Box, Container} from "@mui/material";
 import H2Component from "./components/TypographyComponents/H2Component.jsx";
 import hero from "./assets/hero.jpg"
+import HeroTextComponent from "./components/TypographyComponents/HeroTextComponent.jsx";
 
 function Home({user}) {
 
@@ -13,19 +14,19 @@ function Home({user}) {
   return (
       <div className="w-full h-full flex flex-col">
           <Box className="w-full flex flex-col gap-2 justify-center items-center self-start" sx={{
-              height: "75vh",
+              height: "70vh",
               backgroundImage: `url(${hero})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
           }}>
-              <H1Component text={"GAME DECIDE"} color={"white"}/>
-              <H2Component text={"Game more, decide less!"} color={"white"}/>
+              <HeroTextComponent h1Text={"GAME DECIDE"} h2Text={"Game more, decide less!"} color={"white"}/>
           </Box>
           <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
               <Box sx={{ mt: 4 }} className="w-full h-full flex flex-col gap-4">
-                  <RedirectButtonComponent link="/userprofiles" text="profiles"></RedirectButtonComponent>
-                  <RedirectButtonComponent link="/gamesearch" text="games"></RedirectButtonComponent>
-                  <RedirectButtonComponent link="/generate" text="generate game"></RedirectButtonComponent>
+                  <RedirectButtonComponent link="/userprofiles" text="profiles"/>
+                  <RedirectButtonComponent link="/usergroups" text="groups"/>
+                  <RedirectButtonComponent link="/gamesearch" text="games"/>
+                  <RedirectButtonComponent link="/generate" text="generate game"/>
               </Box>
           </Container>
       </div>

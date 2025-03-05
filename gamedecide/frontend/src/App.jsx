@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {BrowserRouter as Router, Route, Routes, Link, Navigate} from 'react-router-dom';
-import axios from "axios";
-import Test from "./Test.jsx";
 import Home from "./Home.jsx";
 import UserProfiles from "./UserProfiles.jsx";
 import CreateProfile from "./CreateProfile.jsx";

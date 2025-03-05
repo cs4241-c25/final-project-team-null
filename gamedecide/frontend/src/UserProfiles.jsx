@@ -5,6 +5,7 @@ import ProfileComponent from "./components/ProfileComponent.jsx";
 import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
 import {Box, Container} from "@mui/material";
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
+import {useNavigate} from "react-router-dom";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "/backend";
 //const BACKEND_URL = "/backend";
 
@@ -19,6 +20,11 @@ function UserProfiles({user}) {
             })
             .catch(err => console.log(err));
     }, [])
+
+    const navigate = useNavigate();
+    function handleRedirect(username, profile) {
+        navigate("/editprofile", {state: {username: user, name: profile}});
+    }
 
     function handleDelete(user, profile) {
         axios.delete("/deleteprofile/", {data: JSON.stringify({"username": user, "name": profile})})
@@ -41,7 +47,8 @@ function UserProfiles({user}) {
                      overflowY: "scroll",
                  }}>
                 {profiles.map(item => (
-                    <ProfileComponent key={item} user={user} profile={item} functions={{handleDelete: handleDelete}}/>
+                    <ProfileComponent key={item} user={user} profile={item} functions={{handleRedirect: handleRedirect,
+                        handleDelete: handleDelete}}/>
                 ))}
             </Box>
             <RedirectButtonComponent link={"/createprofile"} text={"Create New Profile"}/>
