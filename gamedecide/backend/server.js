@@ -123,6 +123,13 @@ async function SendGroup(username, name, res){
     res.end(JSON.stringify(result));
 }
 
+async function UpdateGroup(data){
+    const group = ({username: data.username,
+        name: data.name,
+        profiles: data.profiles});
+    const result = await groups.replaceOne({username:data.username, name:data.oldname}, group);
+}
+
 async function AttemptUpdateGroup(data){
     const result = await groups.replaceOne({username:data.username, name:data.name}, data);
 
@@ -322,6 +329,23 @@ app.post("/editgroup", (req, res) => {
         const data = JSON.parse(dataString);
 
         SendGroup(data.username, data.name, res);
+    })
+})
+
+app.post("/updategroup", (req, res) => {
+    let dataString = ""
+
+    req.on("data", function (data) {
+        dataString += data
+
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+
+        UpdateGroup(data).then(()=>{
+            res.end("Submitted");
+        })
     })
 })
 
