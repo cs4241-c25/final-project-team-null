@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/EditGroup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/EditGroup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/SignIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/SignIn.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="jyip168-changes2" />
+        <entry key="$PROJECT_DIR$" value="3ca66bcdb90471519ab32563a067649eef51c7e6" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,9 +46,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "46d9d2eb",
+    "disable.download.node.interpreter.editor.notification": "true",
+    "git-widget-placeholder": "samuel",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/jyip2/WebstormProjects/final-project-team-null/gamedecide/frontend/src/components/ButtonComponents",
+    "last_opened_file_path": "C:/Users/tobyw/OneDrive/Documents/GitHub/final-project-team-null/gamedecide",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -58,20 +59,18 @@
     "npm.build.executor": "Run",
     "npm.dev.executor": "Run",
     "npm.start.executor": "Run",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\components\ButtonComponents" />
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide" />
       <recent name="C:\Users\Toby Wilensky\Documents\GitHub\final-project-team-null\gamedecide\frontend\src" />
       <recent name="C:\Users\Toby Wilensky\Documents\GitHub\final-project-team-null\gamedecide\frontend\src\components" />
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\assets" />
       <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\components\TypographyComponents" />
       <recent name="C:\Users\jyip2\WebstormProjects\final-project-team-null\gamedecide\frontend\src\components\ButtonComponents" />
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\backend" />
@@ -115,6 +114,13 @@
       <item itemvalue="npm.start" />
     </list>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -140,10 +146,8 @@
       <workItem from="1740944698555" duration="32000" />
       <workItem from="1740944751420" duration="470000" />
       <workItem from="1741021116107" duration="2121000" />
-      <workItem from="1741131036606" duration="1671000" />
-      <workItem from="1741146123600" duration="608000" />
-      <workItem from="1741147937988" duration="45000" />
-      <workItem from="1741200144071" duration="3787000" />
+      <workItem from="1741216690490" duration="226000" />
+      <workItem from="1741217212088" duration="532000" />
     </task>
     <task id="LOCAL-00001" summary="merge from main">
       <option name="closed" value="true" />
@@ -161,19 +165,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Object fix" />
-    <MESSAGE value="added" />
     <MESSAGE value="merge from main" />
     <option name="LAST_COMMIT_MESSAGE" value="merge from main" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/gamedecide/frontend/src/EditProfile.jsx</url>
-          <line>10</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -11,20 +11,30 @@ import GameSearch from "./GameSearch.jsx";
 import CreateGroup from "./CreateGroup.jsx";
 import UserGroups from "./UserGroups.jsx";
 import EditGroup from "./EditGroup.jsx";
+import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
+import SignIn from "./SignIn.jsx";
 
 function App() {
+
+
 
   const [username, setUsername] = useState("guest");
   //const [isAuthed, setIsAuthed] = useState(false);
 
   const [isAuthed, setIsAuthed] = useState(true);
 
+  function HandleNewUsername(username){
+      setUsername(username);
+  }
+
 
   return (
       <>
           <Router>
+              <RedirectButtonComponent link="/home" text="home"></RedirectButtonComponent>
               <Routes>
-                  <Route path="/" element={isAuthed ? <Home user={username}/> : <Home user={username}/>}/>
+                  <Route path="/" element={<SignIn setuser={HandleNewUsername}/>} />
+                  <Route path="/home" element={isAuthed ? <Home user={username}/> : <Home user={username}/>}/>
                   <Route path="/userprofiles" element={isAuthed ? <UserProfiles user={username}/> : <Navigate to="/" />}/>
                   <Route path="/createprofile" element={ isAuthed ? <CreateProfile user={username} /> : <Navigate to="/" />}/>
                   <Route path="/editprofile" element={ isAuthed ? <EditProfile user={username}/> : <Navigate to="/" />}/>
