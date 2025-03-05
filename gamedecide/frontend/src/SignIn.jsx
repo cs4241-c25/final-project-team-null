@@ -5,8 +5,12 @@ import {Box, Container} from "@mui/material";
 import FormTextFieldComponent from "./components/FormTextFieldComponent.jsx";
 import ActionButtonComponent from "./components/ButtonComponents/ActionButtonComponent.jsx";
 import PComponent from "./components/TypographyComponents/PComponent.jsx";
+import {useNavigate} from "react-router-dom";
 
 function SignIn({setuser}) {
+
+    const [errortext, setErrorText] = useState("");
+    const navigate = useNavigate();
 
   function SignUp(){
         const UsernameInput = document.getElementById("username");
@@ -14,7 +18,13 @@ function SignIn({setuser}) {
         const user = {username: UsernameInput.value, password: PasswordInput.value};
       axios.post("/signup/", JSON.stringify(user))
           .then(res => {
-
+              if(res.data === "ok" || res.data === "okay"){
+                  setuser(user.username);
+                  navigate("/home");
+              }
+              else{
+                  setErrorText(res.data);
+              }
           })
           .catch(err => console.log(err));
   }
@@ -25,7 +35,13 @@ function SignIn({setuser}) {
       const user = {username: UsernameInput.value, password: PasswordInput.value};
       axios.post("/login/", JSON.stringify(user))
           .then(res => {
-              setProfiles(res.data);
+              if(res.data === "ok" || res.data === "okay"){
+                  setuser(user.username)
+                  navigate("/home");
+              }
+              else{
+                  setErrorText(res.data);
+              }
           })
           .catch(err => console.log(err));
   }
