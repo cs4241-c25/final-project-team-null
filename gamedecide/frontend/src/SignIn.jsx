@@ -55,6 +55,7 @@ function SignIn({setuser}) {
                     <FormTextFieldComponent id="password" label="password"></FormTextFieldComponent>
                     <Box className="w-full flex flex-row align-center justify-between gap-2">
                         <ActionButtonComponent text="Log in" action={LogIn}/>
+                        <a href={"https://localhost:3000/auth/github"}>Login with Github</a>
                         <ActionButtonComponent text="Sign up" action={SignUp}/>
                     </Box>
                   <PComponent text={errortext} color="error"/>
