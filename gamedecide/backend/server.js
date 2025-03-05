@@ -3,6 +3,7 @@ const app = express();
 import ViteExpress from 'vite-express';
 import mongo from 'mongodb';
 import path from 'path';
+import 'dotenv/config';
 const MongoClient = mongo.MongoClient;
 const port = 3000;
 //const host = "localhost";
@@ -53,7 +54,7 @@ getCollections();
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: 'http://localhost:5173/auth/github/callback' // May need to change? Ensure this matches GitHub's OAuth app settings
+    callbackURL: 'http://localhost:3000/auth/github/callback' // May need to change? Ensure this matches GitHub's OAuth app settings
 }, (accessToken, refreshToken, profile, done) => {
     // Pass user profile to the session without storing anything in the database
     done(null, { id: profile.id, username: profile.username });
