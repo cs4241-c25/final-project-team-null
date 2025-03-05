@@ -30,7 +30,7 @@ function CreateGroup({ user }) {
             .catch(err => console.error("Error fetching profiles:", err));
     }, []); // Empty dependency array ensures it only runs once
 
-    const mapProfiles = (itemList) => 
+    const mapProfiles = (itemList) =>
         itemList.map((option) => option.name + " (" + option.username + ")");
 
     function selectProfile(name) {
@@ -38,7 +38,7 @@ function CreateGroup({ user }) {
         if (!profile) return; // Avoid errors if profile is not found
 
         // Prevent duplicates
-        if (!groupMembers.some(member => member.username === profile.username)) {
+        if (!groupMembers.some(member => member.username === profile.username && member.name === profile.name)) {
             setGroupMembers([...groupMembers, profile]);
         }
     }
