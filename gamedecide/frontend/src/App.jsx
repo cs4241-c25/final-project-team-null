@@ -8,6 +8,8 @@ import CreateBoardGame from "./CreateBoardgame.jsx";
 import EditGame from "./EditGame.jsx";
 import Generate from "./Generate.jsx";
 import GameSearch from "./GameSearch.jsx";
+import CreateGroup from "./CreateGroup.jsx";
+import UserGroups from "./UserGroups.jsx";
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
                   <Route path="/createboardgame" element={isAuthed ? <CreateBoardGame user={username}/> : <Navigate to="/" />}/>
                   <Route path="/editgame" element={isAuthed ? <EditGame user={username}/> : <Navigate to="/" />}/>
                   <Route path="/generate" element={isAuthed ? <Generate user={username}/> : <Navigate to="/" />}/>
+                  <Route path="/creategroup" element={isAuthed ? <CreateGroup user={username}/> : <Navigate to="/" />}/>
+                  <Route path="/usergroups" element={isAuthed ? <UserGroups user={username}/> : <Navigate to="/" />}/>
 
               </Routes>
           </Router>
