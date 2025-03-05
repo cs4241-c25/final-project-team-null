@@ -57,7 +57,7 @@ function SignIn({setuser}) {
                         <ActionButtonComponent text="Log in" action={LogIn}/>
                         <ActionButtonComponent text="Sign up" action={SignUp}/>
                     </Box>
-                  <PComponent text={"error here"} color="error"/>
+                  <PComponent text={errortext} color="error"/>
               </Box>
           </Container>
       </div>

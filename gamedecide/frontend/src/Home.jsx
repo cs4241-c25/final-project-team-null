@@ -2,14 +2,25 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
 import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
+import ActionButtonComponent from "./components/ButtonComponents/ActionButtonComponent.jsx";
 import {Box, Container} from "@mui/material";
 import H2Component from "./components/TypographyComponents/H2Component.jsx";
 import hero from "./assets/hero.jpg"
 import HeroTextComponent from "./components/TypographyComponents/HeroTextComponent.jsx";
+import {useNavigate} from "react-router-dom";
 
 function Home({user}) {
 
   const [username, setUsername] = useState("guest");
+    const navigate = useNavigate();
+
+  function LogOut(){
+      axios.post("/logout/")
+          .then(res => {
+                  navigate("/");
+          })
+          .catch(err => console.log(err));
+  }
 
   return (
       <div className="w-full h-full flex flex-col">
@@ -27,6 +38,7 @@ function Home({user}) {
                   <RedirectButtonComponent link="/usergroups" text="groups"/>
                   <RedirectButtonComponent link="/gamesearch" text="games"/>
                   <RedirectButtonComponent link="/generate" text="generate game"/>
+                  <ActionButtonComponent text="Log out" action={LogOut}/>
               </Box>
           </Container>
       </div>
