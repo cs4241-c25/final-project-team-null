@@ -23,9 +23,14 @@ let users = null,
     groups = null,
     games = null;
 
+const{
+    GITHUB_CLIENT_ID,
+    GITHUB_CLIENT_SECRET
+} = process.env;
+
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 app.use(session({
-    secret: 'session_secret',
+    secret: '9211',
     resave: false,
     saveUninitialized: false
 }));
@@ -46,8 +51,8 @@ getCollections();
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 passport.use(new GitHubStrategy({
-    clientID: process.env.GITHUB_CLIENT_ID,
-    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    clientID: GITHUB_CLIENT_ID,
+    clientSecret: GITHUB_CLIENT_SECRET,
     callbackURL: 'http://localhost:5173/auth/github/callback' // May need to change? Ensure this matches GitHub's OAuth app settings
 }, (accessToken, refreshToken, profile, done) => {
     // Pass user profile to the session without storing anything in the database
