@@ -53,13 +53,21 @@ function EditGroup({ user }) {
 
     const location = useLocation();
     useEffect(() => {
-        const { name, description, year, platform, ownership, minplayers, maxplayers } = location.state || {};
-        const group = { name: "", profiles: [{ username: "", name: "" }], oldname: "" }
-        group.oldname = name;
-        console.log("game: ", group)
-        setFormData(group);
-        setGroupMembers(group.profiles);
+        const { username, name } = location.state || {};
+        axios.post("/editgroup/", JSON.stringify({username: username, name: name}))
+            .then(res => {
+                const group = res.data;
+                group.oldname = name;
+                setFormData(group);
+                setGroupMembers(group.profiles);
+            })
+            .catch(err => console.error("Error fetching profiles:", err));
     }, [])
+
+    useEffect(() => {
+        console.log("profiles: ", profiles)
+    }, [profiles])
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
