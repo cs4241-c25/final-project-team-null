@@ -7,6 +7,10 @@ const MongoClient = mongo.MongoClient;
 const port = 3000;
 //const host = "localhost";
 const host = "0.0.0.0";
+import passport from 'passport'; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+import { Strategy as GitHubStrategy } from 'passport-github2'; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+import session from 'express-session' // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
 const NUM_GAMES_RETURNED = 5;
 
@@ -19,6 +23,17 @@ let users = null,
     groups = null,
     games = null;
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+app.use(session({
+    secret: 'session_secret',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 async function getCollections(){
     await dbconnect.connect().then(()=> console.log("Connected!"));
     users = await dbconnect.db(db).collection("users");
@@ -27,6 +42,29 @@ async function getCollections(){
     games = await dbconnect.db(db).collection("games");
 }
 getCollections();
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+passport.use(new GitHubStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: 'http://localhost:5173/auth/github/callback' // May need to change? Ensure this matches GitHub's OAuth app settings
+}, (accessToken, refreshToken, profile, done) => {
+    // Pass user profile to the session without storing anything in the database
+    done(null, { id: profile.id, username: profile.username });
+}));
+
+passport.serializeUser((user, done) => {
+    done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+    done(null, user);
+});
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 
 //#region mongodb queries
 async function SendAllGames(res){
@@ -138,6 +176,30 @@ async function AttemptUpdateGroup(data){
     }
 }
 //#endregion
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+app.get('/auth/github', passport.authenticate('github', { scope: ['user:email'] }));
+
+
+app.get('/auth/github/callback', (req, res, next) => {
+    passport.authenticate('github', (err, user) => {
+        if (err || !user) {
+            // If authentication fails, send an error message
+            res.send("Error");
+        } else {
+            req.login(user, (loginErr) => {
+                if (loginErr) {
+                    res.send("Error");
+                } else {
+                    res.send("OK");
+                }
+            });
+        }
+    })(req, res, next);
+});
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 
 app.post("/findgame", (req, res) => {
     SendAllGames(res);
