@@ -47,7 +47,7 @@ function CreateGroup({ user }) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        let newGroup = {username: user, name: formData.name, profiles: {username: groupMembers.map(member => member.username), name: groupMembers.map(member => member.name)}};
+        let newGroup = {username: user, name: formData.name, profiles: groupMembers};
         console.log("New group:", newGroup);
 
         axios.post("/submitgroup", JSON.stringify(newGroup))
