@@ -37,9 +37,9 @@ function Home({user, setuser, auth}) {
         setuser(text);
         setUsername(text);
         setLoading(false);
-        auth(true);
-
-
+        if(text !== "guest"){
+            auth(true);
+        }
         console.log(username)
     }
 
