@@ -25,7 +25,7 @@ function Home({user}) {
   return (
       <div className="w-full h-full flex flex-col">
           <Box className="w-full flex flex-col gap-2 justify-center items-center self-start" sx={{
-              height: "70vh",
+              height: "60vh",
               backgroundImage: `url(${hero})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -38,7 +38,7 @@ function Home({user}) {
                   <RedirectButtonComponent link="/usergroups" text="groups"/>
                   <RedirectButtonComponent link="/gamesearch" text="games"/>
                   <RedirectButtonComponent link="/generate" text="generate game"/>
-                  <ActionButtonComponent text="Log out" action={LogOut}/>
+                  <ActionButtonComponent text="Log out" importance={"error"} action={LogOut}/>
               </Box>
           </Container>
       </div>
