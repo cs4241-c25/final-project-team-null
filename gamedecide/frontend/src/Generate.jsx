@@ -88,7 +88,9 @@ function Generate({user}) {
 
     useEffect(() => {
         if(groupSelect) {
-            GetAllProfiles();
+            const tempProfiles = groupSelect.profiles;
+            tempProfiles.unshift({username: "", name: "Any"});
+            setProfiles(tempProfiles);
         }
     }, [groupSelect])
 
