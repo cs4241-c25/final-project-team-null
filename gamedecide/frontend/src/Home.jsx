@@ -40,7 +40,6 @@ function Home({user, setuser, auth}) {
         if(text !== "guest"){
             auth(true);
         }
-        console.log(username)
     }
 
     GetUsername();

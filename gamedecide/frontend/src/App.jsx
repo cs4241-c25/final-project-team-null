@@ -24,29 +24,20 @@ function App({setAuthed, getAuthed, setUsername, getUsername}) {
   const location = useLocation();
 
   function HandleNewUsername(name){
-      console.log("got username");
       setUsername(username);
       username=name;
-      console.log(getUsername());
   }
 
   function handleAuth(authed){
-      console.log("authing");
       setAuthed(authed);
       isAuthed = authed;
-      console.log(getAuthed());
   }
 
-  function printValues(){
-      console.log(username);
-      console.log(isAuthed);
-  }
 
 
   return (
       <>
           {location.pathname !== "/" && <RedirectButtonComponent link="/home" text="home"/>}
-          <ActionButtonComponent text="SeeUsername&Auth" action={printValues}/>
           <Routes>
               <Route path="/" element={<SignIn/>} />
               <Route path="/home" element={<Home user={username} setuser={HandleNewUsername} auth={handleAuth}/>}/>

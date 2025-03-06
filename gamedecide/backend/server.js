@@ -213,7 +213,6 @@ app.get('/auth/github/callback', (req, res, next) => {
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 app.post("/currentuser", (req, res)=>{
-    console.log(username);
     res.end(username);
 });
 
