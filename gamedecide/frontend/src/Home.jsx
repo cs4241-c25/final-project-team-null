@@ -12,6 +12,7 @@ import {useNavigate} from "react-router-dom";
 function Home({user, setuser}) {
 
   const [username, setUsername] = useState("guest");
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(()=> {
@@ -19,8 +20,11 @@ function Home({user, setuser}) {
             .then(res => {
                 setuser(res.data);
                 setUsername(res.data);
+                setLoading(false);
             })
-            .catch(err => console.log(err));
+            .catch((err)=>{
+                console.log(err)
+                setLoading(false);});
     }, [])
 
   function LogOut(){
@@ -29,6 +33,10 @@ function Home({user, setuser}) {
                   navigate("/");
           })
           .catch(err => console.log(err));
+  }
+
+  if(loading){
+      return <div>Loading...</div>;
   }
 
   return (
