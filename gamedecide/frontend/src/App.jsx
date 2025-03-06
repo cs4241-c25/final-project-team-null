@@ -25,10 +25,12 @@ function App() {
   const location = useLocation();
 
   function HandleNewUsername(username){
+      console.log("got username");
       setUsername(username);
   }
 
   function handleAuth(authed){
+      console.log("authing");
       setIsAuthed(!!authed);
   }
 
