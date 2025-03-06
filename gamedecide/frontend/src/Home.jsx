@@ -15,7 +15,7 @@ function Home({user, setuser, auth}) {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    useEffect(()=> {
+    /*useEffect(()=> {
         axios.post("/currentuser")
             .then(res => {
                 setuser(res.data);
@@ -26,7 +26,24 @@ function Home({user, setuser, auth}) {
             .catch((err)=>{
                 auth(false);
                 setLoading(false);});
-    }, [])
+    }, [])*/
+
+    const GetUsername = async function(){
+        const response = await fetch( "/currentuser", {
+            method:'POST'
+        })
+
+        const text = await response.text()
+        setuser(text);
+        setUsername(text);
+        setLoading(false);
+        auth(true);
+
+
+        console.log(username)
+    }
+
+    GetUsername();
 
   function LogOut(){
       axios.post("/logout/")
