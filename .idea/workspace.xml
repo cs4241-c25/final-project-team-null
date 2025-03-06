@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/ActionButtonComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ButtonComponents/ActionButtonComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/CreateGroup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/CreateGroup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/EditGroup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/EditGroup.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="3ca66bcdb90471519ab32563a067649eef51c7e6" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,7 +48,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "disable.download.node.interpreter.editor.notification": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "jyip168-changes2",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/tobyw/OneDrive/Documents/GitHub/final-project-team-null/gamedecide",
     "node.js.detected.package.eslint": "true",
