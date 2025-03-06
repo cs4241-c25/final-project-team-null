@@ -11,6 +11,7 @@ const host = "0.0.0.0";
 import passport from 'passport'; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 import { Strategy as GitHubStrategy } from 'passport-github2'; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 import session from 'express-session' // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+let username="guest";
 
 
 const NUM_GAMES_RETURNED = 5;
@@ -56,6 +57,7 @@ passport.use(new GitHubStrategy({
     clientSecret: GITHUB_CLIENT_SECRET,
     callbackURL: 'http://gamedecide.onrender.com/auth/github/callback' // May need to change? Ensure this matches GitHub's OAuth app settings
 }, (accessToken, refreshToken, profile, done) => {
+    if(username==="guest"){username = profile.username;}
     // Pass user profile to the session without storing anything in the database
     done(null, { id: profile.id, username: profile.username });
 }));
@@ -210,7 +212,9 @@ app.get('/auth/github/callback', (req, res, next) => {
 });
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
+app.post("/currentuser", (req, res)=>{
+    res.end(username);
+});
 
 app.post("/findgame", (req, res) => {
     SendAllGames(res);

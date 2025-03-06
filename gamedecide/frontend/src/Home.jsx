@@ -9,10 +9,20 @@ import hero from "./assets/hero.jpg"
 import HeroTextComponent from "./components/TypographyComponents/HeroTextComponent.jsx";
 import {useNavigate} from "react-router-dom";
 
-function Home({user}) {
+function Home({user, setuser}) {
 
   const [username, setUsername] = useState("guest");
     const navigate = useNavigate();
+
+    function GetNewUsername() {
+        axios.post("/currentuser")
+            .then(res => {
+                setuser(res.data);
+                setUsername(res.data);
+            })
+            .catch(err => console.log(err));
+    }
+    GetNewUsername();
 
   function LogOut(){
       axios.post("/logout/")

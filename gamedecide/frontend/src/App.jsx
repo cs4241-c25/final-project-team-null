@@ -34,7 +34,7 @@ function App() {
           {location.pathname !== "/" && <RedirectButtonComponent link="/home" text="home"/>}
           <Routes>
               <Route path="/" element={<SignIn setuser={HandleNewUsername}/>} />
-              <Route path="/home" element={isAuthed ? <Home user={username}/> : <Navigate to="/" />}/>
+              <Route path="/home" element={isAuthed ? <Home user={username} setuser={HandleNewUsername}/> : <Navigate to="/" />}/>
               <Route path="/userprofiles" element={isAuthed ? <UserProfiles user={username}/> : <Navigate to="/" />}/>
               <Route path="/createprofile" element={ isAuthed ? <CreateProfile user={username} /> : <Navigate to="/" />}/>
               <Route path="/editprofile" element={ isAuthed ? <EditProfile user={username}/> : <Navigate to="/" />}/>
