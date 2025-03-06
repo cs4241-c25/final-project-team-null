@@ -76,11 +76,19 @@ function Generate({user}) {
         setGeneration({...generation, group: name})
     }
 
+    function GetAllProfiles(){
+        axios.post("/getallprofiles")
+            .then(res => {
+                const tempProfiles = JSON.parse(res.data);
+                tempProfiles.unshift({username: "", name: "Any"});
+                setProfiles(tempProfiles);
+            })
+            .catch(err => console.log(err));
+    }
+
     useEffect(() => {
         if(groupSelect) {
-            const tempProfiles = groupSelect.profiles;
-            tempProfiles.unshift({username: "", name: "Any"});
-            setProfiles(tempProfiles);
+            GetAllProfiles();
         }
     }, [groupSelect])
 
