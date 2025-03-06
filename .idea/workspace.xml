@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
-      <change beforePath="$PROJECT_DIR$/gamedecide/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/CreateGroup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/CreateGroup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/EditGroup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/EditGroup.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="3ca66bcdb90471519ab32563a067649eef51c7e6" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,7 +48,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "disable.download.node.interpreter.editor.notification": "true",
-    "git-widget-placeholder": "d133c1e4",
+    "git-widget-placeholder": "jyip168-changes2",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/tobyw/OneDrive/Documents/GitHub/final-project-team-null/gamedecide",
     "node.js.detected.package.eslint": "true",
@@ -58,7 +60,7 @@
     "npm.build.executor": "Run",
     "npm.dev.executor": "Run",
     "npm.start.executor": "Run",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -156,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740159753370</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="merge from main">
+      <option name="closed" value="true" />
+      <created>1741219073928</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741219073928</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

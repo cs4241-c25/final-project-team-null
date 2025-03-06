@@ -42,7 +42,7 @@ function EditGroup({ user }) {
     }
 
     function handleDelete(username, profileName) {
-        setGroupMembers(groupMembers.filter(member => member.username !== username));
+        setGroupMembers(groupMembers.filter(member => !(member.username === username && member.name === profileName)));
     }
 
 
@@ -76,7 +76,7 @@ function EditGroup({ user }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        
+
         let body = JSON.stringify({username: user, name: formData.name, oldname: formData.oldname, profiles: groupMembers});
         console.log("New group:", body);
 
@@ -91,42 +91,51 @@ function EditGroup({ user }) {
 
     return (
         <>
-        <form className="flex flex-col justify-start items-center gap-4 w-full" onSubmit={handleSubmit}>
-            <Container maxWidth="sm">
-                <H1Component text={"Edit New Group"} />
+            <Container maxWidth="sm" className="flex flex-col justify-center items-center gap-4 my-8">
+                <form className="flex flex-col justify-start items-center gap-4 w-full" onSubmit={handleSubmit}>
 
-                <FormTextFieldComponent
-                    label="Group Name"
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                />
+                    <H1Component text={"Edit New Group"}/>
 
-                {/* Search / Select Component */}
-                <ActionSelectorComponent2
-                    id="profileSelector"
-                    itemList={profiles}
-                    label="Select a Profile"
-                    text="Add Profile"
-                    map={mapProfiles}
-                    action={selectProfile}
-                />
-
-                {/* Dynamically display selected group members using ProfileComponent */}
-                <Box className="w-full flex flex-col gap-2">
-                    {groupMembers.map((member) => (
-                        <ProfileComponent
-                            key={member.username}
-                            user={user}
-                            profile={member.name}
-                            functions={{ handleDelete }}
+                    <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md items-center" bgcolor="cardBG.main">
+                        <FormTextFieldComponent
+                            label="Group Name"
+                            name="name"
+                            type="text"
+                            value={formData.name}
+                            onChange={(e) => setFormData({...formData, name: e.target.value})}
                         />
-                    ))}
-                </Box>
-                <SubmitButtonComponent />
+                    </Box>
+
+                    <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md items-center" bgcolor="cardBG.main">
+                        {/* Search / Select Component */}
+                        <ActionSelectorComponent2
+                            id="profileSelector"
+                            itemList={profiles}
+                            label="Select a Profile"
+                            text="Add Profile"
+                            map={mapProfiles}
+                            action={selectProfile}
+                        />
+
+                        {/* Dynamically display selected group members using ProfileComponent */}
+                        <Box className="w-full flex flex-col gap-2" sx={{
+                            height: 300,
+                            overflow: "hidden",
+                            overflowY: "scroll",
+                        }}>
+                            {groupMembers.map((member) => (
+                                <ProfileComponent
+                                    key={member.username}
+                                    user={member.username}
+                                    profile={member.name}
+                                    functions={{handleDelete}}
+                                />
+                            ))}
+                        </Box>
+                    </Box>
+                    <SubmitButtonComponent/>
+                </form>
             </Container>
-            </form>
         </>
     )
 }
