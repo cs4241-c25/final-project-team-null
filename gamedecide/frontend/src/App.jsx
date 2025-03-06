@@ -20,7 +20,7 @@ function App() {
 
 
   const [username, setUsername] = useState("guest");
-  const [isAuthed, setIsAuthed] = useState(true);
+  const [isAuthed, setIsAuthed] = useState(false);
 
   //const [isAuthed, setIsAuthed] = useState(true);
 
