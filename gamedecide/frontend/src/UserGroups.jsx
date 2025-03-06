@@ -31,6 +31,10 @@ function UserGroups({user}) {
             .catch(err => console.log(err));
     }
 
+    function handleRedirect(username, profile) {
+        navigate("/editprofile", {state: {username: user, name: profile}});
+    }
+
     return (
         <Container maxWidth="sm" className="h-full flex flex-col justify-center items-center my-8 gap-4 p-4 rounded-md">
             <H1Component text={"Groups"}/>

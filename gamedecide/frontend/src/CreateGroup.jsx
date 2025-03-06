@@ -1,3 +1,4 @@
+import './App.css'
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Autocomplete, Box, Container} from "@mui/material";
@@ -6,8 +7,12 @@ import FormTextFieldComponent from "./components/FormTextFieldComponent.jsx";
 import SubmitButtonComponent from "./components/ButtonComponents/SubmitButtonComponent.jsx";
 import ProfileComponent from "./components/ProfileComponent.jsx";
 import ActionSelectorComponent2 from "./components/ActionSelectorComponent2.jsx";
+import {useNavigate} from "react-router-dom";
 
 function CreateGroup({ user }) {
+
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         name: '',
         members: [],
@@ -40,7 +45,21 @@ function CreateGroup({ user }) {
         setGroupMembers(groupMembers.filter(member => member.username !== username));
     }
 
+    function handleSubmit(event) {
+        event.preventDefault()
+        let newGroup = {username: user, name: formData.name, profiles: {username: groupMembers.map(member => member.username), name: groupMembers.map(member => member.name)}};
+        console.log("New group:", newGroup);
+
+        axios.post("/submitgroup", JSON.stringify(newGroup))
+            .then(res => {
+                console.log("res: ", res.data);
+                navigate("/usergroups");
+            })
+            .catch(err => console.log(err));
+    }
+
     return (
+        <form className="flex flex-col justify-start items-center gap-4 w-full" onSubmit={handleSubmit}>
         <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
             <H1Component text={"Create New Group"} />
 
@@ -76,6 +95,7 @@ function CreateGroup({ user }) {
 
             <SubmitButtonComponent />
         </Container>
+        </form>
     );
 }
 

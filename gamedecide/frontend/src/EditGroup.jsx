@@ -74,12 +74,15 @@ function EditGroup({ user }) {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const body = JSON.stringify(formData);
+    function handleSubmit(event) {
+        event.preventDefault();
+        
+        let newGroup = {username: user, name: formData.name, oldname: group.oldname, profiles: {username: groupMembers.map(member => member.username), name: groupMembers.map(member => member.name)}};
+        console.log("New group:", newGroup);
+
         fetch('/updategroups', {
             method: "POST",
-            body
+            newGroup
         }).then(navigate("/usergroups"));
         //Change to be a backend edit button
         console.log(formData);
@@ -87,6 +90,7 @@ function EditGroup({ user }) {
 
     return (
         <>
+        <form className="flex flex-col justify-start items-center gap-4 w-full" onSubmit={handleSubmit}>
             <Container maxWidth="sm">
                 <H1Component text={"Edit New Group"} />
 
@@ -121,6 +125,7 @@ function EditGroup({ user }) {
                 </Box>
                 <SubmitButtonComponent />
             </Container>
+            </form>
         </>
     )
 }
