@@ -8,12 +8,10 @@ import CssBaseline from '@mui/material/CssBaseline';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 createRoot(document.getElementById('app-root')).render(
-  <StrictMode>
       <ThemeProvider theme={theme}>
           <CssBaseline />
           <Router>
               <App />
           </Router>
       </ThemeProvider>
-  </StrictMode>,
 )
