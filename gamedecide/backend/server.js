@@ -54,7 +54,7 @@ getCollections();
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: 'http://localhost:3000/auth/github/callback' // May need to change? Ensure this matches GitHub's OAuth app settings
+    callbackURL: 'http://gamedecide.onrender.com/auth/github/callback' // May need to change? Ensure this matches GitHub's OAuth app settings
 }, (accessToken, refreshToken, profile, done) => {
     // Pass user profile to the session without storing anything in the database
     done(null, { id: profile.id, username: profile.username });
