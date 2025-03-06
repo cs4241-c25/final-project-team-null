@@ -9,7 +9,7 @@ import hero from "./assets/hero.jpg"
 import HeroTextComponent from "./components/TypographyComponents/HeroTextComponent.jsx";
 import {useNavigate} from "react-router-dom";
 
-function Home({user, setuser}) {
+function Home({user, setuser, auth}) {
 
   const [username, setUsername] = useState("guest");
     const [loading, setLoading] = useState(true);
@@ -21,9 +21,11 @@ function Home({user, setuser}) {
                 setuser(res.data);
                 setUsername(res.data);
                 setLoading(false);
+                auth(true);
             })
             .catch((err)=>{
                 console.log(err)
+                auth(false);
                 setLoading(false);});
     }, [])
 
