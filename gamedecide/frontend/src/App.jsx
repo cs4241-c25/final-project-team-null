@@ -16,25 +16,25 @@ import ActionButtonComponent from "./components/ButtonComponents/ActionButtonCom
 import SignIn from "./SignIn.jsx";
 import {Login} from "@mui/icons-material";
 
-function App() {
+function App({setAuthed, getAuthed, setUsername, getUsername}) {
 
-
-  const [username, setUsername] = useState("guest");
-  const [isAuthed, setIsAuthed] = useState(false);
-
-  //const [isAuthed, setIsAuthed] = useState(true);
+    let username = getUsername();
+    let isAuthed = getAuthed();
 
   const location = useLocation();
 
-  function HandleNewUsername(username){
+  function HandleNewUsername(name){
       console.log("got username");
       setUsername(username);
+      username=name;
+      console.log(getUsername());
   }
 
   function handleAuth(authed){
       console.log("authing");
-      setIsAuthed(!!authed);
-      console.log(isAuthed);
+      setAuthed(authed);
+      isAuthed = authed;
+      console.log(getAuthed());
   }
 
   function printValues(){
