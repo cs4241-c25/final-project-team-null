@@ -32,6 +32,7 @@ function App() {
   function handleAuth(authed){
       console.log("authing");
       setIsAuthed(!!authed);
+      console.log(isAuthed);
   }
 
 
