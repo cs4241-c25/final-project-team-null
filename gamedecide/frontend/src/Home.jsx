@@ -14,15 +14,14 @@ function Home({user, setuser}) {
   const [username, setUsername] = useState("guest");
     const navigate = useNavigate();
 
-    function GetNewUsername() {
+    useEffect(()=> {
         axios.post("/currentuser")
             .then(res => {
                 setuser(res.data);
                 setUsername(res.data);
             })
             .catch(err => console.log(err));
-    }
-    GetNewUsername();
+    }, [])
 
   function LogOut(){
       axios.post("/logout/")
