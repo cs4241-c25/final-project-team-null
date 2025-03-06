@@ -41,7 +41,7 @@ function CreateGroup({ user }) {
     }
 
     function handleDelete(username, profileName) {
-        setGroupMembers(groupMembers.filter(member => member.username !== username));
+        setGroupMembers(groupMembers.filter(member => !(member.username === username && member.name === profileName)));
     }
 
     function handleSubmit(event) {
@@ -92,7 +92,7 @@ function CreateGroup({ user }) {
                         {groupMembers.map((member) => (
                             <ProfileComponent
                                 key={member.username}
-                                user={user}
+                                user={member.username}
                                 profile={member.name}
                                 functions={{handleDelete}}
                             />

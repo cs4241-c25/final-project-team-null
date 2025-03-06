@@ -42,7 +42,7 @@ function EditGroup({ user }) {
     }
 
     function handleDelete(username, profileName) {
-        setGroupMembers(groupMembers.filter(member => member.username !== username));
+        setGroupMembers(groupMembers.filter(member => !(member.username === username && member.name === profileName)));
     }
 
 
@@ -126,7 +126,7 @@ function EditGroup({ user }) {
                             {groupMembers.map((member) => (
                                 <ProfileComponent
                                     key={member.username}
-                                    user={user}
+                                    user={member.username}
                                     profile={member.name}
                                     functions={{handleDelete}}
                                 />
