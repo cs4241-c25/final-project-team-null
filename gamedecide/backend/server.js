@@ -200,9 +200,9 @@ app.get('/auth/github/callback', (req, res, next) => {
         } else {
             req.login(user, (loginErr) => {
                 if (loginErr) {
-                    res.send("Error");
+                    res.redirect('/');
                 } else {
-                    res.send("OK");
+                    res.redirect('/home');
                 }
             });
         }
