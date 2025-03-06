@@ -37,7 +37,7 @@ function App({setAuthed, getAuthed, setUsername, getUsername}) {
 
   return (
       <>
-          {location.pathname !== "/" && <RedirectButtonComponent link="/home" text="home"/>}
+          {location.pathname !== "/" && location.pathname !== "/home" &&  <RedirectButtonComponent link="/home" text="home"/>}
           <Routes>
               <Route path="/" element={<SignIn/>} />
               <Route path="/home" element={<Home user={username} setuser={HandleNewUsername} auth={handleAuth}/>}/>

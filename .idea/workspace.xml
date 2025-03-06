@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/backend/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/SignIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/SignIn.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
