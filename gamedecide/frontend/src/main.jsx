@@ -9,6 +9,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 let isAuthed = false;
 let username = "guest";
+console.log("setting default variables");
 
 function setAuthed(value){
     isAuthed = value;
