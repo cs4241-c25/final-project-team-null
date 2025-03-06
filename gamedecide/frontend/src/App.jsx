@@ -12,7 +12,9 @@ import CreateGroup from "./CreateGroup.jsx";
 import UserGroups from "./UserGroups.jsx";
 import EditGroup from "./EditGroup.jsx";
 import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
+import ActionButtonComponent from "./components/ButtonComponents/ActionButtonComponent.jsx";
 import SignIn from "./SignIn.jsx";
+import {Login} from "@mui/icons-material";
 
 function App() {
 
@@ -35,10 +37,16 @@ function App() {
       console.log(isAuthed);
   }
 
+  function printValues(){
+      console.log(username);
+      console.log(isAuthed);
+  }
+
 
   return (
       <>
           {location.pathname !== "/" && <RedirectButtonComponent link="/home" text="home"/>}
+          <ActionButtonComponent text="SeeUsername&Auth" action={printValues}/>
           <Routes>
               <Route path="/" element={<SignIn setuser={HandleNewUsername}/>} />
               <Route path="/home" element={<Home user={username} setuser={HandleNewUsername} auth={handleAuth}/>}/>
