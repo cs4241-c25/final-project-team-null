@@ -77,13 +77,14 @@ function EditGroup({ user }) {
     function handleSubmit(event) {
         event.preventDefault();
         
-        let newGroup = {username: user, name: formData.name, oldname: group.oldname, profiles: {username: groupMembers.map(member => member.username), name: groupMembers.map(member => member.name)}};
-        console.log("New group:", newGroup);
+        let body = JSON.stringify({username: user, name: formData.name, oldname: formData.oldname, profiles: groupMembers});
+        console.log("New group:", body);
 
-        fetch('/updategroups', {
+        fetch('/updategroup', {
             method: "POST",
-            newGroup
+            body
         }).then(navigate("/usergroups"));
+
         //Change to be a backend edit button
         console.log(formData);
     };
