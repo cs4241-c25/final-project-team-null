@@ -166,6 +166,12 @@ async function SendAllGroupNames(username, res){
 
 async function SendGroup(username, name, res){
     const result = await groups.findOne({username:username, name:name});
+    const groupProfiles = result.profiles;
+    for(let i=0; i<groupProfiles.length; i++){
+        groupProfiles[i] = {name:groupProfiles[i], username:username}
+    }
+    result.profiles = groupProfiles;
+
     res.end(JSON.stringify(result));
 }
 
