@@ -48,7 +48,7 @@ function App({setAuthed, getAuthed, setUsername, getUsername}) {
           {location.pathname !== "/" && <RedirectButtonComponent link="/home" text="home"/>}
           <ActionButtonComponent text="SeeUsername&Auth" action={printValues}/>
           <Routes>
-              <Route path="/" element={<SignIn setuser={HandleNewUsername}/>} />
+              <Route path="/" element={<SignIn/>} />
               <Route path="/home" element={<Home user={username} setuser={HandleNewUsername} auth={handleAuth}/>}/>
               <Route path="/userprofiles" element={isAuthed ? <UserProfiles user={username}/> : <Navigate to="/" />}/>
               <Route path="/createprofile" element={ isAuthed ? <CreateProfile user={username} /> : <Navigate to="/" />}/>
