@@ -10,15 +10,27 @@ import {BrowserRouter as Router} from 'react-router-dom';
 let isAuthed = false;
 let username = "guest";
 console.log("setting default variables");
+if(localStorage.getItem("isAuthed")==="true"){
+    isAuthed = true;
+}
+
+username=localStorage.getItem("username");
 
 function setAuthed(value){
     isAuthed = value;
+    if(isAuthed){
+        localStorage.setItem("isAuthed","true");
+    }
+    else{
+        localStorage.setItem("isAuthed","false");
+    }
 }
 function getAuthed(){
     return isAuthed;
 }
 function setUsername(value){
     username=value;
+    localStorage.setItem("username",username);
 }
 function getUsername(){
     return username;
