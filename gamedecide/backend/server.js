@@ -181,6 +181,11 @@ async function AttemptUpdateGroup(data){
         await insertIntoCollection(data, groups);
     }
 }
+
+async function DeleteGroup(username, name, res){
+    const result = await groups.deleteOne({username:username, name:name});
+    res.end(JSON.stringify(result));
+}
 //#endregion
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -416,6 +421,19 @@ app.post("/updategroup", (req, res) => {
         })
     })
 })
+
+app.delete("/deletegroup", async (req, res) => {
+    let dataString = ""
+
+    req.on("data", async function (data) {
+        dataString += data
+    })
+
+    req.on("end", function () {
+        const data = JSON.parse(dataString);
+        DeleteGroup(data.username, data.name, res);
+    })
+});
 
 app.post("/submitgroup", (req, res) => {
     let dataString = ""
