@@ -18,13 +18,15 @@ function Home({user, setuser, auth}) {
     useEffect(()=> {
         axios.post("/currentuser")
             .then(res => {
+                console.log("got user");
+                console.log(res.data);
                 setuser(res.data);
                 setUsername(res.data);
                 setLoading(false);
                 auth(true);
             })
             .catch((err)=>{
-                console.log(err)
+                console.log("error");
                 auth(false);
                 setLoading(false);});
     }, [])
