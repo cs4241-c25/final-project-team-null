@@ -14,14 +14,23 @@ that of a specific group member. The platform can be any, physical, or digital. 
 uses weighted random generation to select a game with the correct player count and platform that is not on anyone's
 blacklist, prioritizing games that are people's favorites.
 
+
 Technologies:
+
 React (vite): frontend development
+
 Express: backend development
+
 Axios: frontend & backend communication
+
 MongoDB: data storage in database
+
 MaterialUI & Tailwind: CSS Styling
+
 Passport: Authentication via Github
+
 Render: app deployment
+
 
 We had a lot of trouble deploying our app. We originally attempted to deploy on Glitch, but found out it didn't support
 the latest version of Node, which we were using. We then switched to Render. Render also gave us problems, since we
@@ -30,11 +39,16 @@ making separate render sites for the frontend and backend, but ran into issues w
 by using vite-express and having the server reference a static build of the frontend.
 We also had trouble with code refactoring to improve modularity and readability, as well as synchronize Object structure.
 
+
 Samuel Wilensky: Backend code, database interaction, deployment
+
 Austin Hyatt: Group creation and editing, Game creation and editing
+
 Justin Yip: CreateProfile (Frontend), EditProfile (Frontend), DeleteProfile, EditGame (Frontend), DeleteGame, 
     CreateProfile (Frontend), EditProfile (Frontend), DeleteProfile, Generate (Frontend), Router Setup, 
     Component Setup, Front End Styling, Home Page Hero Section
+
 Nicholas Giangregorio: Authentication (Backend)
+
 
 https://www.youtube.com/watch?v=BXi7Ktm-7ec
