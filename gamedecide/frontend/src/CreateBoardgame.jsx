@@ -17,6 +17,7 @@ function CreateBoardGame({user}) {
     name: '',
     minplayers: 0,
     maxplayers: 0,
+    unlimitedMax: false
   });
 
   const handleChange = (e) => {

@@ -37,7 +37,7 @@ function GameFormComponent({formData, functions}) {
                             onChange={functions.handleChange}
                             className="w-1/3 h-full"
                         />
-                        <CheckBoxComponent id="unlimitedMax" value="unlimited players"/>
+                        <CheckBoxComponent id="unlimitedMax" label="unlimited players" value={formData.unlimitedMax}/>
                     </Box>
                     <FormControl component="fieldset" margin="normal">
                     </FormControl>

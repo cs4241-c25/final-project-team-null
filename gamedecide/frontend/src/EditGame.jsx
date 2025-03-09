@@ -10,28 +10,21 @@ function EditGame({user}) {
 
     const [formData, setFormData] = useState({
         name: "",
-        description: "",
-        year: 0,
-        platform: "",
-        ownership: "",
         minplayers: 0,
-        maxplayers: 0
+        maxplayers: 0,
+        unlimitedMax: false
     });
 
     const location = useLocation();
     useEffect(() => {
-        const {name, description, year, platform, ownership, minplayers, maxplayers} = location.state || {};
+        const {name, minplayers, maxplayers, unlimitedMax} = location.state || {};
         const game = {
             name: name,
-            description: description,
-            year: year,
-            platform: platform,
-            ownership: ownership,
             minplayers: minplayers,
-            maxplayers: maxplayers
+            maxplayers: maxplayers,
+            unlimitedMax: unlimitedMax
         }
         game.oldname = name;
-        game.oldyear = year;
         console.log("game: ", game)
         setFormData(game);
     }, [])
