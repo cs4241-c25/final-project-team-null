@@ -16,12 +16,11 @@ function CreateBoardGame({user}) {
   const [formData, setFormData] = useState({
     name: '',
     minplayers: 0,
-    maxplayers: 0,
-    unlimitedMax: false
+    maxplayers: 0
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value} = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 

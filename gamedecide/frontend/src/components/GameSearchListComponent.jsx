@@ -19,8 +19,8 @@ function GameSearchListComponent({id, label, games, list, currentList, functions
                 overflowY: "scroll",
             }}>
                 {gamesLibrary.map(game => (
-                    <GameSelectionComponent key={game.name + " (" + game.year + ")"} list={list}
-                                            name={game.name} year={game.year}
+                    <GameSelectionComponent key={game.name} list={list}
+                                            name={game.name}
                                             handleGameDelete={functions.handleGameDelete}/>
                 ))}
             </Box>

@@ -57,13 +57,9 @@ async function AttemptUpdateGame(data){
 async function EditGame(data){
     const game = ({
         name: data.name,
-        description: data.description,
-        year: data.year,
-        platform: data.platform,
-        ownership: data.ownership,
         minplayers: data.minplayers,
         maxplayers: data.maxplayers});
-    const result = await games.replaceOne({name:data.oldname, year:data.oldyear}, game);
+    const result = await games.replaceOne({name:data.oldname}, game);
 }
 
 async function DeleteGame(name, year, res){
@@ -101,7 +97,6 @@ async function AttemptUpdateProfile(data){
 async function EditProfile(data){
     const profile = ({
         name: data.name,
-        library: data.library,
         favorites: data.favorites,
         blacklist: data.blacklist});
     const result = await profiles.replaceOne({name:data.oldname}, profile);

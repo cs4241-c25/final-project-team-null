@@ -1,13 +1,23 @@
 import {FormControlLabel, Checkbox} from "@mui/material";
 import React from "react";
 
-function CheckBoxComponent({value, label, id}) {
+function CheckBoxComponent({value, label, id, onChange, name}) {
 
-    return (
-        <>
-            <FormControlLabel value={label} control={<Checkbox value={value} id={id}/>} label={label}/>
-        </>
-    )
+    if(value){
+        return (
+            <>
+                <FormControlLabel value={label} control={<Checkbox name={name} id={id} onChange={onChange} defaultChecked/>} label={label}/>
+            </>
+        )
+    }
+    else{
+        return (
+            <>
+                <FormControlLabel value={label} control={<Checkbox name={name} id={id} onChange={onChange}/>} label={label}/>
+            </>
+        )
+    }
+
 
 }
 

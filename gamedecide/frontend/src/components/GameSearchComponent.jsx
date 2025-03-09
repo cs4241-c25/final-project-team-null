@@ -11,8 +11,8 @@ function GameSearchComponent({id, games, label, list, currentList, handleGameAdd
 
 
     function handleSubmit() {
-        const existsAlready = currentList.find(game => game.name + " (" + game.year + ")" === input);
-        const isValidGame = games.find(game => (game.name + " (" + game.year + ")" === input));
+        const existsAlready = currentList.find(game => game.name=== input);
+        const isValidGame = games.find(game => (game.name=== input));
         if(existsAlready) {
             setError(true);
             setErrorMessage("Game already exists in list.");
@@ -38,7 +38,7 @@ function GameSearchComponent({id, games, label, list, currentList, handleGameAdd
         setInput(value);
     }
 
-    const mapGames = (itemList) => itemList.map((option) => option.name + " (" + option.year + ")");
+    const mapGames = (itemList) => itemList.map((option) => option.name);
 
     return (
         <Box className="w-full flex flex-row align-center justify-between gap-4">

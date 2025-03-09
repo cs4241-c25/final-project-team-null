@@ -7,7 +7,6 @@ import SubmitButtonComponent from "./ButtonComponents/SubmitButtonComponent.jsx"
 import FormNumberFieldComponent from "./FormNumberFieldComponent.jsx";
 
 function GameFormComponent({formData, functions}) {
-
     return (
         <>
             <Box className="p-6 rounded-md" bgcolor="cardBG.main">
@@ -28,16 +27,17 @@ function GameFormComponent({formData, functions}) {
                             value={formData.minplayers}
                             onChange={functions.handleChange}
                             className="w-1/3 h-full"
+                            min={0}
                         />
                         <FormNumberFieldComponent
                             id="gameMaxPlayers"
-                            label="Max Players"
+                            label="Max Players (-1=unlimited)"
                             name="maxplayers"
                             value={formData.maxplayers}
                             onChange={functions.handleChange}
                             className="w-1/3 h-full"
+                            min={-1}
                         />
-                        <CheckBoxComponent id="unlimitedMax" label="unlimited players" value={formData.unlimitedMax}/>
                     </Box>
                     <FormControl component="fieldset" margin="normal">
                     </FormControl>
