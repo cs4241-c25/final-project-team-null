@@ -8,50 +8,27 @@ import CreateBoardGame from "./CreateBoardgame.jsx";
 import EditGame from "./EditGame.jsx";
 import Generate from "./Generate.jsx";
 import GameSearch from "./GameSearch.jsx";
-import CreateGroup from "./CreateGroup.jsx";
-import UserGroups from "./UserGroups.jsx";
-import EditGroup from "./EditGroup.jsx";
 import RedirectButtonComponent from "./components/ButtonComponents/RedirectButtonComponent.jsx";
 import ActionButtonComponent from "./components/ButtonComponents/ActionButtonComponent.jsx";
-import SignIn from "./SignIn.jsx";
 import {Login} from "@mui/icons-material";
 
-function App({setAuthed, getAuthed, setUsername, getUsername}) {
+function App() {
 
-    let username = getUsername();
-    let isAuthed = getAuthed();
 
   const location = useLocation();
 
-  function HandleNewUsername(name){
-      setUsername(username);
-      username=name;
-  }
-
-  function handleAuth(authed){
-      setAuthed(authed);
-      isAuthed = authed;
-  }
-
-
-
   return (
       <>
-          {location.pathname !== "/" && location.pathname !== "/home" &&  <RedirectButtonComponent link="/home" text="home"/>}
+          {location.pathname !== "/" &&  <RedirectButtonComponent link="/home" text="home"/>}
           <Routes>
-              <Route path="/" element={<SignIn/>} />
-              <Route path="/home" element={<Home user={username} setuser={HandleNewUsername} auth={handleAuth}/>}/>
-              <Route path="/userprofiles" element={isAuthed ? <UserProfiles user={username}/> : <Navigate to="/" />}/>
-              <Route path="/createprofile" element={ isAuthed ? <CreateProfile user={username} /> : <Navigate to="/" />}/>
-              <Route path="/editprofile" element={ isAuthed ? <EditProfile user={username}/> : <Navigate to="/" />}/>
-              <Route path="/gamesearch" element={ isAuthed ? <GameSearch user={username}/> : <Navigate to="/" />}/>
-              <Route path="/createboardgame" element={isAuthed ? <CreateBoardGame user={username}/> : <Navigate to="/" />}/>
-              <Route path="/editgame" element={isAuthed ? <EditGame user={username}/> : <Navigate to="/" />}/>
-              <Route path="/generate" element={isAuthed ? <Generate user={username}/> : <Navigate to="/" />}/>
-              <Route path="/creategroup" element={isAuthed ? <CreateGroup user={username}/> : <Navigate to="/" />}/>
-              <Route path="/usergroups" element={isAuthed ? <UserGroups user={username}/> : <Navigate to="/" />}/>
-              <Route path="/editgroup" element={isAuthed ? <EditGroup user={username}/> : <Navigate to="/" />}/>
-
+              <Route path="/" element={<Home/>}/>
+              <Route path="/userprofiles" element={<UserProfiles/>}/>
+              <Route path="/createprofile" element={<CreateProfile/>}/>
+              <Route path="/editprofile" element={<EditProfile/>}/>
+              <Route path="/gamesearch" element={<GameSearch/>}/>
+              <Route path="/createboardgame" element={<CreateBoardGame/>}/>
+              <Route path="/editgame" element={<EditGame/>}/>
+              <Route path="/generate" element={<Generate/>}/>
           </Routes>
       </>
   )
