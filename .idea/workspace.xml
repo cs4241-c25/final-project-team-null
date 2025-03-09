@@ -8,14 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamedecide/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/backend/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamedecide/frontend/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/CreateBoardgame.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/CreateBoardgame.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/EditGame.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/EditGame.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/CheckBoxComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/CheckBoxComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/FormNumberFieldComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/FormNumberFieldComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameFormComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameFormComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSearchComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSearchComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSearchListComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSearchListComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSelectionComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameSelectionComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/CreateProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/CreateProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/EditProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/EditProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/UserProfiles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/UserProfiles.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileFormComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/ProfileFormComponent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +159,7 @@
       <workItem from="1741216690490" duration="226000" />
       <workItem from="1741217212088" duration="532000" />
       <workItem from="1741302241485" duration="3074000" />
-      <workItem from="1741478648767" duration="6602000" />
+      <workItem from="1741478648767" duration="8368000" />
     </task>
     <task id="LOCAL-00001" summary="merge from main">
       <option name="closed" value="true" />

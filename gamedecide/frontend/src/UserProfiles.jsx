@@ -9,12 +9,12 @@ import {useNavigate} from "react-router-dom";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "/backend";
 //const BACKEND_URL = "/backend";
 
-function UserProfiles({user}) {
+function UserProfiles() {
 
     const [profiles, setProfiles] = useState([]);
 
     useEffect(() => {
-        axios.post("/getprofiles/", JSON.stringify({"username": user}))
+        axios.post("/getprofiles")
             .then(res => {
                 setProfiles(res.data);
             })
@@ -23,11 +23,11 @@ function UserProfiles({user}) {
 
     const navigate = useNavigate();
     function handleRedirect(username, profile) {
-        navigate("/editprofile", {state: {username: user, name: profile}});
+        navigate("/editprofile", {state: {name: profile}});
     }
 
     function handleDelete(user, profile) {
-        axios.delete("/deleteprofile/", {data: JSON.stringify({"username": user, "name": profile})})
+        axios.delete("/deleteprofile/", {data: JSON.stringify({"name": profile})})
             .then(res => {
                 console.log("Deleted profile " + profile);
                 const newProfiles = profiles.filter(item => item !== profile)
@@ -47,7 +47,7 @@ function UserProfiles({user}) {
                      overflowY: "scroll",
                  }}>
                 {profiles.map(item => (
-                    <ProfileComponent key={item} user={user} profile={item} functions={{handleRedirect: handleRedirect,
+                    <ProfileComponent key={item.name} profile={item.name} functions={{handleRedirect: handleRedirect,
                         handleDelete: handleDelete}}/>
                 ))}
             </Box>

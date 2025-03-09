@@ -16,15 +16,6 @@ function ProfileFormComponent({profile, games, functions}) {
                                             onChange={functions.handleChange}/>
                 </Box>
                 <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md items-center" bgcolor="cardBG.main">
-                    <GameSearchListComponent id={"addLibrary"} games={games} label={"Add Game to Library"}
-                                             list={"library"} currentList={profile.library}
-                                             h2Text={"Current Games in Library"}
-                                             functions={{
-                                                 handleGameAdd: functions.handleGameAdd,
-                                                 handleGameDelete: functions.handleGameDelete
-                                             }}/>
-                </Box>
-                <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md items-center" bgcolor="cardBG.main">
                     <GameSearchListComponent id={"addFavorite"} games={games} label={"Add Game to Favorites"}
                                              list={"favorites"} currentList={profile.favorites}
                                              h2Text={"Current Favorite Games"}

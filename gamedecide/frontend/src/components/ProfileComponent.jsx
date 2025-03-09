@@ -7,7 +7,7 @@ import ActionButtonComponent from "./ButtonComponents/ActionButtonComponent.jsx"
 import axios from "axios";
 
 
-function ProfileComponent({user, profile, functions}) {
+function ProfileComponent({profile, functions}) {
 
     return (
         <>
@@ -15,9 +15,9 @@ function ProfileComponent({user, profile, functions}) {
                 <PComponent text={profile} />
                 <Box className="flex flex-row gap-4">
                     {functions.handleRedirect &&
-                        <ActionButtonComponent action={() => functions.handleRedirect(user, profile)} text="Edit"/>
+                        <ActionButtonComponent action={() => functions.handleRedirect(profile)} text="Edit"/>
                     }
-                    <DeleteButtonComponent action={() => functions.handleDelete(user, profile)}/>
+                    <DeleteButtonComponent action={() => functions.handleDelete(profile)}/>
                 </Box>
             </Box>
         </>

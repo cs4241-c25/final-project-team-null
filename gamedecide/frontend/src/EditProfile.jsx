@@ -8,20 +8,17 @@ function EditProfile({user}) {
 
     const navigate = useNavigate();
     const [profile, setProfile] = useState({
-        username: "",
         name: "",
         oldname: "",
-        library: [],
         favorites: [],
         blacklist: [],
     });
     const location = useLocation();
 
     useEffect(() => {
-        const {username, name} = location.state || {};
-        console.log("username: ", username)
+        const {name} = location.state || {};
         console.log("name: ", name)
-        axios.post("/editprofile/", JSON.stringify({"username": user, "name": name}))
+        axios.post("/editprofile/", JSON.stringify({"name": name}))
             .then(res => {
                 const newProfile = res.data;
                 newProfile.oldname = name;
@@ -36,11 +33,8 @@ function EditProfile({user}) {
 
     const [games, setGames] = useState([{
         name: "",
-        year: 0,
         minPlayerCount: 0,
         maxPlayerCount: 0,
-        platform: "",
-        ownershipType: ""
     }]);
 
 
@@ -73,14 +67,11 @@ function EditProfile({user}) {
 
     function handleGameDelete(list, name, year) {
         let gameList;
-        if(list === "library") {
-            gameList = profile.library.filter(game => !(game.name === name && game.year === year));
-        }
-        else if(list === "favorites") {
-            gameList = profile.favorites.filter(game => !(game.name === name && game.year === year));
+        if(list === "favorites") {
+            gameList = profile.favorites.filter(game => !(game.name === name));
         }
         else if(list === "blacklist") {
-            gameList = profile.blacklist.filter(game => !(game.name === name && game.year === year));
+            gameList = profile.blacklist.filter(game => !(game.name === name));
         }
         else
         {
@@ -91,20 +82,14 @@ function EditProfile({user}) {
 
     function handleGameAdd(list, name, year) {
         let game;
-        if(list === "library") {
-            game = games.find(g => g.name === name && g.year === year);
-            const newList = profile.library;
-            newList.push(game);
-            setProfile({...profile, library: newList})
-        }
-        else if(list === "favorites") {
-            game = games.find(g => g.name === name && g.year === year);
+        if(list === "favorites") {
+            game = games.find(g => g.name === name);
             const newList = profile.favorites;
             newList.push(game);
             setProfile({...profile, favorites: newList})
         }
         else if(list === "blacklist") {
-            game = games.find(g => g.name === name && g.year === year);
+            game = games.find(g => g.name === name);
             const newList = profile.blacklist;
             newList.push(game);
             setProfile({...profile, blacklist: newList})

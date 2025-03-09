@@ -186,7 +186,6 @@ app.post("/getprofiles", (req, res) => {
     })
 
     req.on("end", function () {
-        const data = JSON.parse(dataString);
 
         SendAllProfiles(res);
     })
