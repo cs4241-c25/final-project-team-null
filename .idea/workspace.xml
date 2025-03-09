@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d696e2d7-2b94-469c-9da8-0bbd28833f5b" name="Changes" comment="merge from main">
+      <change afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/CheckBoxComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/dist/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/CreateBoardgame.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/CreateBoardgame.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/GameSearch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/GameSearch.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/SignIn.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameFormComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gamedecide/frontend/src/components/GameFormComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gamedecide/frontend/src/components/GroupComponent.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +61,7 @@
     "disable.download.node.interpreter.editor.notification": "true",
     "git-widget-placeholder": "toby-personal",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Toby Wilensky/Documents/GitHub/a4-samuelwilensky",
+    "last_opened_file_path": "C:/Users/Toby Wilensky/Documents/GitHub/final-project-team-null/gamedecide/frontend/src/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,9 +77,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Toby Wilensky\Documents\GitHub\final-project-team-null\gamedecide\frontend\src\components" />
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide" />
       <recent name="C:\Users\Toby Wilensky\Documents\GitHub\final-project-team-null\gamedecide\frontend\src" />
-      <recent name="C:\Users\Toby Wilensky\Documents\GitHub\final-project-team-null\gamedecide\frontend\src\components" />
       <recent name="C:\Users\tobyw\OneDrive\Documents\GitHub\final-project-team-null\gamedecide\backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -155,7 +162,7 @@
       <workItem from="1741216690490" duration="226000" />
       <workItem from="1741217212088" duration="532000" />
       <workItem from="1741302241485" duration="3074000" />
-      <workItem from="1741478648767" duration="2600000" />
+      <workItem from="1741478648767" duration="3699000" />
     </task>
     <task id="LOCAL-00001" summary="merge from main">
       <option name="closed" value="true" />

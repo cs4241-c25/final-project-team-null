@@ -19,7 +19,7 @@ function App() {
 
   return (
       <>
-          {location.pathname !== "/" &&  <RedirectButtonComponent link="/home" text="home"/>}
+          {location.pathname !== "/" &&  <RedirectButtonComponent link="/" text="home"/>}
           <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/userprofiles" element={<UserProfiles/>}/>

@@ -10,24 +10,16 @@ function GameSearch({user}) {
 
     const [games, setGames] = useState([{
         name: "",
-        year: 0,
         minPlayerCount: 0,
-        maxPlayerCount: 0,
-        platform: "",
-        ownershipType: ""
+        maxPlayerCount: 0
     }]);
     const [filteredGames, setFilteredGames] = useState([{
         name: "",
-        year: 0,
         minPlayerCount: 0,
-        maxPlayerCount: 0,
-        platform: "",
-        ownershipType: ""
+        maxPlayerCount: 0
     }]);
 
     const [search, setSearch] = useState("");
-
-
 
     useEffect(() => {
         axios.post("/findgame")
@@ -43,7 +35,7 @@ function GameSearch({user}) {
         let searchedGames = games;
 
         if (search) {
-            searchedGames = searchedGames.filter(game => (game.name + " (" + game.year + ")").includes(search));
+            searchedGames = searchedGames.filter(game => (game.name).includes(search));
         }
 
         setFilteredGames(searchedGames);
@@ -57,13 +49,13 @@ function GameSearch({user}) {
         setSearch(value);
     }
 
-    const mapGames = (itemList) => itemList.map((option) => option.name + " (" + option.year + ")");
+    const mapGames = (itemList) => itemList.map((option) => option.name);
 
     function handleDelete(game) {
-        axios.delete("/deletegame/", {data: JSON.stringify({"name": game.name, "year": game.year})})
+        axios.delete("/deletegame/", {data: JSON.stringify({"name": game.name})})
             .then(res => {
                 console.log("Deleted game " + game);
-                const newGames = games.filter(item => !((item.name === game.name) && (item.year === game.year)))
+                const newGames = games.filter(item => !(item.name === game.name))
                 setGames(newGames);
             })
             .catch(err => console.log(err));
@@ -86,7 +78,7 @@ function GameSearch({user}) {
                          overflowY: "scroll",
                      }}>
                     {filteredGames.map(game => (
-                        <GameComponent key={game.name + "(" + game.year + ")"} game={game} functions={{handleDelete: handleDelete}}/>
+                        <GameComponent key={game.name} game={game} functions={{handleDelete: handleDelete}}/>
                     ))}
                 </Box>
                 <RedirectButtonComponent link={"/createboardgame"} text={"Create New Game"}/>

@@ -9,52 +9,8 @@ import hero from "./assets/hero.jpg"
 import HeroTextComponent from "./components/TypographyComponents/HeroTextComponent.jsx";
 import {useNavigate} from "react-router-dom";
 
-function Home({user, setuser, auth}) {
-
-  const [username, setUsername] = useState("guest");
-    const [loading, setLoading] = useState(true);
+function Home() {
     const navigate = useNavigate();
-
-    /*useEffect(()=> {
-        axios.post("/currentuser")
-            .then(res => {
-                setuser(res.data);
-                setUsername(res.data);
-                setLoading(false);
-                auth(true);
-            })
-            .catch((err)=>{
-                auth(false);
-                setLoading(false);});
-    }, [])*/
-
-    const GetUsername = async function(){
-        const response = await fetch( "/currentuser", {
-            method:'POST'
-        })
-
-        const text = await response.text()
-        setuser(text);
-        setUsername(text);
-        setLoading(false);
-        if(text !== "guest"){
-            auth(true);
-        }
-    }
-
-    GetUsername();
-
-  function LogOut(){
-      axios.post("/logout/")
-          .then(res => {
-                  navigate("/");
-          })
-          .catch(err => console.log(err));
-  }
-
-  if(loading){
-      return <div>Loading...</div>;
-  }
 
   return (
       <div className="w-full h-full flex flex-col">
@@ -69,10 +25,8 @@ function Home({user, setuser, auth}) {
           <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
               <Box sx={{ mt: 4 }} className="w-full h-full flex flex-col gap-4">
                   <RedirectButtonComponent link="/userprofiles" text="profiles"/>
-                  <RedirectButtonComponent link="/usergroups" text="groups"/>
                   <RedirectButtonComponent link="/gamesearch" text="games"/>
                   <RedirectButtonComponent link="/generate" text="generate game"/>
-                  <ActionButtonComponent text="Log out" importance={"error"} action={LogOut}/>
               </Box>
           </Container>
       </div>

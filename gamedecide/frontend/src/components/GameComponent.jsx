@@ -13,10 +13,6 @@ function GameComponent({game, functions}) {
         console.log(game)
         navigate("/editgame", {state: {
                 name: game.name,
-                description: game.description,
-                year: game.year,
-                platform: game.platform,
-                ownership: game.ownership,
                 minplayers: game.minplayers,
                 maxplayers: game.maxplayers
             }});
@@ -25,7 +21,7 @@ function GameComponent({game, functions}) {
     return (
         <>
             <Box className="w-full flex flex-row items-center justify-between p-4 rounded-md" bgcolor="itemBG.main">
-                <PComponent text={game.name + " (" + game.year + ")"}/>
+                <PComponent text={game.name}/>
                 <Box className="flex flex-row gap-4">
                     <ActionButtonComponent action={handleRedirect} text="Edit"/>
                     <DeleteButtonComponent action={() => functions.handleDelete(game)}/>

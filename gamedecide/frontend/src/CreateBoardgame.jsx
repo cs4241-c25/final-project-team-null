@@ -15,12 +15,8 @@ function CreateBoardGame({user}) {
 
   const [formData, setFormData] = useState({
     name: '',
-    description: '',
-    year: null,
-    platform: '',
     minplayers: 0,
     maxplayers: 0,
-    ownership: 'single',
   });
 
   const handleChange = (e) => {
