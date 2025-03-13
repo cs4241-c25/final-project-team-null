@@ -269,7 +269,7 @@ app.post("/generate", (req, res) => {
     req.on("end", function () {
         const data = JSON.parse(dataString);
 
-        GenerateGame(data, res);
+        GenerateGame(data.group, data.length, data.extras, res);
     })
 })
 
@@ -277,7 +277,7 @@ app.post("/getallprofiles", (req, res) => {
     SendAllProfiles(res);
 })
 
-async function GenerateGame(group, res){
+async function GenerateGame(group, lengths, extras, res){
     const library = await GetAllGames();
 
     const profilesInGroup = [];
@@ -285,15 +285,18 @@ async function GenerateGame(group, res){
         const curProfile = await profiles.findOne({name:group[i].name});
         profilesInGroup.push(curProfile);
     }
-    const playerCount = profilesInGroup.length;
+    const playerCount = profilesInGroup.length + Number(extras);
 
     const gamesInLibrary = [];
     for(let i=0; i<library.length; i++){
         const curGame = library[i];
         const validMinPlayerCount = (curGame.minplayers <= playerCount);
         const validMaxPlayerCount = (curGame.maxplayers === "-1" || curGame.maxplayers >= playerCount);
+        const validLength = ((curGame.length==="Short" && lengths.Short === true)
+                                    || (curGame.length==="Medium" && lengths.Medium === true)
+                                    || (curGame.length==="Long" && lengths.Long === true))
 
-        if(validMinPlayerCount && validMaxPlayerCount) {
+        if(validMinPlayerCount && validMaxPlayerCount && validLength) {
             gamesInLibrary.push(curGame);
         }
     }
