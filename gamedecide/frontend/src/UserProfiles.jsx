@@ -22,11 +22,11 @@ function UserProfiles() {
     }, [])
 
     const navigate = useNavigate();
-    function handleRedirect(username, profile) {
+    function handleRedirect(profile) {
         navigate("/editprofile", {state: {name: profile}});
     }
 
-    function handleDelete(user, profile) {
+    function handleDelete(profile) {
         axios.delete("/deleteprofile/", {data: JSON.stringify({"name": profile})})
             .then(res => {
                 console.log("Deleted profile " + profile);

@@ -18,9 +18,10 @@ function EditProfile({user}) {
     useEffect(() => {
         const {name} = location.state || {};
         console.log("name: ", name)
-        axios.post("/editprofile/", JSON.stringify({"name": name}))
+        axios.post("/editprofile/", JSON.stringify({name: name}))
             .then(res => {
                 const newProfile = res.data;
+                console.log(newProfile);
                 newProfile.oldname = name;
                 setProfile(newProfile);
             })
