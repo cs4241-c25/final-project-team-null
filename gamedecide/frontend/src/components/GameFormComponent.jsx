@@ -38,13 +38,14 @@ function GameFormComponent({formData, functions}) {
                             className="w-1/3 h-full"
                             min={-1}
                         />
-                        <RadioGroupComponent
-                            id="gameLength"
-                            formLabel="Length"
-                            
-                            />
                     </Box>
                     <FormControl component="fieldset" margin="normal">
+                        <Box className="flex flex-col justify-start items-center gap-4 w-full">
+                            <FormLabel component="legend">Length</FormLabel>
+                            <RadioGroupComponent id="gameLength" name={"length"} value={formData.length}
+                                                 required={true}
+                                                 onChange={functions.handleChange} buttons={["Short", "Medium", "Long"]}/>
+                        </Box>
                     </FormControl>
                     <SubmitButtonComponent/>
                 </form>

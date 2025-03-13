@@ -47,7 +47,7 @@ async function insertIntoCollection(data, collection){
 }
 
 async function AttemptUpdateGame(data){
-    const result = await games.replaceOne({name:data.name, year:data.year}, data);
+    const result = await games.replaceOne({name:data.name}, data);
 
     if(result.modifiedCount === 0){
         await insertIntoCollection(data, games);
@@ -58,12 +58,13 @@ async function EditGame(data){
     const game = ({
         name: data.name,
         minplayers: data.minplayers,
-        maxplayers: data.maxplayers});
+        maxplayers: data.maxplayers,
+        length: data.length});
     const result = await games.replaceOne({name:data.oldname}, game);
 }
 
-async function DeleteGame(name, year, res){
-    const result = await games.deleteOne({name:name, year:year});
+async function DeleteGame(name, res){
+    const result = await games.deleteOne({name:name});
     res.end(JSON.stringify(result));
 }
 
@@ -126,10 +127,6 @@ app.post("/submitgame", (req, res) => {
             return;
         }
 
-        if(data.year === null || data.year === ""){
-            data.year = "none";
-        }
-
         AttemptUpdateGame(data).then(()=>{
             res.end("Submitted");
         })
@@ -154,10 +151,6 @@ app.post("/updategame", (req, res) => {
             return;
         }
 
-        if(data.year === null || data.year === ""){
-            data.year = "none";
-        }
-
         EditGame(data).then(()=>{
             res.end("Submitted");
         })
@@ -173,7 +166,7 @@ app.delete("/deletegame", async (req, res) => {
 
     req.on("end", function () {
         const data = JSON.parse(dataString);
-        DeleteGame(data.name, data.year, res);
+        DeleteGame(data.name, res);
     })
 });
 

@@ -12,7 +12,7 @@ function EditGame({user}) {
         name: "",
         minplayers: 0,
         maxplayers: 0,
-        length: "medium"
+        length: "Medium"
     });
 
     const location = useLocation();
