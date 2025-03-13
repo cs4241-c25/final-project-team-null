@@ -14,7 +14,8 @@ function GameComponent({game, functions}) {
         navigate("/editgame", {state: {
                 name: game.name,
                 minplayers: game.minplayers,
-                maxplayers: game.maxplayers
+                maxplayers: game.maxplayers,
+                length: game.length
             }});
     }
 
