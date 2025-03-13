@@ -14,7 +14,7 @@ function ActionSelectorComponent2({id, itemList, label, action, map, validCheck,
     const [errorMessage, setErrorMessage] = useState("");
 
     function handleSubmit() {
-        const selectedItem = itemList.find(item => item.name + " (" + item.username + ")" === input);
+        const selectedItem = itemList.find(item => item.name=== input);
         if (selectedItem) {
             action(selectedItem.name);
             setError(false);

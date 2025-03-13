@@ -3,58 +3,30 @@ import axios from "axios";
 import {Box, Container} from "@mui/material";
 import H1Component from "./components/TypographyComponents/H1Component.jsx";
 import ActionButtonComponent from "./components/ButtonComponents/ActionButtonComponent.jsx";
-import ActionSelectorComponent from "./components/ActionSelectorComponent.jsx";
+import ActionSelectorComponent2 from "./components/ActionSelectorComponent2.jsx";
 import H2Component from "./components/TypographyComponents/H2Component.jsx";
 import RadioGroupComponent from "./components/RadioGroupComponent.jsx";
 import PComponent from "./components/TypographyComponents/PComponent.jsx";
+import ProfileComponent from "./components/ProfileComponent.jsx";
 
 
-function Generate({user}) {
+function Generate() {
 
-    const [groups, setGroups] = useState([""]);
+    const [groupMembers, setGroupMembers] = useState([]);
     const [profiles, setProfiles] = useState([]);
 
     const [groupSelect, setGroupSelect] = useState({name: "", profiles: []});
 
     const [games, setGames] = useState([{
         name: "",
-        description: "",
-        year: 0,
-        platform: "",
-        ownership: "",
         minplayers: 0,
         maxplayers: 0
     }]);
 
     const [generation, setGeneration] = useState({
-        username: user,
-        group: "",
-        library: {username: "", name: ""},
-        platform: ""
+        group: []
     });
 
-
-    useEffect(() => {
-        axios.post("/getgroups/", JSON.stringify({username: user}))
-            .then(res => {
-                setGroups(res.data);
-            })
-            .catch(err => console.log(err));
-        setGames([]);
-    }, [])
-
-
-    useEffect(() => {
-        console.log("groupSelect: ", groupSelect);
-    }, [groupSelect])
-
-    useEffect(() => {
-        console.log("profiles: ", profiles);
-    }, [profiles])
-
-    useEffect(() => {
-        console.log("generation: ", generation);
-    }, [generation])
 
     function handleGenerate() {
         axios.post("/generate/", JSON.stringify(generation))
@@ -64,57 +36,85 @@ function Generate({user}) {
             .catch(err => console.log(err));
     }
 
-    function selectGroup(name) {
-        const target = groups.find(group => group === name);
-
-        axios.post("/editgroup/", JSON.stringify({username: user, name: target}))
-            .then(res => {
-                setGroupSelect(res.data);
-            })
-            .catch(err => console.log(err));
-
-        setGeneration({...generation, group: name})
-    }
-
     function GetAllProfiles(){
         axios.post("/getallprofiles")
             .then(res => {
-                const tempProfiles = JSON.parse(res.data);
-                tempProfiles.unshift({username: "", name: "Any"});
+                const tempProfiles = res.data;
                 setProfiles(tempProfiles);
+                console.log(tempProfiles);
             })
             .catch(err => console.log(err));
     }
 
     useEffect(() => {
-        if(groupSelect) {
-            const tempProfiles = groupSelect.profiles;
-            tempProfiles.unshift({username: "", name: "Any"});
-            setProfiles(tempProfiles);
-        }
-    }, [groupSelect])
+        axios.post("/getallprofiles")
+            .then(res => {
+                const tempProfiles = res.data;
+                setProfiles(tempProfiles);
+            })
+            .catch(err => console.log(err));
+    })
 
     function selectLibrary(profile) {
         setGeneration({...generation, library: {username: profile.username, name: profile.name}})
     }
 
-    const mapGroups = (itemList) => itemList.map((option) => option);
-    const mapProfiles = (itemList) => itemList.map((option) => option.username === "" ? "Any" : option.name + " (" + option.username + ")");
-
     const validGroup = (itemList, input) => itemList.find(item => item === input);
     const validProfile = (itemList, input) => itemList.find(item => (item.name === "Any" && input === "Any") || item.name + " (" + item.username + ")" === input);
 
-    const handlePlatformChange = (e) => {
-        const {value} = e.target;
-        setGeneration({...generation, platform: value})
+    const mapProfiles = (itemList) =>
+        itemList.map((option) => option.name);
+
+    function selectProfile(name) {
+        let profile = profiles.find(profile => profile.name === name);
+        console.log(profile);
+        /*if (!profile) return; // Avoid errors if profile is not found*/
+
+        // Prevent duplicates
+        if (!groupMembers.some(member => member.name === profile.name)) {
+            setGroupMembers([...groupMembers, profile]);
+        }
+    }
+
+    function handleDelete(profile){
+        console.log(profile);
+        const newProfiles = groupMembers.filter(item => item.name !== profile)
+        console.log(newProfiles);
+        setGroupMembers(newProfiles);
     }
 
 
     return (
         <Container maxWidth="sm" className="w-full flex flex-col justify-center items-center my-8 gap-4">
             <H1Component text={"Generate"}/>
+            <Box className="flex flex-col gap-4 w-full m-4 p-8 rounded-md items-center" bgcolor="cardBG.main">
+                {/* Search / Select Component */}
+                <ActionSelectorComponent2
+                    id="profileSelector"
+                    itemList={profiles}
+                    label="Select a Profile"
+                    text="Add Profile"
+                    map={mapProfiles}
+                    action={selectProfile}
+                />
+
+                {/* Dynamically display selected group members using ProfileComponent */}
+                <Box className="w-full flex flex-col gap-2" sx={{
+                    height: 300,
+                    overflow: "hidden",
+                    overflowY: "scroll",
+                }}>
+                    {groupMembers.map((member) => (
+                        <ProfileComponent
+                            profile={member.name}
+                            functions={{handleDelete}}
+                        />
+                    ))}
+                </Box>
+            </Box>
+
             <Box className="flex flex-col gap-2 w-full m-4 p-8 rounded-md items-center" bgcolor="cardBG.main">
-                <ActionButtonComponent text={"Generate"} action={handleGenerate} importance={"primary"} disabled={!(groupSelect.name !== "" && ((generation.library.username === "" && generation.library.name === "Any") || (generation.library.username !== "" && generation.library.name !== "")) && generation.platform !== "")}/>
+                <ActionButtonComponent text={"Generate"} action={handleGenerate} importance={"primary"} />
             </Box>
 
             {games.length !== 0 &&
