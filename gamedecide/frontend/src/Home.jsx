@@ -20,7 +20,7 @@ function Home() {
               backgroundSize: "cover",
               backgroundPosition: "center",
           }}>
-              <HeroTextComponent h1Text={"GAME DECIDE"} h2Text={"Game more, decide less!"} color={"white"}/>
+              <HeroTextComponent h1Text={"SFS GAME DECIDE"} h2Text={""} color={"white"}/>
           </Box>
           <Container maxWidth="sm" className="flex flex-col justify-start items-center gap-4">
               <Box sx={{ mt: 4 }} className="w-full h-full flex flex-col gap-4">

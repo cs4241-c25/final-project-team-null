@@ -11,16 +11,18 @@ function EditGame({user}) {
     const [formData, setFormData] = useState({
         name: "",
         minplayers: 0,
-        maxplayers: 0
+        maxplayers: 0,
+        length: "medium"
     });
 
     const location = useLocation();
     useEffect(() => {
-        const {name, minplayers, maxplayers} = location.state || {};
+        const {name, minplayers, maxplayers, length} = location.state || {};
         const game = {
             name: name,
             minplayers: minplayers,
-            maxplayers: maxplayers
+            maxplayers: maxplayers,
+            length: length
         }
         game.oldname = name;
         console.log("game: ", game)

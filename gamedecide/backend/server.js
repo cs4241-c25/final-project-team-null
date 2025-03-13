@@ -276,12 +276,7 @@ app.post("/generate", (req, res) => {
     req.on("end", function () {
         const data = JSON.parse(dataString);
 
-        if(data.group === null || data.group === ""){
-            res.end("No group found");
-            return;
-        }
-
-        GenerateGame(data.group, res);
+        GenerateGame(data, res);
     })
 })
 
@@ -290,7 +285,7 @@ app.post("/getallprofiles", (req, res) => {
 })
 
 async function GenerateGame(group, res){
-    const library = GetAllGames();
+    const library = await GetAllGames();
 
     const profilesInGroup = [];
     for(let i=0; i<group.length; i++){
@@ -301,10 +296,11 @@ async function GenerateGame(group, res){
 
     const gamesInLibrary = [];
     for(let i=0; i<library.length; i++){
-        const curGame = await games.findOne({name:library[i].name});
-        const validPlayerCount = (curGame.minplayers <= playerCount && curGame.maxplayers >= playerCount);
+        const curGame = library[i];
+        const validMinPlayerCount = (curGame.minplayers <= playerCount);
+        const validMaxPlayerCount = (curGame.maxplayers === "-1" || curGame.maxplayers >= playerCount);
 
-        if(validPlayerCount) {
+        if(validMinPlayerCount && validMaxPlayerCount) {
             gamesInLibrary.push(curGame);
         }
     }
@@ -317,14 +313,72 @@ async function GenerateGame(group, res){
             globalFavorites = profilesInGroup[i].favorites;
         }
         else{
-            globalBlacklist.concat(profilesInGroup[i].blacklist);
-            globalFavorites.concat(profilesInGroup[i].favorites);
+            globalBlacklist = globalBlacklist.concat(profilesInGroup[i].blacklist);
+            globalFavorites = globalFavorites.concat(profilesInGroup[i].favorites);
         }
     }
 
-    const selectedGames = SelectValidGames(gamesInLibrary, globalBlacklist, globalFavorites);
+    console.log(globalBlacklist);
+
+    const selectedGames = ChooseGames(gamesInLibrary, globalBlacklist, globalFavorites);
 
     res.end(JSON.stringify(selectedGames));
+}
+
+function ChooseGames(games, blacklist, favorites){
+
+    const validGames = [];
+    const output = [];
+
+    for(let i = 0; i<games.length; i++){
+        let valid = true;
+        for(let j=0; j<blacklist.length; j++){
+            if(blacklist[j].name === games[i].name){
+                valid=false;
+                j=blacklist.length;
+            }
+        }
+        if(valid){
+            validGames.push(games[i]);
+        }
+    }
+
+    if(validGames.length <= NUM_GAMES_RETURNED){
+        return validGames;
+    }
+
+    for(let i = 0; i<favorites.length; i++){
+        let valid = true;
+        for(let j=0; j<blacklist.length; j++){
+            if(blacklist[j].name === favorites[i].name){
+                valid=false;
+                j=blacklist.length;
+            }
+        }
+        if(valid){
+            validGames.push(favorites[i]);
+        }
+    }
+
+    for(let i=0; i<NUM_GAMES_RETURNED; i++){
+        let randomIndex = Math.floor(Math.random()*(validGames.length));
+        let duplicate = false;
+        for(let j=0; j<output.length; j++){
+            if(validGames[randomIndex].name === output[j].name){
+                duplicate = true;
+                j = output.length;
+            }
+        }
+
+        if(duplicate){
+            i--;
+        }
+        else{
+            output.push(validGames[randomIndex]);
+        }
+    }
+
+    return output;
 }
 
 function SelectValidGames(games, blacklist, favorites){

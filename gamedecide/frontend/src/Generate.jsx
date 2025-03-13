@@ -23,25 +23,11 @@ function Generate() {
         maxplayers: 0
     }]);
 
-    const [generation, setGeneration] = useState({
-        group: []
-    });
-
 
     function handleGenerate() {
-        axios.post("/generate/", JSON.stringify(generation))
+        axios.post("/generate/", JSON.stringify(groupMembers))
             .then(res => {
                 setGames(res.data);
-            })
-            .catch(err => console.log(err));
-    }
-
-    function GetAllProfiles(){
-        axios.post("/getallprofiles")
-            .then(res => {
-                const tempProfiles = res.data;
-                setProfiles(tempProfiles);
-                console.log(tempProfiles);
             })
             .catch(err => console.log(err));
     }
@@ -55,12 +41,6 @@ function Generate() {
             .catch(err => console.log(err));
     })
 
-    function selectLibrary(profile) {
-        setGeneration({...generation, library: {username: profile.username, name: profile.name}})
-    }
-
-    const validGroup = (itemList, input) => itemList.find(item => item === input);
-    const validProfile = (itemList, input) => itemList.find(item => (item.name === "Any" && input === "Any") || item.name + " (" + item.username + ")" === input);
 
     const mapProfiles = (itemList) =>
         itemList.map((option) => option.name);
@@ -68,7 +48,7 @@ function Generate() {
     function selectProfile(name) {
         let profile = profiles.find(profile => profile.name === name);
         console.log(profile);
-        /*if (!profile) return; // Avoid errors if profile is not found*/
+        if (!profile) return; // Avoid errors if profile is not found
 
         // Prevent duplicates
         if (!groupMembers.some(member => member.name === profile.name)) {

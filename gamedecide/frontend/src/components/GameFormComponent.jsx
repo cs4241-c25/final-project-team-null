@@ -38,6 +38,11 @@ function GameFormComponent({formData, functions}) {
                             className="w-1/3 h-full"
                             min={-1}
                         />
+                        <RadioGroupComponent
+                            id="gameLength"
+                            formLabel="Length"
+                            
+                            />
                     </Box>
                     <FormControl component="fieldset" margin="normal">
                     </FormControl>
